@@ -1,0 +1,11 @@
+# Notes file containing build notes and extra code. 
+NOTES/
+
+# Ignore the JFlex .jar file
+*.jar
+
+# Ignore the keywords file  
+keywords.txt
+
+# Ignore .class files when compiling
+*.class
