@@ -1,10 +1,10 @@
------ COMPILER ----- 
+COMPILER
 CSC 450
 Chase Webber
 
 
 
-- JFLEX SCANNER - 
+JFLEX SCANNER
 
 
 JFlex: 
@@ -19,10 +19,6 @@ JFlex:
 
 Compiling Java: 
 
-(On the command line): 
 * javac Main.java 
 * java Main 
-(With a file...): 
-* javac Main.java 
-* java -cp Main file.txt
-
+* or, with a file: java -cp Main file.txt
