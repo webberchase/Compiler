@@ -29,7 +29,7 @@ public enum TokenType {
 	RSQUARE, 		// ]
 	LCURLY, 		// {
 	RCURLY, 		// }
-	EQUAL, 			// =
+	EQUALS, 		// =
 	PLUS, 			// +
 	MINUS, 			// -
 	TIMES,			// *
