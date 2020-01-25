@@ -33,59 +33,59 @@ other			= .
 
 {word}			{
 					//System.out.println("Found a word: " + yytext());
-					
+					Token t;
 					switch (yytext()) {
 						case "char": 
 							// System.out.println("It's a char!"); 
-							Token t = new Token(yytext(), TokenType.CHAR);
+							t = new Token(yytext(), TokenType.CHAR);
 							break; 
 						case "int":
 							// System.out.println("It's an int!"); 
-							Token t = new Token(yytext(), TokenType.INT);
+							t = new Token(yytext(), TokenType.INT);
 							break; 
 						case "float":
 							// System.out.println("It's a float!"); 
-							Token t = new Token(yytext(), TokenType.FLOAT);
+							t = new Token(yytext(), TokenType.FLOAT);
 							break; 
 						case "if":
 							// System.out.println("It's an if!"); 
-							Token t = new Token(yytext(), TokenType.IF);
+							t = new Token(yytext(), TokenType.IF);
 							break; 
 						case "else":
 							// System.out.println("It's an else!"); 
-							Token t = new Token(yytext(), TokenType.ELSE);
+							t = new Token(yytext(), TokenType.ELSE);
 							break; 
 						case "while":
 							// System.out.println("It's a while!"); 
-							Token t = new Token(yytext(), TokenType.WHILE);
+							t = new Token(yytext(), TokenType.WHILE);
 							break; 
 						case "print":
 							// System.out.println("It's a print!"); 
-							Token t = new Token(yytext(), TokenType.PRINT);
+							t = new Token(yytext(), TokenType.PRINT);
 							break; 
 						case "read":
 							// System.out.println("It's a read!"); 
-							Token t = new Token(yytext(), TokenType.READ);
+							t = new Token(yytext(), TokenType.READ);
 							break; 
 						case "return":
 							// System.out.println("It's a return!"); 
-							Token t = new Token(yytext(), TokenType.RETURN);
+							t = new Token(yytext(), TokenType.RETURN);
 							break; 
 						case "func":
 							// System.out.println("It's a func!"); 
-							Token t = new Token(yytext(), TokenType.FUNC);
+							t = new Token(yytext(), TokenType.FUNC);
 							break; 
 						case "program":
 							// System.out.println("It's a program!"); 
-							Token t = new Token(yytext(), TokenType.PROGRAM);
+							t = new Token(yytext(), TokenType.PROGRAM);
 							break; 
 						case "end":
 							// System.out.println("It's an end!"); 
-							Token t = new Token(yytext(), TokenType.END);
+							t = new Token(yytext(), TokenType.END);
 							break; 
 						default: 
 							// System.out.println("It's an identifier!"); 
-							Token t = new Token(yytext(), TokenType.ID);
+							t = new Token(yytext(), TokenType.ID);
 					}
 					return( t);
 				}
@@ -116,96 +116,96 @@ other			= .
 
 {whitespace}	{  
 					/* Ignore Whitespace */ 
-					return "";
+					return null;
 				}
 
 {other}			{ 
 					//System.out.println("Found a strange string: " + yytext());
-					
+					Token t;
 					switch (yytext()) {
 						case ";": 
 							// System.out.println("It's a semicolon!"); 
-							Token t = new Token(yytext(), TokenType.SEMICOLON);
+							t = new Token(yytext(), TokenType.SEMICOLON);
 							break; 
 						case "(": 
 							// System.out.println("It's a left parenthesis!"); 
-							Token t = new Token(yytext(), TokenType.LPAREN);
+							t = new Token(yytext(), TokenType.LPAREN);
 							break; 
 						case ")": 
 							// System.out.println("It's a right parenthesis!"); 
-							Token t = new Token(yytext(), TokenType.RPAREN);
+							t = new Token(yytext(), TokenType.RPAREN);
 							break; 	
 						case "[": 
 							// System.out.println("It's a left square!"); 
-							Token t = new Token(yytext(), TokenType.LSQUARE);
+							t = new Token(yytext(), TokenType.LSQUARE);
 							break; 	
 						case "]": 
 							// System.out.println("It's a right square!"); 
-							Token t = new Token(yytext(), TokenType.RSQUARE);
+							t = new Token(yytext(), TokenType.RSQUARE);
 							break; 	
 						case "{": 
 							// System.out.println("It's a left curly!"); 
-							Token t = new Token(yytext(), TokenType.LCURLY);
+							t = new Token(yytext(), TokenType.LCURLY);
 							break; 	
 						case "}": 
 							// System.out.println("It's a right curly!"); 
-							Token t = new Token(yytext(), TokenType.RCURLY);
+							t = new Token(yytext(), TokenType.RCURLY);
 							break; 	
 						case "=": 
 							// System.out.println("It's an equals!"); 
-							Token t = new Token(yytext(), TokenType.EQUALS);
+							t = new Token(yytext(), TokenType.EQUALS);
 							break; 	
 						case "+": 
 							// System.out.println("It's a plus!"); 
-							Token t = new Token(yytext(), TokenType.PLUS);
+							t = new Token(yytext(), TokenType.PLUS);
 							break;	
 						case "-": 
 							// System.out.println("It's a minus!"); 
-							Token t = new Token(yytext(), TokenType.MINUS);
+							t = new Token(yytext(), TokenType.MINUS);
 							break; 	
 						case "*": 
 							// System.out.println("It's a times!"); 
-							Token t = new Token(yytext(), TokenType.TIMES);
+							t = new Token(yytext(), TokenType.TIMES);
 							break; 	
 						case "/": 
 							// System.out.println("It's a divide by!"); 
-							Token t = new Token(yytext(), TokenType.DIVIDEBY);
+							t = new Token(yytext(), TokenType.DIVIDEBY);
 							break; 	
 						case "<": 
 							// System.out.println("It's a less than!"); 
-							Token t = new Token(yytext(), TokenType.LESSTHAN);
+							t = new Token(yytext(), TokenType.LESSTHAN);
 							break; 	
 						case ">": 
 							// System.out.println("It's a greater than!"); 
-							Token t = new Token(yytext(), TokenType.GREATERTHAN);
+							t = new Token(yytext(), TokenType.GREATERTHAN);
 							break; 
 						case "<=": 
 							// System.out.println("It's a less than or equal to!"); 
-							Token t = new Token(yytext(), TokenType.LESSEQUAL);
+							t = new Token(yytext(), TokenType.LESSEQUAL);
 							break; 	
 						case ">=": 
 							// System.out.println("It's a greater than or equal to!"); 
-							Token t = new Token(yytext(), TokenType.GREATEQUAL);
+							t = new Token(yytext(), TokenType.GREATEQUAL);
 							break; 	
 						case "!=": 
 							// System.out.println("It's a not equal to!"); 
-							Token t = new Token(yytext(), TokenType.NOTEQUAL);
+							t = new Token(yytext(), TokenType.NOTEQUAL);
 							break; 	
 						case "&&": 
 							// System.out.println("It's a logical and!"); 
-							Token t = new Token(yytext(), TokenType.AND);
+							t = new Token(yytext(), TokenType.AND);
 							break; 	
 						case "||": 
 							// System.out.println("It's a logical or!"); 
-							Token t = new Token(yytext(), TokenType.OR);
+							t = new Token(yytext(), TokenType.OR);
 							break; 
 						case "!": 
 							// System.out.println("It's a not!"); 
-							Token t = new Token(yytext(), TokenType.LSQUARE);
+							t = new Token(yytext(), TokenType.LSQUARE);
 							break; 	
 						default: 
 							// System.out.println("It's trash!!"); 
-							Token t = new Token(yytext(), TokenType.TRASH);
+							t = new Token(yytext(), TokenType.TRASH);
 					}
 					return( t);
 				}
