@@ -40,7 +40,7 @@
 		if (!(o instanceof Token)) { return false; }
 		
 		Token t = (Token) o; 
-		return (lexeme.equals(t.lexeme)) && (type.equals(t.type); 
+		return (lexeme.equals(t.lexeme)) && (type.equals(t.type)); 
 	}
 	
 	@Override
