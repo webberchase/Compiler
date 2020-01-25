@@ -6,6 +6,8 @@ import static org.junit.Assert.*;
 /**
  * Unit tests of the Scanner class, to be run with JUnit. 
  * 
+ * THESE COMMAND LINE TOOLS DON'T WORK...
+ *
  * To compile against the JUnit classes on the command line:
  * javac -cp .;junit-4.13.jar;hamcrest-core-1.3.jar TestScanner.java
  * 
@@ -18,6 +20,20 @@ public class TestScanner {
     
     public TestScanner() {
     }
+
+	@Test
+	void testNumber1() throws IOException {
+		String test = "12";
+        Scanner s = new Scanner(new StringReader(test));
+
+		actual = s.nextToken();
+        expected = new Token("12", TokenType.NUMBER);
+        assertEquals(expected, actual);
+        
+        actual = s.nextToken();
+        assertNull(actual);        
+    
+	}
 
     @Test
     void testNextTokenHappy1() throws IOException {
