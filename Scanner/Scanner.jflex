@@ -17,7 +17,7 @@
 
 letter			= [A-Za-z]
 word			= {letter}+
-id 				= {word}+({number}|{word})*
+id 				= {word}+({int}|{word})*
 
 digit			= [1-9]
 int				= {digit}+
