@@ -16,11 +16,14 @@
 %eofval}
 
 //FIX THESE - 
-other			= .
 letter			= [A-Za-z]
 word			= {letter}+
 digit			= [1-9]
-number			= {digit}+
+int				= {digit}+
+float			= {digit}*'.'{digit}*
+scinum			= {float}[eE][-|+|'']{int}
+id 				= {word}+({number}|{word})*
+other			= .
 
 whitespace		= [ \n\t]+
 
@@ -34,10 +37,47 @@ whitespace		= [ \n\t]+
 
 {word}			{
 					//System.out.println("Found a word: " + yytext());
-					Token t = new Token(); 
-					t.lexeme = yytext(); 
-					t.type = TokenType.NUMBER; 
-					return( yytext());
+					
+					switch (yytext()) {
+						case "char": 
+							Token t = new Token(yytext(), TokenType.CHAR);
+							break; 
+						case "int":
+							Token t = new Token(yytext(), TokenType.INT);
+							break; 
+						case "float":
+							Token t = new Token(yytext(), TokenType.FLOAT);
+							break; 
+						case "if":
+							Token t = new Token(yytext(), TokenType.IF);
+							break; 
+						case "else":
+							Token t = new Token(yytext(), TokenType.ELSE);
+							break; 
+						case "while":
+							Token t = new Token(yytext(), TokenType.WHILE);
+							break; 
+						case "print":
+							Token t = new Token(yytext(), TokenType.PRINT);
+							break; 
+						case "read":
+							Token t = new Token(yytext(), TokenType.READ);
+							break; 
+						case "return":
+							Token t = new Token(yytext(), TokenType.RETURN);
+							break; 
+						case "func":
+							Token t = new Token(yytext(), TokenType.FUNC);
+							break; 
+						case "program":
+							Token t = new Token(yytext(), TokenType.PROGRAM);
+							break; 
+						case "end":
+							Token t = new Token(yytext(), TokenType.END);
+							break; 
+						default: 
+							Token t = new Token(yytext(), TokenType.ID);
+					}
 				}
 
 {number}		{
