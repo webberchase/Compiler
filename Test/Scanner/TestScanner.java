@@ -21,9 +21,42 @@ public class TestScanner {
     public TestScanner() {
     }
 
+	/***** TEST NUMBERS *****/
+
+	/* Test integer */
 	@Test
 	void testNumber1() throws IOException {
-		String test = "12";
+		String test = "3";
+        Scanner s = new Scanner(new StringReader(test));
+
+		actual = s.nextToken();
+        expected = new Token("3", TokenType.NUMBER);
+        assertEquals(expected, actual);
+        
+        actual = s.nextToken();
+        assertNull(actual);        
+    
+	}
+	
+	/* Test floating point */
+	@Test
+	void testNumber2() throws IOException {
+		String test = "3.14";
+        Scanner s = new Scanner(new StringReader(test));
+
+		actual = s.nextToken();
+        expected = new Token("3.14", TokenType.NUMBER);
+        assertEquals(expected, actual);
+        
+        actual = s.nextToken();
+        assertNull(actual);        
+    
+	}
+	
+	/* Test scientific notation */
+	@Test
+	void testNumber3() throws IOException {
+		String test = "3.14159E7";
         Scanner s = new Scanner(new StringReader(test));
 
 		actual = s.nextToken();
@@ -34,6 +67,8 @@ public class TestScanner {
         assertNull(actual);        
     
 	}
+	
+	/***** HAPPY TESTS *****/
 
     @Test
     void testNextTokenHappy1() throws IOException {
@@ -55,5 +90,9 @@ public class TestScanner {
         actual = s.nextToken();
         assertNull(actual);        
     }
+	
+	/***** SAD TESTS *****/
+	
+	
 
 }
