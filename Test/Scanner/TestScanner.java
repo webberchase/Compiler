@@ -14,7 +14,8 @@ import static org.junit.Assert.*;
  * To run the tests in this class on the command line:
  * java -cp .;junit-4.13.jar;hamcrest-core-1.3.jar org.junit.runner.JUnitCore TestScanner
  * 
- * @author chase
+ * CSC 451
+ * @author Chase Webber
  */
 public class TestScanner {
     
@@ -93,6 +94,21 @@ public class TestScanner {
 	
 	/***** SAD TESTS *****/
 	
+	void testNextTokenSad1() throws IOException {
+		String test "#"
+		Scanner s = new Scanner(new StringReader(test));
+		
+		Token actual = null; 
+		
+		try {
+			actual = s.nextToken();
+			fail("Oh no! The Sad Test didn't fail!!");
+		} catch ( 
+		
+		
+		
+		
 	
+	}
 
 }
