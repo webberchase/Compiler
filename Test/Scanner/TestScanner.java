@@ -71,6 +71,7 @@ public class TestScanner {
 	
 	/***** HAPPY TESTS *****/
 
+	/* Tests a basic math expression */
     @Test
     void testNextTokenHappy1() throws IOException {
         String test = "14+3";
@@ -94,6 +95,8 @@ public class TestScanner {
 	
 	/***** SAD TESTS *****/
 	
+	/* Tests what happens when an illegal symbol is found */
+	@Test
 	void testNextTokenSad1() throws IOException {
 		String test "#"
 		Scanner s = new Scanner(new StringReader(test));
