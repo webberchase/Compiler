@@ -32,6 +32,7 @@ other			= .
 /* Lexical Rules */
 
 {word}			{
+					/* NOTE: a word that is not a keyword is treated as an identifier. */
 					//System.out.println("Found a word: " + yytext());
 					Token t;
 					switch (yytext()) {
@@ -120,6 +121,7 @@ other			= .
 				}
 
 {other}			{ 
+					/* NOTE: if this is not found to be a valid symbol it is returned as a "TRASH" Token. */
 					//System.out.println("Found a strange string: " + yytext());
 					Token t;
 					switch (yytext()) {
