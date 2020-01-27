@@ -35,3 +35,49 @@ whitespace :
 other : 
 	Uses a switch statement to see if this is a valid symbol. 
 	If it is not, then this word is designated TokenType.TRASH. 
+	
+	
+* Token Class * 
+
+Creates a Token object with String lexeme and TokenType type. 
+
+Construct method takes in lexeme and TokenType. 
+
+Setter methods for lexeme and TokenType. 
+
+Defined an equals method to determine of two tokens are the same. 
+
+Defined a toString method to print the lexeme and TokenType. 
+
+
+* TokenType Enum * 
+
+An enum list of possible Token Types 
+
+Includes: 
+ID, NUMBER, list of Symbols, list of keywords, TRASH 
+
+Symbols and Keywords are taken from the list given in CSC 450. 
+
+TRASH is the token assigned to any String that does not fall into any of other categories. 
+
+
+* JUnit Tests * 
+
+Test nextToken() methods: 
+
+Test Number Functions : 
+	Test each of the 3 types of number to make sure that they're each 
+	returning a NUMBER token type. 
+	
+Happy Test 1 : 
+	Tests a simple math expression, 
+	Should return NUMBER, PLUS, NUMBER
+
+Sad Test 1 : 
+	Tests an invalid symbol 
+	Should fail and throw the desired exception. 
+	(This function needs work!)
+	
+SadTestException.java
+	May be used for Sad Tests. 
