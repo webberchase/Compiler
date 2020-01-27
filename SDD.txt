@@ -1,3 +1,15 @@
+COMPILER
+CSC 450
+Chase Webber
+
+
+FIXME: 
+Figure out how to run JUnit tests 
+	IDE or Command line... 
+Finish writing sadTest1() in TestScanner.java
+Write more happy and sad tests 
+
+
 SCANNER 
 
 * Definitions * 
