@@ -34,10 +34,10 @@ class Scanner {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\10\1\4\1\5\1\5\1\5\22\0\1\10\6\0\1\3"+
-    "\3\0\1\7\1\0\1\7\3\0\11\2\7\0\4\1\1\6\25\1"+
-    "\6\0\4\1\1\6\25\1\1\0\1\7\10\0\1\5\u1fa2\0\1\5"+
-    "\1\5\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\11\0\1\6\1\6\1\7\1\7\1\7\22\0\1\6\12\0\1\5"+
+    "\1\0\1\5\1\3\2\0\11\2\7\0\4\1\1\4\25\1\6\0"+
+    "\4\1\1\4\25\1\1\0\1\5\10\0\1\7\u1fa2\0\1\7\1\7"+
+    "\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -50,11 +50,10 @@ class Scanner {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\1\3\1\1\1\4\1\5\2\0"+
-    "\1\3\2\0\1\3";
+    "\1\0\1\1\1\2\2\3\1\4\1\5\2\0\1\3";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[13];
+    int [] result = new int[10];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -79,11 +78,11 @@ class Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\11\0\22\0\33\0\44\0\55\0\66\0\44"+
-    "\0\77\0\110\0\121\0\132\0\132";
+    "\0\0\0\10\0\20\0\30\0\40\0\50\0\60\0\70"+
+    "\0\100\0\100";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[13];
+    int [] result = new int[10];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -106,15 +105,13 @@ class Scanner {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\6\1\0\1\3\1\2"+
-    "\1\6\12\0\1\3\1\7\3\0\1\3\4\0\1\4"+
-    "\1\10\5\0\4\11\2\0\3\11\4\0\1\6\3\0"+
-    "\1\6\1\0\2\7\3\0\1\7\5\0\1\12\7\0"+
-    "\1\12\3\0\1\13\5\0\1\14\3\0\1\14\3\0"+
-    "\1\15\6\0";
+    "\1\2\1\3\1\4\1\5\1\3\1\2\1\6\12\0"+
+    "\1\3\1\7\1\0\1\3\5\0\1\4\1\5\6\0"+
+    "\1\5\1\0\1\10\11\0\1\6\2\0\2\7\1\0"+
+    "\1\7\10\0\1\11\4\0\1\12\5\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[99];
+    int [] result = new int[72];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -152,10 +149,10 @@ class Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\5\1\2\0\1\1\2\0\1\1";
+    "\1\0\1\11\5\1\2\0\1\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[13];
+    int [] result = new int[10];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -251,7 +248,7 @@ class Scanner {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 96) {
+    while (i < 94) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -547,7 +544,8 @@ class Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { //System.out.println("Found a strange string: " + yytext());
+            { /* NOTE: if this is not found to be a valid symbol it is returned as a "TRASH" Token. */
+					//System.out.println("Found a strange string: " + yytext());
 					Token t;
 					switch (yytext()) {
 						case ";": 
@@ -639,7 +637,8 @@ class Scanner {
             // fall through
           case 6: break;
           case 2: 
-            { //System.out.println("Found a word: " + yytext());
+            { /* NOTE: a word that is not a keyword is treated as an identifier. */
+					//System.out.println("Found a word: " + yytext());
 					Token t;
 					switch (yytext()) {
 						case "char": 
