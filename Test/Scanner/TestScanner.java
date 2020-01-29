@@ -96,7 +96,7 @@ public class TestScanner {
         Scanner s = new Scanner(new StringReader(test));
 
         Token actual = s.nextToken();
-        Token expected = new Token("12", TokenType.NUMBER);
+        Token expected = new Token("3.14159E7", TokenType.NUMBER);
         assertEquals(expected, actual);
 
         actual = s.nextToken();
