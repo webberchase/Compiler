@@ -21,8 +21,8 @@ id 				= {word}+({int}|{word})*
 
 digit			= [1-9]
 int				= {digit}+
-float			= {digit}*'.'{digit}*
-scinum			= {float}[eE][-|+|'']{int}
+float			= {digit}*\.{digit}*
+scinum			= {float}[eE][-|+|]{int}
 
 whitespace		= [ \n\t]+
 other			= .
