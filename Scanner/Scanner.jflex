@@ -25,7 +25,13 @@ float			= {digit}*\.{digit}*
 scinum			= {float}[eE][-|+|]{int}
 
 whitespace		= [ \n\t]+
-other			= .
+
+lessequal		= "<="
+greatequal		= ">="
+notequal		= "!="
+and				= "&&"
+or				= "||"
+symbol			= [;()[]{}=+-*/<>!{lessequal}{greatequal}{notequal}{and}{or}]
 
 %%
 
@@ -120,8 +126,10 @@ other			= .
 					return null;
 				}
 
-{other}			{ 
-					/* NOTE: if this is not found to be a valid symbol it is returned as a "TRASH" Token. */
+
+// FIXME : START HERE!
+
+{symbol}			{ 
 					//System.out.println("Found a strange string: " + yytext());
 					Token t;
 					switch (yytext()) {
