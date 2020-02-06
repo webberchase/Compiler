@@ -544,8 +544,7 @@ class Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { /* NOTE: if this is not found to be a valid symbol it is returned as a "TRASH" Token. */
-					//System.out.println("Found a strange string: " + yytext());
+            { //System.out.println("Found a strange string: " + yytext());
 					Token t;
 					switch (yytext()) {
 						case ";": 
