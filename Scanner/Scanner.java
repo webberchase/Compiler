@@ -34,10 +34,10 @@ class Scanner {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\6\1\6\1\7\1\7\1\7\22\0\1\6\12\0\1\5"+
-    "\1\0\1\5\1\3\2\0\11\2\7\0\4\1\1\4\25\1\6\0"+
-    "\4\1\1\4\25\1\1\0\1\5\10\0\1\7\u1fa2\0\1\7\1\7"+
-    "\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\11\0\2\6\25\0\1\6\1\12\4\0\1\13\1\0\1\7\1\7"+
+    "\1\7\1\11\1\0\1\11\1\3\1\7\1\0\11\2\1\0\1\7"+
+    "\1\12\1\10\1\12\2\0\4\1\1\4\25\1\1\7\1\0\1\7"+
+    "\3\0\4\1\1\4\25\1\1\7\1\5\1\7\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff92\0";
 
   /** 
    * Translates characters to character classes
@@ -50,10 +50,11 @@ class Scanner {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\1\2\2\3\1\4\1\5\2\0\1\3";
+    "\1\0\1\1\2\2\1\0\1\3\2\4\1\0\1\5"+
+    "\2\0\1\2";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[10];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -78,11 +79,11 @@ class Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\10\0\20\0\30\0\40\0\50\0\60\0\70"+
-    "\0\100\0\100";
+    "\0\0\0\14\0\30\0\44\0\60\0\74\0\110\0\124"+
+    "\0\140\0\154\0\170\0\204\0\204";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[10];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -105,13 +106,15 @@ class Scanner {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\3\1\2\1\6\12\0"+
-    "\1\3\1\7\1\0\1\3\5\0\1\4\1\5\6\0"+
-    "\1\5\1\0\1\10\11\0\1\6\2\0\2\7\1\0"+
-    "\1\7\10\0\1\11\4\0\1\12\5\0";
+    "\1\0\1\2\1\3\1\4\1\2\1\5\1\6\3\7"+
+    "\1\10\1\11\1\0\1\2\1\12\1\0\1\2\11\0"+
+    "\1\3\1\4\12\0\1\4\1\0\1\13\14\0\1\7"+
+    "\14\0\1\6\31\0\1\7\16\0\1\7\1\0\2\12"+
+    "\1\0\1\12\14\0\1\14\3\0\1\14\4\0\1\15"+
+    "\11\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[72];
+    int [] result = new int[144];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -149,10 +152,11 @@ class Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\5\1\2\0\1\1";
+    "\1\0\3\1\1\0\1\1\1\11\1\1\1\0\1\1"+
+    "\2\0\1\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[10];
+    int [] result = new int[13];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -248,7 +252,7 @@ class Scanner {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 94) {
+    while (i < 108) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -544,7 +548,81 @@ class Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { //System.out.println("Found a strange string: " + yytext());
+            { /* NOTE: a word that is not a keyword is treated as an identifier. */
+					//System.out.println("Found a word: " + yytext());
+					Token t;
+					switch (yytext()) {
+						case "char": 
+							// System.out.println("It's a char!"); 
+							t = new Token(yytext(), TokenType.CHAR);
+							break; 
+						case "int":
+							// System.out.println("It's an int!"); 
+							t = new Token(yytext(), TokenType.INT);
+							break; 
+						case "float":
+							// System.out.println("It's a float!"); 
+							t = new Token(yytext(), TokenType.FLOAT);
+							break; 
+						case "if":
+							// System.out.println("It's an if!"); 
+							t = new Token(yytext(), TokenType.IF);
+							break; 
+						case "else":
+							// System.out.println("It's an else!"); 
+							t = new Token(yytext(), TokenType.ELSE);
+							break; 
+						case "while":
+							// System.out.println("It's a while!"); 
+							t = new Token(yytext(), TokenType.WHILE);
+							break; 
+						case "print":
+							// System.out.println("It's a print!"); 
+							t = new Token(yytext(), TokenType.PRINT);
+							break; 
+						case "read":
+							// System.out.println("It's a read!"); 
+							t = new Token(yytext(), TokenType.READ);
+							break; 
+						case "return":
+							// System.out.println("It's a return!"); 
+							t = new Token(yytext(), TokenType.RETURN);
+							break; 
+						case "func":
+							// System.out.println("It's a func!"); 
+							t = new Token(yytext(), TokenType.FUNC);
+							break; 
+						case "program":
+							// System.out.println("It's a program!"); 
+							t = new Token(yytext(), TokenType.PROGRAM);
+							break; 
+						case "end":
+							// System.out.println("It's an end!"); 
+							t = new Token(yytext(), TokenType.END);
+							break; 
+						default: 
+							// System.out.println("It's an identifier!"); 
+							t = new Token(yytext(), TokenType.ID);
+					}
+					return( t);
+            } 
+            // fall through
+          case 6: break;
+          case 2: 
+            { //System.out.println("Found a number: " + yytext());
+					Token t = new Token(yytext(), TokenType.NUMBER);
+					return( t);
+            } 
+            // fall through
+          case 7: break;
+          case 3: 
+            { /* Ignore Whitespace */ 
+					return null;
+            } 
+            // fall through
+          case 8: break;
+          case 4: 
+            { //System.out.println("Found a symbol: " + yytext());
 					Token t;
 					switch (yytext()) {
 						case ";": 
@@ -627,85 +705,10 @@ class Scanner {
 							// System.out.println("It's a not!"); 
 							t = new Token(yytext(), TokenType.LSQUARE);
 							break; 	
-						default: 
-							// System.out.println("It's trash!!"); 
-							t = new Token(yytext(), TokenType.TRASH);
+						default:
+							throw new java.io.IOException();
 					}
 					return( t);
-            } 
-            // fall through
-          case 6: break;
-          case 2: 
-            { /* NOTE: a word that is not a keyword is treated as an identifier. */
-					//System.out.println("Found a word: " + yytext());
-					Token t;
-					switch (yytext()) {
-						case "char": 
-							// System.out.println("It's a char!"); 
-							t = new Token(yytext(), TokenType.CHAR);
-							break; 
-						case "int":
-							// System.out.println("It's an int!"); 
-							t = new Token(yytext(), TokenType.INT);
-							break; 
-						case "float":
-							// System.out.println("It's a float!"); 
-							t = new Token(yytext(), TokenType.FLOAT);
-							break; 
-						case "if":
-							// System.out.println("It's an if!"); 
-							t = new Token(yytext(), TokenType.IF);
-							break; 
-						case "else":
-							// System.out.println("It's an else!"); 
-							t = new Token(yytext(), TokenType.ELSE);
-							break; 
-						case "while":
-							// System.out.println("It's a while!"); 
-							t = new Token(yytext(), TokenType.WHILE);
-							break; 
-						case "print":
-							// System.out.println("It's a print!"); 
-							t = new Token(yytext(), TokenType.PRINT);
-							break; 
-						case "read":
-							// System.out.println("It's a read!"); 
-							t = new Token(yytext(), TokenType.READ);
-							break; 
-						case "return":
-							// System.out.println("It's a return!"); 
-							t = new Token(yytext(), TokenType.RETURN);
-							break; 
-						case "func":
-							// System.out.println("It's a func!"); 
-							t = new Token(yytext(), TokenType.FUNC);
-							break; 
-						case "program":
-							// System.out.println("It's a program!"); 
-							t = new Token(yytext(), TokenType.PROGRAM);
-							break; 
-						case "end":
-							// System.out.println("It's an end!"); 
-							t = new Token(yytext(), TokenType.END);
-							break; 
-						default: 
-							// System.out.println("It's an identifier!"); 
-							t = new Token(yytext(), TokenType.ID);
-					}
-					return( t);
-            } 
-            // fall through
-          case 7: break;
-          case 3: 
-            { //System.out.println("Found a number: " + yytext());
-					Token t = new Token(yytext(), TokenType.NUMBER);
-					return( t);
-            } 
-            // fall through
-          case 8: break;
-          case 4: 
-            { /* Ignore Whitespace */ 
-					return null;
             } 
             // fall through
           case 9: break;
