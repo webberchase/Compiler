@@ -26,12 +26,8 @@ scinum			= {float}[eE][-|+|]{int}
 
 whitespace		= [ \n\t]+
 
-lessequal		= "<="
-greatequal		= ">="
-notequal		= "!="
-and				= "&&"
-or				= "||"
-symbol			= [;()[]{}=+-*/<>!{lessequal}{greatequal}{notequal}{and}{or}]
+symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
+				  "/"|"<"|">"|"<="|">="|"!="|"&&"|"||"|"!"
 
 %%
 
@@ -126,11 +122,8 @@ symbol			= [;()[]{}=+-*/<>!{lessequal}{greatequal}{notequal}{and}{or}]
 					return null;
 				}
 
-
-// FIXME : START HERE!
-
 {symbol}			{ 
-					//System.out.println("Found a strange string: " + yytext());
+					//System.out.println("Found a symbol: " + yytext());
 					Token t;
 					switch (yytext()) {
 						case ";": 
@@ -213,9 +206,8 @@ symbol			= [;()[]{}=+-*/<>!{lessequal}{greatequal}{notequal}{and}{or}]
 							// System.out.println("It's a not!"); 
 							t = new Token(yytext(), TokenType.LSQUARE);
 							break; 	
-						default: 
-							// System.out.println("It's trash!!"); 
-							t = new Token(yytext(), TokenType.TRASH);
+						default:
+							throw new java.io.IOException();
 					}
 					return( t);
 				}
