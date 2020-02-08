@@ -109,26 +109,28 @@ public class ScannerTest {
     /***** SAD TESTS *****/
 
     /* Tests what happens when an illegal symbol is found */
-    /*
     @Test
     public void testNextTokenSad1() throws Exception {
-        String test "#"
+        String test = "#";
         Scanner s = new Scanner(new StringReader(test));
 
-        Token actual = null; 
-
         try {
-            actual = s.nextToken();
+            Token actual = s.nextToken(); 
+            // Scanner.java should throw an exception if it finds 
+            // an unknown symbol. Should it do something else? 
+            // Result: "Error, could not match input"
             fail("Yikes! The Sad Test didn't fail!!");
         } catch ( Exception e) {
-			System.out.println(e.m)
-		}
+            // FIXME
+            // Cannot get into the catch clause!
+            System.out.println("Hello World");
+            System.out.println(e.getMessage());
+	}
 
 		
 		
 		
 	
 	}
-	*/
 
 }
