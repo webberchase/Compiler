@@ -42,6 +42,4 @@ public enum TokenType {
 	AND, 			// &&
 	OR, 			// ||
 	NOT, 			// !
-	
-	TRASH, 			// unknown symbol
 }
