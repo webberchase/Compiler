@@ -4,8 +4,6 @@ Chase Webber
 
 
 FIXME: 
-Figure out how to run JUnit tests 
-	IDE or Command line... 
 Finish writing sadTest1() in TestScanner.java
 Write more happy and sad tests 
 
@@ -71,7 +69,10 @@ ID, NUMBER, list of Symbols, list of keywords, TRASH
 
 Symbols and Keywords are taken from the list given in CSC 450. 
 
-TRASH is the token assigned to any String that does not fall into any of other categories. 
+FIXME : 
+	What to do with illegal chars??? 
+	We don't use TRASH anymore... 
+// TRASH is the token assigned to any String that does not fall into any of other categories. 
 
 
 * JUnit Tests * 
@@ -82,10 +83,15 @@ Test Number Functions :
 	Test each of the 3 types of number to make sure that they're each 
 	returning a NUMBER token type. 
 	
+	FIXME : 
+	Scientific Notation!
+	
 Happy Test 1 : 
 	Tests a simple math expression, 
 	Should return NUMBER, PLUS, NUMBER
 
+FIXME : 
+	How do you make a good sad test???
 Sad Test 1 : 
 	Tests an invalid symbol 
 	Should fail and throw the desired exception. 

@@ -48,7 +48,8 @@ Compiling Java:
 
 Running JUnit tests: 
 
-* TestScanner includes instructions for running JUnit on the command line.
-* Also possible to run JUnit from an IDE. 
-* More detailed instructions coming soon... neither of these options are working for me! 
-
+* Create a new Netbeans project
+* Copy the most current version of Scanner.java, Token.java, and TokenType.java into the src/ folder
+* Coppy ScannerTest.java into the test/ folder
+* In the "Run" tab of the navigation bar, click "Test File"
+* ("Test File" can also be found by right-clicking anywhere in the project, or hitting Ctrl+F6)
