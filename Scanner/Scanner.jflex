@@ -21,19 +21,42 @@ letter			= [A-Za-z]
 word			= {letter}+
 id 				= {letter}({letter}|{digit})*
 
-digit			= [1-9]
-digits			= {digit}+
-fraction		= [\.{digits}|]
-exponent		= [[eE][-|+|]{digits}|]
-num 			= {digits}{fraction}{exponent}
-
+digit					= [1-9]
+digits					= {digit}+
+optional_fraction		= \.{digits}|""
+optional_exponent		= [eE][-|+|""]{digits}|""
+number 					= {digits}{optional_fraction}{optional_exponent}
 
 symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 				  "/"|"<"|">"|"<="|">="|"!="|"&&"|"||"|"!"
+				  
+anything		= {letter}|{word}|{id}|{digit}|{digits}|
+				  {optional_fraction}|{optional_exponent}|
+				  {number}|{symbol}
+
+comment 		= "/*"({anything}*|{whitespace}*)"*/"
+oneline			= "//"({anything}*|[ \t]*)"\n"
 
 %%
 
 /* Lexical Rules */
+
+
+{whitespace}	{  
+					/* Ignore Whitespace */ 
+					return null;
+				}
+
+{comment}		{  
+					/* Ignore Traditional Comments */ 
+					return null;
+				}
+
+{oneline}		{  
+					/* Ignore Oneline Comments */ 
+					return null;
+				}
+
 
 {word}			{
 					/* NOTE: a word that is not a keyword is treated as an identifier. */
@@ -113,15 +136,10 @@ symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 					return( t);
 				}		
 	
-{num}			{
+{number}		{
 					//System.out.println("Found a number: " + yytext());
 					Token t = new Token(yytext(), TokenType.NUMBER);
 					return( t);
-				}
-
-{whitespace}	{  
-					/* Ignore Whitespace */ 
-					return null;
 				}
 
 {symbol}		{ 
