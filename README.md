@@ -1,5 +1,5 @@
 COMPILER
-CSC 450
+CSC 451
 Chase Webber
 
 
@@ -7,23 +7,26 @@ This is a Compiler for CSC 451 at Augsburg.
 
 Compiler Directory: 
 
-* Scanner/ - Contains all scanner files.
-* Test/ - Only thing currently being tested is the Scanner. 
-* SDD - explains the Scanner design and functionality
+* Scanner/ 	- Contains all scanner files
+* Parser/ 	- Contains the Recognizer
+* Test/ 	- Only thing currently being tested is the Scanner. 
+* SDD 		- explains the Scanner design and functionality
 * README
 * .gitignore
 
 Scanner Directory: 
 
-* Scanner.jflex - jflex file which includes lexical rules to build a scanner class using jflex.jar 
-* Scanner.java - class created by jflex
-* Token.java - class to create token objects when scanning
-* TokenType - enum list of possible Token Types
+* Scanner.jflex 	- jflex file which includes lexical rules to build a scanner class using jflex.jar 
+* Scanner.java 		- class created by jflex
+* Token.java 		- class to create token objects when scanning
+* TokenType 		- enum list of possible Token Types
+
+Parser Directory: 
+* Recognizer.java
 
 Test Directory: 
 
-* TestScanner - includes junit tests for testing the nextToken() function of the scanner. 
-* SadTestException - not currently in use... 
+* TestScanner 		- includes junit tests for testing the nextToken() function of the scanner. 
 
 
 
@@ -45,6 +48,7 @@ Compiling Java:
 * javac Main.java 
 * java Main 
 * or, with a file: java -cp Main file.txt
+
 
 Running JUnit tests: 
 
