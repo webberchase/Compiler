@@ -24,7 +24,7 @@ id 				= {letter}({letter}|{digit})*
 digit					= [1-9]
 digits					= {digit}+
 optional_fraction		= \.{digits}|""
-optional_exponent		= [eE][-|+|""]{digits}|""
+optional_exponent		= ([eE][-|+|""]{digits})|""
 number 					= {digits}{optional_fraction}{optional_exponent}
 
 symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
@@ -124,23 +124,15 @@ oneline			= "//"({anything}*|[ \t]*)"\n"
 					return( t);
 				}
 
-{digit}			{
-					//System.out.println("Found a number: " + yytext());
-					Token t = new Token(yytext(), TokenType.NUMBER);
-					return( t);
-				}
-
-{digits}		{
-					//System.out.println("Found a number: " + yytext());
-					Token t = new Token(yytext(), TokenType.NUMBER);
-					return( t);
-				}		
-	
 {number}		{
 					//System.out.println("Found a number: " + yytext());
 					Token t = new Token(yytext(), TokenType.NUMBER);
 					return( t);
 				}
+
+{optional_exponent} 	{
+							System.out.println("Found an Optional Exponent!" + yytext());
+						}
 
 {symbol}		{ 
 					//System.out.println("Found a symbol: " + yytext());
@@ -227,7 +219,12 @@ oneline			= "//"({anything}*|[ \t]*)"\n"
 							t = new Token(yytext(), TokenType.LSQUARE);
 							break; 	
 						default:
-							throw new java.io.IOException();
+							t = null;
 					}
 					return( t);
+				}
+
+.				{
+					//System.out.println("Found an illegal character: " + yytext());
+					throw new java.io.IOException("Illegal Character!");
 				}
