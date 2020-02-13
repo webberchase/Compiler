@@ -1,4 +1,4 @@
-// Scanner.jflex
+package scanner;
 
 /**
  * Scanner with Tokens
