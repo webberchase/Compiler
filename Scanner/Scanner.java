@@ -34,10 +34,10 @@ class Scanner {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\2\6\25\0\1\6\1\12\4\0\1\13\1\0\1\7\1\7"+
-    "\1\7\1\11\1\0\1\11\1\3\1\7\1\0\11\2\1\0\1\7"+
-    "\1\12\1\10\1\12\2\0\4\1\1\4\25\1\1\7\1\0\1\7"+
-    "\3\0\4\1\1\4\25\1\1\7\1\5\1\7\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff92\0";
+    "\11\0\1\16\1\1\25\0\1\16\1\14\4\0\1\15\1\0\1\7"+
+    "\1\7\1\12\1\11\1\0\1\11\1\4\1\13\1\0\11\3\1\0"+
+    "\1\7\1\14\1\10\1\14\2\0\4\2\1\5\25\2\1\7\1\0"+
+    "\1\7\3\0\4\2\1\5\25\2\1\7\1\6\1\7\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uff92\0";
 
   /** 
    * Translates characters to character classes
@@ -50,11 +50,12 @@ class Scanner {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\0\1\1\2\2\1\0\1\3\2\4\1\0\1\5"+
-    "\2\0\1\2";
+    "\1\0\1\1\1\2\1\3\1\0\3\4\1\0\1\5"+
+    "\4\0\1\3\10\0\1\6\6\0\1\3\2\0\1\7"+
+    "\1\0\1\7";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[13];
+    int [] result = new int[36];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -79,11 +80,14 @@ class Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\14\0\30\0\44\0\60\0\74\0\110\0\124"+
-    "\0\140\0\154\0\170\0\204\0\204";
+    "\0\0\0\17\0\36\0\55\0\74\0\113\0\132\0\151"+
+    "\0\170\0\207\0\226\0\245\0\264\0\303\0\322\0\341"+
+    "\0\360\0\377\0\u010e\0\u011d\0\u012c\0\u013b\0\u014a\0\113"+
+    "\0\u0159\0\u0168\0\u0177\0\u0186\0\u0195\0\u01a4\0\341\0\u01b3"+
+    "\0\u01c2\0\377\0\u01d1\0\113";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[13];
+    int [] result = new int[36];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -106,15 +110,28 @@ class Scanner {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\0\1\2\1\3\1\4\1\2\1\5\1\6\3\7"+
-    "\1\10\1\11\1\0\1\2\1\12\1\0\1\2\11\0"+
-    "\1\3\1\4\12\0\1\4\1\0\1\13\14\0\1\7"+
-    "\14\0\1\6\31\0\1\7\16\0\1\7\1\0\2\12"+
-    "\1\0\1\12\14\0\1\14\3\0\1\14\4\0\1\15"+
-    "\11\0";
+    "\1\0\1\2\1\3\1\4\1\0\1\3\1\5\4\6"+
+    "\1\7\1\10\1\11\1\2\1\0\1\2\14\0\1\2"+
+    "\2\0\1\3\1\12\1\0\1\3\14\0\1\4\1\13"+
+    "\1\14\17\0\1\6\41\0\1\15\1\16\13\0\1\6"+
+    "\23\0\1\6\3\0\2\12\1\0\1\12\14\0\1\17"+
+    "\21\0\1\20\2\0\1\20\6\0\1\21\2\22\1\23"+
+    "\1\24\1\25\3\22\1\26\2\22\1\27\1\21\1\0"+
+    "\1\30\2\31\1\32\1\33\1\34\6\31\1\35\1\36"+
+    "\3\0\1\17\1\0\1\14\14\0\1\37\14\0\1\21"+
+    "\10\0\1\40\3\0\1\21\2\0\2\22\1\23\1\24"+
+    "\1\25\3\22\1\26\2\22\1\27\4\0\1\22\15\0"+
+    "\2\22\1\23\1\24\1\41\3\22\1\26\2\22\1\27"+
+    "\7\0\1\22\12\0\2\22\1\23\1\24\1\25\3\22"+
+    "\1\26\1\42\1\22\1\27\16\0\1\22\2\0\1\30"+
+    "\2\31\1\32\1\33\1\34\6\31\1\35\4\0\1\31"+
+    "\14\0\1\30\2\31\1\32\1\33\1\43\6\31\1\35"+
+    "\7\0\1\31\25\0\1\31\2\0\1\30\14\0\1\36"+
+    "\13\0\1\44\6\0\1\22\2\0\1\22\13\0\1\31"+
+    "\2\0\1\31\10\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[144];
+    int [] result = new int[480];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -152,11 +169,12 @@ class Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\3\1\1\0\1\1\1\11\1\1\1\0\1\1"+
-    "\2\0\1\1";
+    "\1\0\3\1\1\0\1\11\2\1\1\0\1\1\4\0"+
+    "\1\1\10\0\1\11\6\0\1\1\2\0\1\1\1\0"+
+    "\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[13];
+    int [] result = new int[36];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -252,7 +270,7 @@ class Scanner {
     char [] map = new char[0x110000];
     int i = 0;  /* index in packed string  */
     int j = 0;  /* index in unpacked array */
-    while (i < 108) {
+    while (i < 110) {
       int  count = packed.charAt(i++);
       char value = packed.charAt(i++);
       do map[j++] = value; while (--count > 0);
@@ -548,79 +566,79 @@ class Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { /* NOTE: a word that is not a keyword is treated as an identifier. */
-					//System.out.println("Found a word: " + yytext());
-					Token t;
-					switch (yytext()) {
-						case "char": 
-							// System.out.println("It's a char!"); 
-							t = new Token(yytext(), TokenType.CHAR);
-							break; 
-						case "int":
-							// System.out.println("It's an int!"); 
-							t = new Token(yytext(), TokenType.INT);
-							break; 
-						case "float":
-							// System.out.println("It's a float!"); 
-							t = new Token(yytext(), TokenType.FLOAT);
-							break; 
-						case "if":
-							// System.out.println("It's an if!"); 
-							t = new Token(yytext(), TokenType.IF);
-							break; 
-						case "else":
-							// System.out.println("It's an else!"); 
-							t = new Token(yytext(), TokenType.ELSE);
-							break; 
-						case "while":
-							// System.out.println("It's a while!"); 
-							t = new Token(yytext(), TokenType.WHILE);
-							break; 
-						case "print":
-							// System.out.println("It's a print!"); 
-							t = new Token(yytext(), TokenType.PRINT);
-							break; 
-						case "read":
-							// System.out.println("It's a read!"); 
-							t = new Token(yytext(), TokenType.READ);
-							break; 
-						case "return":
-							// System.out.println("It's a return!"); 
-							t = new Token(yytext(), TokenType.RETURN);
-							break; 
-						case "func":
-							// System.out.println("It's a func!"); 
-							t = new Token(yytext(), TokenType.FUNC);
-							break; 
-						case "program":
-							// System.out.println("It's a program!"); 
-							t = new Token(yytext(), TokenType.PROGRAM);
-							break; 
-						case "end":
-							// System.out.println("It's an end!"); 
-							t = new Token(yytext(), TokenType.END);
-							break; 
-						default: 
-							// System.out.println("It's an identifier!"); 
-							t = new Token(yytext(), TokenType.ID);
-					}
-					return( t);
-            } 
-            // fall through
-          case 6: break;
-          case 2: 
-            { //System.out.println("Found a number: " + yytext());
-					Token t = new Token(yytext(), TokenType.NUMBER);
-					return( t);
-            } 
-            // fall through
-          case 7: break;
-          case 3: 
             { /* Ignore Whitespace */ 
 					return null;
             } 
             // fall through
           case 8: break;
+          case 2: 
+            { /* NOTE: a word that is not a keyword is treated as an identifier. */
+					//System.out.println("Found a word: " + yytext());
+					Token t;
+					switch (yytext()) {
+						case "char": 
+							// System.out.println("It's a CHAR token!"); 
+							t = new Token(yytext(), TokenType.CHAR);
+							break; 
+						case "int":
+							// System.out.println("It's an INT token!"); 
+							t = new Token(yytext(), TokenType.INT);
+							break; 
+						case "float":
+							// System.out.println("It's a FLOAT token!"); 
+							t = new Token(yytext(), TokenType.FLOAT);
+							break; 
+						case "if":
+							// System.out.println("It's an IF token!"); 
+							t = new Token(yytext(), TokenType.IF);
+							break; 
+						case "else":
+							// System.out.println("It's an ELSE token!"); 
+							t = new Token(yytext(), TokenType.ELSE);
+							break; 
+						case "while":
+							// System.out.println("It's a WHILE token!"); 
+							t = new Token(yytext(), TokenType.WHILE);
+							break; 
+						case "print":
+							// System.out.println("It's a PRINT token!"); 
+							t = new Token(yytext(), TokenType.PRINT);
+							break; 
+						case "read":
+							// System.out.println("It's a READ token!"); 
+							t = new Token(yytext(), TokenType.READ);
+							break; 
+						case "return":
+							// System.out.println("It's a RETURN token!"); 
+							t = new Token(yytext(), TokenType.RETURN);
+							break; 
+						case "func":
+							// System.out.println("It's a FUNC token!"); 
+							t = new Token(yytext(), TokenType.FUNC);
+							break; 
+						case "program":
+							// System.out.println("It's a PROGRAM token!"); 
+							t = new Token(yytext(), TokenType.PROGRAM);
+							break; 
+						case "end":
+							// System.out.println("It's an END token!"); 
+							t = new Token(yytext(), TokenType.END);
+							break; 
+						default: 
+							// System.out.println("It's an ID!"); 
+							t = new Token(yytext(), TokenType.ID);
+					}
+					return( t);
+            } 
+            // fall through
+          case 9: break;
+          case 3: 
+            { //System.out.println("Found a number: " + yytext());
+					Token t = new Token(yytext(), TokenType.NUMBER);
+					return( t);
+            } 
+            // fall through
+          case 10: break;
           case 4: 
             { //System.out.println("Found a symbol: " + yytext());
 					Token t;
@@ -711,14 +729,26 @@ class Scanner {
 					return( t);
             } 
             // fall through
-          case 9: break;
+          case 11: break;
           case 5: 
             { //System.out.println("Found an identifier: " + yytext());
 					Token t = new Token(yytext(), TokenType.ID);
 					return( t);
             } 
             // fall through
-          case 10: break;
+          case 12: break;
+          case 6: 
+            { /* Ignore Oneline Comments */ 
+					return null;
+            } 
+            // fall through
+          case 13: break;
+          case 7: 
+            { /* Ignore Traditional Comments */ 
+					return null;
+            } 
+            // fall through
+          case 14: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
