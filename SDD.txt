@@ -4,8 +4,8 @@ Chase Webber
 
 
 FIXME: 
-Finish writing sadTest1() in TestScanner.java
 Write more happy and sad tests 
+Work on Recognizer!
 
 
 SCANNER 
@@ -23,9 +23,10 @@ Numbers can be one of three categories:
 		an 'e' or 'E' symbol, a '-', '+', or '' character, and another int 
 	The scanner considers any of these a NUMBER token. 
 	
-Other handles any situation that is not a word, number, or ID. 
-	May be a symbol, or may be an unidentified TOKEN. 
-	
+Symbols are defined from the list of symbols
+
+Comments can contain anything between "/*" and "*/" or anything between "//" and "\n"
+
 	
 * Lexical Rules * 
 
@@ -42,10 +43,15 @@ int, float, scinum :
 whitespace : 
 	Ignored. Return null. 
 
-other : 
-	Uses a switch statement to see if this is a valid symbol. 
-	If it is not, then this word is designated TokenType.TRASH. 
+comments :
+	Ignored. Return null.
+
+Symbol : 
+	The symbols are the same as the list of symbol tokens. 
+	These are matched up using a switch statement. 
 	
+. :
+	If anything else is found, throw an Exception with message "Illegal Character!"
 	
 * Token Class * 
 
@@ -90,12 +96,6 @@ Happy Test 1 :
 	Tests a simple math expression, 
 	Should return NUMBER, PLUS, NUMBER
 
-FIXME : 
-	How do you make a good sad test???
 Sad Test 1 : 
 	Tests an invalid symbol 
 	Should fail and throw the desired exception. 
-	(This function needs work!)
-	
-SadTestException.java
-	May be used for Sad Tests. 
