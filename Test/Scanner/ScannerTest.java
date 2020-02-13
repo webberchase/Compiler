@@ -20,7 +20,7 @@ public class ScannerTest {
     
     public ScannerTest() {
     }
-    
+        
     @BeforeClass
     public static void setUpClass() {
     }
@@ -36,8 +36,9 @@ public class ScannerTest {
     @After
     public void tearDown() {
     }
-
-    /***** TEST NUMBERS *****/
+        
+    /***** TEST NUMBERS
+     * @throws java.lang.Exception *****/
 
     /* Test integer */
     @Test
@@ -50,7 +51,7 @@ public class ScannerTest {
         assertEquals(expected, actual);
 
         actual = s.nextToken();
-        assertNull(actual);        
+        assertNull(actual);     
     }
 
     /* Test floating point */
@@ -82,7 +83,8 @@ public class ScannerTest {
         assertNull(actual);        
     }
 
-    /***** HAPPY TESTS *****/
+    /***** HAPPY TESTS
+     * @throws java.lang.Exception *****/
 
     /* Tests a basic math expression */
     @Test
@@ -106,7 +108,8 @@ public class ScannerTest {
         assertNull(actual);        
     }
 	
-    /***** SAD TESTS *****/
+    /***** SAD TESTS
+     * @throws java.lang.Exception *****/
 
     /* Tests what happens when an illegal symbol is found */
     @Test
@@ -116,21 +119,11 @@ public class ScannerTest {
 
         try {
             Token actual = s.nextToken(); 
-            // Scanner.java should throw an exception if it finds 
-            // an unknown symbol. Should it do something else? 
-            // Result: "Error, could not match input"
             fail("Yikes! The Sad Test didn't fail!!");
         } catch ( Exception e) {
-            // FIXME
-            // Cannot get into the catch clause!
-            System.out.println("Hello World");
-            System.out.println(e.getMessage());
-	}
-
-		
-		
-		
-	
-	}
+            String expected = "Illegal Character!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
 
 }
