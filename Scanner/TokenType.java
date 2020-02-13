@@ -1,3 +1,5 @@
+package scanner;
+
 /**
  * TokenTpe enum - these are the possible Token Types! 
  * CSC 451
