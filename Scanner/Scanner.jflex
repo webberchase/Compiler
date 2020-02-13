@@ -15,16 +15,18 @@
 	return null;
 %eofval}
 
+whitespace		= [ \n\t]+
+
 letter			= [A-Za-z]
 word			= {letter}+
-id 				= {word}+({int}|{word})*
+id 				= {letter}({letter}|{digit})*
 
 digit			= [1-9]
-int				= {digit}+
-float			= {digit}*\.{digit}*
-scinum			= {float}[eE][-|+|]{int}
+digits			= {digit}+
+fraction		= [\.{digits}|]
+exponent		= [[eE][-|+|]{digits}|]
+num 			= {digits}{fraction}{exponent}
 
-whitespace		= [ \n\t]+
 
 symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 				  "/"|"<"|">"|"<="|">="|"!="|"&&"|"||"|"!"
@@ -39,55 +41,55 @@ symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 					Token t;
 					switch (yytext()) {
 						case "char": 
-							// System.out.println("It's a char!"); 
+							// System.out.println("It's a CHAR token!"); 
 							t = new Token(yytext(), TokenType.CHAR);
 							break; 
 						case "int":
-							// System.out.println("It's an int!"); 
+							// System.out.println("It's an INT token!"); 
 							t = new Token(yytext(), TokenType.INT);
 							break; 
 						case "float":
-							// System.out.println("It's a float!"); 
+							// System.out.println("It's a FLOAT token!"); 
 							t = new Token(yytext(), TokenType.FLOAT);
 							break; 
 						case "if":
-							// System.out.println("It's an if!"); 
+							// System.out.println("It's an IF token!"); 
 							t = new Token(yytext(), TokenType.IF);
 							break; 
 						case "else":
-							// System.out.println("It's an else!"); 
+							// System.out.println("It's an ELSE token!"); 
 							t = new Token(yytext(), TokenType.ELSE);
 							break; 
 						case "while":
-							// System.out.println("It's a while!"); 
+							// System.out.println("It's a WHILE token!"); 
 							t = new Token(yytext(), TokenType.WHILE);
 							break; 
 						case "print":
-							// System.out.println("It's a print!"); 
+							// System.out.println("It's a PRINT token!"); 
 							t = new Token(yytext(), TokenType.PRINT);
 							break; 
 						case "read":
-							// System.out.println("It's a read!"); 
+							// System.out.println("It's a READ token!"); 
 							t = new Token(yytext(), TokenType.READ);
 							break; 
 						case "return":
-							// System.out.println("It's a return!"); 
+							// System.out.println("It's a RETURN token!"); 
 							t = new Token(yytext(), TokenType.RETURN);
 							break; 
 						case "func":
-							// System.out.println("It's a func!"); 
+							// System.out.println("It's a FUNC token!"); 
 							t = new Token(yytext(), TokenType.FUNC);
 							break; 
 						case "program":
-							// System.out.println("It's a program!"); 
+							// System.out.println("It's a PROGRAM token!"); 
 							t = new Token(yytext(), TokenType.PROGRAM);
 							break; 
 						case "end":
-							// System.out.println("It's an end!"); 
+							// System.out.println("It's an END token!"); 
 							t = new Token(yytext(), TokenType.END);
 							break; 
 						default: 
-							// System.out.println("It's an identifier!"); 
+							// System.out.println("It's an ID!"); 
 							t = new Token(yytext(), TokenType.ID);
 					}
 					return( t);
@@ -99,19 +101,19 @@ symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 					return( t);
 				}
 
-{int}			{
+{digit}			{
 					//System.out.println("Found a number: " + yytext());
 					Token t = new Token(yytext(), TokenType.NUMBER);
 					return( t);
 				}
 
-{float}			{
+{digits}		{
 					//System.out.println("Found a number: " + yytext());
 					Token t = new Token(yytext(), TokenType.NUMBER);
 					return( t);
 				}		
 	
-{scinum}		{
+{num}			{
 					//System.out.println("Found a number: " + yytext());
 					Token t = new Token(yytext(), TokenType.NUMBER);
 					return( t);
@@ -122,7 +124,7 @@ symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 					return null;
 				}
 
-{symbol}			{ 
+{symbol}		{ 
 					//System.out.println("Found a symbol: " + yytext());
 					Token t;
 					switch (yytext()) {
@@ -211,6 +213,3 @@ symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 					}
 					return( t);
 				}
-
-
-
