@@ -75,77 +75,140 @@ public class Recognizer {
 	 * Executes the rule for the identifierList non-terminal symbol. 
 	 */
 	public void identifierList() {
-		
+		match(TokenType.ID)
+		if (nextIs(TokenType.COMMA)) {
+			match(TokenType.COMMA);
+			identifierList();
+		}
+		else {
+			// "Lambda option!" (ID is matched in either case)
+		}
 	}
 	
 	/**
 	 * Executes the rule for the declarations non-terminal symbol. 
 	 */
 	public void declarations() {
-		
+		if (isType(lookahead)) {
+			type();
+			identifierList();
+			match(TokenType.SEMICOLON);
+			declarations();
+		}
+		else {
+			// Lambda option!
+		}	
 	}
 	
 	/**
 	 * Executes the rule for the type non-terminal symbol. 
 	 */
 	public void type() {
-		
+		switch (lookahead.getType()) {
+			case VOID:
+				match(TokenType.VOID);
+				break;
+			case INT:
+				match(TokenType.INT);
+				break;
+			case FLOAT:
+				match(TokenType.FLOAT);
+				break;
+			default:
+				error("Type");
+		}
 	}
 	
 	/**
 	 * Executes the rule for the functionDeclarations non-terminal symbol. 
 	 */
 	public void functionDeclarations() {
-		
+		if (isType(lookahead)) {
+			functionDeclaration();
+			match(TokenType.SEMICOLON);
+			functionDeclarations();
+		}
+		else {
+			// Lambda option!
+		}
 	}
 	
 	/**
 	 * Executes the rule for the functionDeclaration non-terminal symbol. 
 	 */
 	public void functionDeclaration() {
-		
+		type();
+		match(TokenType.ID);
+		parameters();
 	}
 	
 	/**
 	 * Executes the rule for the functionDefinitions non-terminal symbol. 
 	 */
 	public void functionDefinitions() {
-		
+		if (isType(lookahead)) {
+			functionDefinition();
+			functionDefinitions();
+		}
+		else {
+			// Lambda option!
+		}
 	}
 	
 	/**
 	 * Executes the rule for the functionDefinition non-terminal symbol. 
 	 */
 	public void functionDefinition() {
-		
+		type();
+		match(TokenType.ID);
+		parameters();
+		compoundStatement();
 	}
 	
 	/**
 	 * Executes the rule for the parameters non-terminal symbol. 
 	 */
 	public void parameters() {
-		
+		match(TokenType.LPAREN);
+		parameterList();
+		match(TokenType.RPAREN);
 	}
 	
 	/**
 	 * Executes the rule for the parameterList non-terminal symbol. 
 	 */
 	public void parameterList() {
-		
+		type();
+		match(TokenType.ID);
+		if (nextIs(TokenType.COMMA)) {
+			match(TokenType.COMMA);
+			parameterList();
+		}
+		else {
+			// "Lambda option!" (type and ID are matched in either case)
+		}
 	}
 	
 	/**
 	 * Executes the rule for the compoundStatement non-terminal symbol. 
 	 */
 	public void compoundStatement() {
-		
+		match(TokenType.LCURLY);
+		declarations();
+		optionalStatements();
+		match(TokenType.RCURLY);
 	}
 	
 	/**
-	 * Executes the rule for the optionalStatement non-terminal symbol. 
+	 * Executes the rule for the optionalStatements non-terminal symbol. 
 	 */
-	public void optionalStatement() {
-		
+	public void optionalStatements() {
+		if (!nextIs(TokenType.RCURLY)) {
+			statementList();
+		}
+		else {
+			// Lambda option!
+		}
 	}
 	
 	/**
@@ -330,14 +393,30 @@ public class Recognizer {
 	 * @param tt The Token Type we are checking for. 
 	 * @return true if Token Type matches lookahead.type, else false.
 	 */
-	private boolean nextIs(TokenType tt) {
-		if (lookahead.getType() == tt) {
+	private boolean nextIs(TokenType type) {
+		if (lookahead.getType() == type) {
 			return true;
 		}
 		else {
 			return false;
 		}
 	}
+	
+	/**
+	 * Determines whether the given token is a type token. 
+	 * @param token The token to check. 
+	 * @return true if the token is a type, otherwise false. 
+	 */
+	private boolean isType(Token token) {
+		boolean result = false; 
+		if (token.getType() == TokenType.VOID || 
+				token.getType() == TokenType.INT || 
+				token.getType() == TokenType.FLOAT) {
+			answer = true;	
+		}
+		return answer;
+	}
+	
 
 	/**
 	 * Determines whether the given token is a mulop token. 
