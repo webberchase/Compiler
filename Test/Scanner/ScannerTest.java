@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 import java.io.StringReader;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,8 +11,9 @@ import scanner.TokenType;
 
 
 /**
- *
- * @author chase
+ * Tests the Scanner class, particularly nextToken().
+ * CSC 450
+ * @author Chase Webber
  */
 public class ScannerTest {
     
