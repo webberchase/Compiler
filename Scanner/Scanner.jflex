@@ -32,8 +32,8 @@ optional_fraction		= (\.{digits})?
 optional_exponent		= ([eE][(-|+)?]{digits})?
 number 					= {digits}{optional_fraction}{optional_exponent}
 
-symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
-				  "/"|"<"|">"|"<="|">="|"!="|"&&"|"||"|"!"
+symbol			= ";"|","|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|
+				  "*"|"/"|"<"|">"|"<="|">="|"!="|"&&"|"||"|"!"
 				  
 anything		= {letter}|{word}|{id}|{digit}|{digits}|
 				  {optional_fraction}|{optional_exponent}|
@@ -154,6 +154,10 @@ oneline			= "//".*"\n"
 						case ";": 
 							// System.out.println("It's a semicolon!"); 
 							t = new Token(yytext(), TokenType.SEMICOLON);
+							break; 
+						case ",": 
+							// System.out.println("It's a comma!"); 
+							t = new Token(yytext(), TokenType.COMMA);
 							break; 
 						case "(": 
 							// System.out.println("It's a left parenthesis!"); 
