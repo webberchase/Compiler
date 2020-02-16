@@ -29,16 +29,12 @@ id 				= {letter}({letter}|{digit})*
 digit					= [1-9]
 digits					= {digit}+
 optional_fraction		= (\.{digits})?
-optional_exponent		= ([eE][(-|+)?]{digits})?
+optional_exponent		= ((e|E)(-|+)?{digits})?
 number 					= {digits}{optional_fraction}{optional_exponent}
 
-symbol			= ";"|","|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|
-				  "*"|"/"|"<"|">"|"<="|">="|"!="|"&&"|"||"|"!"
+symbol			= ";"|","|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
+				  "/"|"<"|">"|"<="|">="|"!="|"=="|"&&"|"||"|"!"
 				  
-anything		= {letter}|{word}|{id}|{digit}|{digits}|
-				  {optional_fraction}|{optional_exponent}|
-				  {number}|{symbol}
-
 comment 		= "/*".*"*/"
 oneline			= "//".*"\n"
 
@@ -124,6 +120,18 @@ oneline			= "//".*"\n"
 							// System.out.println("It's a MAIN token!"); 
 							t = new Token(yytext(), TokenType.MAIN);
 							break; 
+						case "then":
+							// System.out.println("It's a THEN token!"); 
+							t = new Token(yytext(), TokenType.THEN);
+							break; 
+						case "do":
+							// System.out.println("It's a DO token!"); 
+							t = new Token(yytext(), TokenType.DO);
+							break; 
+						case "write":
+							// System.out.println("It's a WRITE token!"); 
+							t = new Token(yytext(), TokenType.WRITE);
+							break; 
 						default: 
 							// System.out.println("It's an ID!"); 
 							t = new Token(yytext(), TokenType.ID);
@@ -184,8 +192,8 @@ oneline			= "//".*"\n"
 							t = new Token(yytext(), TokenType.RCURLY);
 							break; 	
 						case "=": 
-							// System.out.println("It's an equals!"); 
-							t = new Token(yytext(), TokenType.EQUALS);
+							// System.out.println("It's an assignop!"); 
+							t = new Token(yytext(), TokenType.ASSIGNOP);
 							break; 	
 						case "+": 
 							// System.out.println("It's a plus!"); 
@@ -222,6 +230,10 @@ oneline			= "//".*"\n"
 						case "!=": 
 							// System.out.println("It's a not equal to!"); 
 							t = new Token(yytext(), TokenType.NOTEQUAL);
+							break; 	
+						case "==": 
+							// System.out.println("It's an equal!"); 
+							t = new Token(yytext(), TokenType.EQUAL);
 							break; 	
 						case "&&": 
 							// System.out.println("It's a logical and!"); 
