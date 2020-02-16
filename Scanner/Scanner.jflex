@@ -2,7 +2,7 @@ package scanner;
 
 /* IMPORTANT: 
  * To test in Netbeans, make sure this class is public. 
- * Also make sure the constructor is public - line 262 in Scanner.java
+ * Also make sure the constructor is public - line 252 in Scanner.java
  */
 
 /**
@@ -150,10 +150,6 @@ oneline			= "//".*"\n"
 					Token t = new Token(yytext(), TokenType.NUMBER);
 					return( t);
 				}
-
-{optional_exponent} 	{
-							System.out.println("Found an Optional Exponent!" + yytext());
-						}
 
 {symbol}		{ 
 					//System.out.println("Found a symbol: " + yytext());
