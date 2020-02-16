@@ -81,7 +81,8 @@ public class Recognizer {
 			identifierList();
 		}
 		else {
-			// "Lambda option!" (ID is matched in either case)
+			// Lambda option! 
+			// ID is matched in either case
 		}
 	}
 	
@@ -185,7 +186,8 @@ public class Recognizer {
 			parameterList();
 		}
 		else {
-			// "Lambda option!" (type and ID are matched in either case)
+			// Lambda option!
+			// type is called and ID is matched in either case
 		}
 	}
 	
@@ -215,60 +217,154 @@ public class Recognizer {
 	 * Executes the rule for the statementList non-terminal symbol. 
 	 */
 	public void statementList() {
-		
+		statement();
+		if (nextIs(TokenType.SEMICOLON)) {
+			match(TokenType.SEMICOLON);
+			statementList();
+		}
+		else {
+			// Lambda option!
+			// statement is called in either case
+		}
 	}
 	
 	/**
 	 * Executes the rule for the statement non-terminal symbol. 
+	 * NOTE: procedureStatement is ommitted for now.
 	 */
 	public void statement() {
-		
+		switch (lookahead.getType()) {
+			case ID:
+				variable();
+				match(TokenType.ASSIGNOP);
+				expression();
+				break;
+			// case left out for now: procedureStatement
+			case LCURLY:
+				compoundStatement();
+				break;
+			case IF:
+				match(TokenType.IF);
+				expression();
+				match(TokenType.THEN);	// "then" ?? 
+				statement();
+				match(TokenType.ELSE);
+				statement();
+				break;
+			case WHILE:
+				match(TokenType.WHILE);
+				expression();
+				match(TokenType.DO);
+				statement();
+				break;
+			case READ:
+				match(TokenType.READ);
+				match(TokenType.LPAREN);
+				match(TokenType.ID);
+				match(TokenType.RPAREN);
+				break;
+			case WRITE:
+				match(TokenType.WRITE);
+				match(TokenType.LPAREN);
+				expression();
+				match(TokenType.RPAREN);
+				break;
+			case RETURN:
+				match(TokenType.RETURN);
+				expression();
+				break;
+			default:
+				error("Statement");
+		}		
 	}
 	
 	/**
 	 * Executes the rule for the variable non-terminal symbol. 
 	 */
 	public void variable() {
-		
+		match(TokenType.ID);
+		if (nextIs(TokenType.LSQUARE)) {
+			match(TokenType.LSQUARE);
+			expression();
+			match(TokenType.RSQUARE);
+		}
+		else {
+			// Lambda option!
+			// id is matched in either case	
+		}
 	}
 	
 	/**
 	 * Executes the rule for the procedureStatement non-terminal symbol. 
 	 */
 	public void procedureStatement() {
-		
+		match(TokenType.ID);
+		if (nextIs(TokenType.LPAREN)) {
+			match(TokenType.LPAREN);
+			expressionList();
+			match(TokenType.RPAREN);
+		}
+		else {
+			// Lambda option!
+			// id is matched in either case	
+		}		
 	}
 	
 	/**
 	 * Executes the rule for the expressionList non-terminal symbol. 
 	 */
 	public void expressionList() {
-		
+		expression();
+		if (nextIs(TokenType.COMMA)) {
+			match(TokenType.COMMA);
+			expressionList();
+		}
+		else {
+			// Lambda option! 
+			// expression is called in either case
+		}
 	}
 	
 	/**
 	 * Executes the rule for the expression non-terminal symbol. 
 	 */
 	public void expression() {
-		
+		simpleExpression();
+		if (isRelop(lookahead)) {
+			relop();
+			simpleExpression();
+		}
+		else {
+			// Lambda option! 
+			// simpleExpression is called in either case
+		}
 	}
 	
 	/**
 	 * Executes the rule for the simpleExpression non-terminal symbol.
 	 */
 	public void simpleExpression() {
+		// isAddop() here can be considered isSign()
+		// we're checking for PLUS or MINUS... 
+		if (isAddop(lookahead)) {
+			sign();
+		}
+		else {
+			// Lambda option! 
+			// term and simplePart are called in either case
+		}
 		term();
-		expPrime();
+		simplePart();
 	}
 	
 	/** 
 	 * Exceutes the rule for the simplePart non-terminal symbol.
 	 */
 	public void simplePart() {
-		if(nextIs(TokenType.PLUS) || nextIs(TokenType.MINUS)) {
+		if(isAddop(lookahead)) {
 			addop();
 			term();
-			expPrime();
+			simplePart();
 		}
 		else {
 			// Lambda option!
@@ -280,7 +376,7 @@ public class Recognizer {
 	 */
 	public void term() {
 		factor();
-		termPrime();
+		termPart();
 	}
 	
 	/** 
@@ -290,7 +386,7 @@ public class Recognizer {
 		if (isMulop(lookahead)) {
 			mulop();
 			factor();
-			termPrime();
+			termPart();
 		}
 		else {
 			// Lambda option!
@@ -302,13 +398,36 @@ public class Recognizer {
 	 */
 	public void factor() {
 		switch (lookahead.getType()) {
-			case LPAREN:
-				match(TokenType.LPAREN);
-				exp();
-				match(TokenType.RPAREN);
+			case ID:
+				match(TokenType.ID);
+				switch (lookahead.getType()) {
+					case LSQUARE:
+						match(TokenType.LSQUARE);
+						expression();
+						match(TokenType.LSQUARE);
+						break;
+					case LPAREN:
+						match(TokenType.LPAREN);
+						expressionList();
+						match(TokenType.LPAREN);
+						break;
+					default:
+						// Lambda option!
+						// id was matched in any case
+						break;
+				}
 				break;
 			case NUMBER:
 				match(TokenType.NUMBER);
+				break;
+			case LPAREN:
+				match(TokenType.LPAREN);
+				expression();
+				match(TokenType.RPAREN);
+				break;
+			case NOT:
+				match(TokenType.NOT);
+				factor();
 				break;
 			default:
 				error("Factor");
@@ -319,9 +438,45 @@ public class Recognizer {
 	 * Excecutes the rule for the sign non-terminal symbol. 
 	 */
 	public void sign() {
-		
+		switch (lookahead.getType()) {
+			case PLUS:
+				match(TokenType.PLUS);
+				break;
+			case MINUS:	
+				match(TokenType.MINUS);
+				break;
+			default:
+				error("sign");				
+		}
 	}
 	
+	/**
+	 * Excecutes the rule for the relop non-terminal symbol.
+	 */
+	public void relop() {
+		switch (lookahead.getType()) {
+			case LESSTHAN:
+				match(TokenType.LESSTHAN);
+				break;
+			case GREATERTHAN:
+				match(TokenType.GREATERTHAN);
+				break;
+			case LESSEQUAL:
+				match(TokenType.LESSEQUAL);
+				break;
+			case GREATEQUAL:
+				match(TokenType.GREATEQUAL);
+				break;
+			case NOTEQUAL:
+				match(TokenType.NOTEQUAL);
+				break;
+			case EQUAL:
+				match(TokenType.EQUAL);
+				break;
+			default:
+				error("Relop");
+		}
+	}
 	
 	/** 
 	 * Excecutes the rule for the addop non-terminal symbol.
@@ -335,7 +490,7 @@ public class Recognizer {
 				match(TokenType.MINUS);
 				break;
 			default:
-				error("Addop!");				
+				error("Addop");				
 		}
 	}
 	
@@ -412,12 +567,43 @@ public class Recognizer {
 		if (token.getType() == TokenType.VOID || 
 				token.getType() == TokenType.INT || 
 				token.getType() == TokenType.FLOAT) {
-			answer = true;	
+			result = true;	
 		}
-		return answer;
+		return result;
 	}
 	
+	/**
+	 * Determines whether the given token is a relop token. 
+	 * @param token The token to check. 
+	 * @return true if the token is a relop, otherwise false.
+	 */
+	private boolean isRelop(Token token) {
+		boolean result = false;
+		if (token.getType() == TokenType.LESSTHAN ||
+				token.getType() == TokenType.GREATERTHAN ||
+				token.getType() == TokenType.LESSEQUAL ||
+				token.getType() == TokenType.GREATEQUAL ||
+				token.getType() == TokenType.NOTEQUAL ||
+				token.getType() == TokenType.EQUAL) {
+			result = true;
+		}
+		return result;
+	}
 
+	/**
+	 * Determines whether the given token is an addop token. 
+	 * @param token The token to check. 
+	 * @return true if the token is an addop, otherwise false. 
+	 */
+	private boolean isAddop(Token token) {
+		boolean result = false; 
+		if (token.getType() == TokenType.PLUS || 
+				token.getType == TokenType.MINUS) {
+			result = true;	
+		}
+		return result;
+	}
+	
 	/**
 	 * Determines whether the given token is a mulop token. 
 	 * @param token The token to check. 
@@ -427,9 +613,9 @@ public class Recognizer {
 		boolean result = false; 
 		if (token.getType() == TokenType.TIMES || 
 				token.getType == TokenType.DIVIDEDBY) {
-			answer = true;	
+			result = true;	
 		}
-		return answer;
+		return result;
 	}
 	
 	/**
