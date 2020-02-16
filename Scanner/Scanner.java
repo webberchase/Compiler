@@ -4,7 +4,7 @@ package scanner;
 
 /* IMPORTANT: 
  * To test in Netbeans, make sure this class is public. 
- * Also make sure the constructor is public - line 262 in Scanner.java
+ * Also make sure the constructor is public - line 252 in Scanner.java
  */
 
 /**
@@ -56,11 +56,11 @@ public class Scanner {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\1\1\2\1\3\1\4\1\5\1\4\3\6\2\2"+
-    "\1\7\5\0\2\5\1\0\1\1\1\0\1\10\1\11";
+    "\1\0\1\1\1\2\1\3\1\4\3\5\2\1\1\6"+
+    "\4\0\2\4\2\0\1\7\1\10";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[24];
+    int [] result = new int[21];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -85,12 +85,12 @@ public class Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\20\0\40\0\60\0\100\0\120\0\20\0\140"+
+    "\0\0\0\20\0\40\0\60\0\100\0\20\0\120\0\140"+
     "\0\160\0\200\0\220\0\240\0\260\0\300\0\320\0\340"+
-    "\0\360\0\u0100\0\u0110\0\u0110\0\320\0\u0120\0\20\0\340";
+    "\0\360\0\360\0\u0100\0\20\0\300";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[24];
+    int [] result = new int[21];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -113,19 +113,18 @@ public class Scanner {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\2\1\6\2\7\1\10"+
-    "\1\7\1\11\1\10\1\12\1\13\1\3\22\0\1\3"+
-    "\14\0\1\3\3\0\1\4\1\14\1\0\1\4\15\0"+
-    "\1\5\1\15\1\16\14\0\1\4\1\14\1\0\1\4"+
-    "\1\17\21\0\1\7\20\0\1\20\1\21\21\0\1\7"+
-    "\20\0\1\7\4\0\2\14\1\0\1\14\15\0\1\22"+
-    "\17\0\1\23\2\0\1\24\14\0\1\25\14\0\11\20"+
-    "\1\26\4\20\2\0\16\21\1\27\4\0\1\22\1\0"+
-    "\1\16\15\0\1\23\14\0\11\20\1\26\1\30\3\20"+
+    "\1\2\1\3\1\4\1\5\1\2\1\4\2\6\1\7"+
+    "\1\6\1\10\1\7\1\11\1\12\1\3\22\0\1\3"+
+    "\14\0\1\3\3\0\1\4\1\13\1\0\1\4\15\0"+
+    "\1\5\1\14\1\15\22\0\1\6\20\0\1\16\1\17"+
+    "\21\0\1\6\20\0\1\6\4\0\2\13\1\0\1\13"+
+    "\15\0\1\20\17\0\1\21\2\0\1\22\11\0\11\16"+
+    "\1\23\4\16\2\0\16\17\1\24\4\0\1\20\1\0"+
+    "\1\15\15\0\1\21\14\0\11\16\1\23\1\25\3\16"+
     "\2\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[304];
+    int [] result = new int[272];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -163,11 +162,11 @@ public class Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\1\1\11\4\1\1\11\5\1\5\0\2\1\1\0"+
-    "\1\1\1\0\1\11\1\1";
+    "\1\0\1\11\3\1\1\11\5\1\4\0\2\1\2\0"+
+    "\1\11\1\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[24];
+    int [] result = new int[21];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -559,23 +558,18 @@ public class Scanner {
       else {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
-            { System.out.println("Found an Optional Exponent!" + yytext());
-            } 
-            // fall through
-          case 10: break;
-          case 2: 
             { //System.out.println("Found an illegal character: " + yytext());
 					throw new java.io.IOException("Illegal Character!");
             } 
             // fall through
-          case 11: break;
-          case 3: 
+          case 9: break;
+          case 2: 
             { /* Ignore Whitespace */ 
 					return null;
             } 
             // fall through
-          case 12: break;
-          case 4: 
+          case 10: break;
+          case 3: 
             { /* NOTE: a word that is not a keyword is treated as an identifier. */
 					//System.out.println("Found a word: " + yytext());
 					Token t;
@@ -655,15 +649,15 @@ public class Scanner {
 					return( t);
             } 
             // fall through
-          case 13: break;
-          case 5: 
+          case 11: break;
+          case 4: 
             { //System.out.println("Found a number: " + yytext());
 					Token t = new Token(yytext(), TokenType.NUMBER);
 					return( t);
             } 
             // fall through
-          case 14: break;
-          case 6: 
+          case 12: break;
+          case 5: 
             { //System.out.println("Found a symbol: " + yytext());
 					Token t;
 					switch (yytext()) {
@@ -761,26 +755,26 @@ public class Scanner {
 					return( t);
             } 
             // fall through
-          case 15: break;
-          case 7: 
+          case 13: break;
+          case 6: 
             { //System.out.println("Found an identifier: " + yytext());
 					Token t = new Token(yytext(), TokenType.ID);
 					return( t);
             } 
             // fall through
-          case 16: break;
-          case 8: 
+          case 14: break;
+          case 7: 
             { /* Ignore Oneline Comments */ 
 					return null;
             } 
             // fall through
-          case 17: break;
-          case 9: 
+          case 15: break;
+          case 8: 
             { /* Ignore Traditional Comments */ 
 					return null;
             } 
             // fall through
-          case 18: break;
+          case 16: break;
           default:
             zzScanError(ZZ_NO_MATCH);
         }
