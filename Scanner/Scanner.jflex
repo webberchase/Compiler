@@ -35,28 +35,28 @@ number 					= {digits}{optional_fraction}{optional_exponent}
 symbol			= ";"|","|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 				  "/"|"<"|">"|"<="|">="|"!="|"=="|"&&"|"||"|"!"
 				  
-comment 		= "/*".*"*/"
-oneline			= "//".*"\n"
+traditional_comment 	= "/*" [^*] ~"*/" | "/*" "*"+ "/"
+oneline_comment 		= "//" .* \n
 
 %%
 
 /* Lexical Rules */
 
 
-{whitespace}	{  
-					/* Ignore Whitespace */ 
-					return null;
-				}
+{whitespace}		{  
+						/* Ignore Whitespace */ 
+						return null;
+					}
 
-{comment}		{  
-					/* Ignore Traditional Comments */ 
-					return null;
-				}
+{traditional}		{  
+						/* Ignore Traditional Comments */ 
+						return null;
+					}
 
-{oneline}		{  
-					/* Ignore Oneline Comments */ 
-					return null;
-				}
+{oneline}			{  
+						/* Ignore Oneline Comments */ 
+						return null;
+					}
 
 
 {word}			{
@@ -204,8 +204,8 @@ oneline			= "//".*"\n"
 							t = new Token(yytext(), TokenType.TIMES);
 							break; 	
 						case "/": 
-							// System.out.println("It's a divide by!"); 
-							t = new Token(yytext(), TokenType.DIVIDEBY);
+							// System.out.println("It's a divided by!"); 
+							t = new Token(yytext(), TokenType.DIVIDEDBY);
 							break; 	
 						case "<": 
 							// System.out.println("It's a less than!"); 

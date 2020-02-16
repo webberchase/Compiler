@@ -42,7 +42,7 @@ public enum TokenType {
 	PLUS, 			// +
 	MINUS, 			// -
 	TIMES,			// *
-	DIVIDEBY,		// /
+	DIVIDEDBY,		// /
 	LESSTHAN, 		// <
 	GREATERTHAN, 	// >
 	LESSEQUAL, 		// <=
