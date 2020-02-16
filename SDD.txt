@@ -5,6 +5,7 @@ Chase Webber
 
 FIXME: 
 Write more happy and sad tests 
+Fix Scientific Notation!!!
 Work on Recognizer!
 
 
