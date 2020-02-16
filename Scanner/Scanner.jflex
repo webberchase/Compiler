@@ -35,8 +35,8 @@ number 					= {digits}{optional_fraction}{optional_exponent}
 symbol			= ";"|","|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 				  "/"|"<"|">"|"<="|">="|"!="|"=="|"&&"|"||"|"!"
 				  
-traditional_comment 	= "/*" [^*] ~"*/" | "/*" "*"+ "/"
-oneline_comment 		= "//" .* \n
+traditional 	= "/*" [^*] ~"*/" | "/*" "*"+ "/"
+oneline 		= "//" .* \n
 
 %%
 

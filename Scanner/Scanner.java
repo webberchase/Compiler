@@ -14,7 +14,7 @@ package scanner;
  * @author Chase Webber
  */
 
-public class Scanner {
+class Scanner {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -57,10 +57,10 @@ public class Scanner {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\1\0\1\1\1\2\1\3\1\4\3\5\2\1\1\6"+
-    "\4\0\2\4\2\0\1\7\1\10";
+    "\4\0\2\4\3\0\1\7\1\0\1\10";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[21];
+    int [] result = new int[23];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -87,10 +87,10 @@ public class Scanner {
   private static final String ZZ_ROWMAP_PACKED_0 =
     "\0\0\0\20\0\40\0\60\0\100\0\20\0\120\0\140"+
     "\0\160\0\200\0\220\0\240\0\260\0\300\0\320\0\340"+
-    "\0\360\0\360\0\u0100\0\20\0\300";
+    "\0\360\0\360\0\u0100\0\u0110\0\20\0\u0120\0\20";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[21];
+    int [] result = new int[23];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -118,13 +118,13 @@ public class Scanner {
     "\14\0\1\3\3\0\1\4\1\13\1\0\1\4\15\0"+
     "\1\5\1\14\1\15\22\0\1\6\20\0\1\16\1\17"+
     "\21\0\1\6\20\0\1\6\4\0\2\13\1\0\1\13"+
-    "\15\0\1\20\17\0\1\21\2\0\1\22\11\0\11\16"+
-    "\1\23\4\16\2\0\16\17\1\24\4\0\1\20\1\0"+
-    "\1\15\15\0\1\21\14\0\11\16\1\23\1\25\3\16"+
-    "\2\0";
+    "\15\0\1\20\17\0\1\21\2\0\1\22\11\0\11\23"+
+    "\1\24\6\23\16\17\1\25\4\0\1\20\1\0\1\15"+
+    "\15\0\1\21\14\0\11\23\1\26\6\23\11\0\1\24"+
+    "\1\27\5\0\11\23\1\26\1\27\5\23";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[272];
+    int [] result = new int[304];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -162,11 +162,11 @@ public class Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\0\1\11\3\1\1\11\5\1\4\0\2\1\2\0"+
-    "\1\11\1\1";
+    "\1\0\1\11\3\1\1\11\5\1\4\0\2\1\3\0"+
+    "\1\11\1\0\1\11";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[21];
+    int [] result = new int[23];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
@@ -247,7 +247,7 @@ public class Scanner {
    *
    * @param   in  the java.io.Reader to read input from.
    */
-  public Scanner(java.io.Reader in) {
+  Scanner(java.io.Reader in) {
     this.zzReader = in;
   }
 
@@ -565,7 +565,7 @@ public class Scanner {
           case 9: break;
           case 2: 
             { /* Ignore Whitespace */ 
-					return null;
+						return null;
             } 
             // fall through
           case 10: break;
@@ -710,8 +710,8 @@ public class Scanner {
 							t = new Token(yytext(), TokenType.TIMES);
 							break; 	
 						case "/": 
-							// System.out.println("It's a divide by!"); 
-							t = new Token(yytext(), TokenType.DIVIDEBY);
+							// System.out.println("It's a divided by!"); 
+							t = new Token(yytext(), TokenType.DIVIDEDBY);
 							break; 	
 						case "<": 
 							// System.out.println("It's a less than!"); 
@@ -765,13 +765,13 @@ public class Scanner {
           case 14: break;
           case 7: 
             { /* Ignore Oneline Comments */ 
-					return null;
+						return null;
             } 
             // fall through
           case 15: break;
           case 8: 
             { /* Ignore Traditional Comments */ 
-					return null;
+						return null;
             } 
             // fall through
           case 16: break;
