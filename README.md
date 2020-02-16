@@ -53,7 +53,9 @@ Compiling Java:
 Running JUnit tests: 
 
 * Create a new Netbeans project
-* Copy the most current version of Scanner.java, Token.java, and TokenType.java into the src/ folder
+* Copy the most current version of Scanner.java, Token.java, and TokenType.java into the src/scanner/ folder
+* MAKE SURE: the package statements are in place and the import statements are correct in ScannerTest.java
+* MAKE SURE: scanner class should be public, the constructor (line 262) should also be public.
 * Coppy ScannerTest.java into the test/ folder
 * In the "Run" tab of the navigation bar, click "Test File"
 * ("Test File" can also be found by right-clicking anywhere in the project, or hitting Ctrl+F6)
