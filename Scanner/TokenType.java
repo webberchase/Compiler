@@ -22,6 +22,8 @@ public enum TokenType {
 	FUNC, 
 	PROGRAM, 
 	END, 
+	VOID, 
+	MAIN,
 	
 	/* SYMBOLS */	
 	SEMICOLON, 		// ;
