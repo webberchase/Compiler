@@ -116,6 +116,14 @@ oneline			= "//".*"\n"
 							// System.out.println("It's an END token!"); 
 							t = new Token(yytext(), TokenType.END);
 							break; 
+						case "void":
+							// System.out.println("It's a VOID token!"); 
+							t = new Token(yytext(), TokenType.VOID);
+							break; 
+						case "main":
+							// System.out.println("It's a MAIN token!"); 
+							t = new Token(yytext(), TokenType.MAIN);
+							break; 
 						default: 
 							// System.out.println("It's an ID!"); 
 							t = new Token(yytext(), TokenType.ID);
