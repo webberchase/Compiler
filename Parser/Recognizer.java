@@ -59,17 +59,149 @@ public class Recognizer {
 	/***** METHODS *****/
 	
 	/**
-	 * Executes the rule for the exp non-terminal symbol.
+	 * Executes the rule for the program non-terminal symbol. 
 	 */
-	public void exp() {
+	public void program() {
+		functionDeclarations();
+		match(TokenType.VOID);
+		match(TokenType.MAIN);
+		match(TokenType.LPAREN);
+		match(TokenType.RPAREN);
+		compoundStatement();
+		functionDefinitions();
+	}
+	
+	/**
+	 * Executes the rule for the identifierList non-terminal symbol. 
+	 */
+	public void identifierList() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the declarations non-terminal symbol. 
+	 */
+	public void declarations() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the type non-terminal symbol. 
+	 */
+	public void type() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the functionDeclarations non-terminal symbol. 
+	 */
+	public void functionDeclarations() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the functionDeclaration non-terminal symbol. 
+	 */
+	public void functionDeclaration() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the functionDefinitions non-terminal symbol. 
+	 */
+	public void functionDefinitions() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the functionDefinition non-terminal symbol. 
+	 */
+	public void functionDefinition() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the parameters non-terminal symbol. 
+	 */
+	public void parameters() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the parameterList non-terminal symbol. 
+	 */
+	public void parameterList() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the compoundStatement non-terminal symbol. 
+	 */
+	public void compoundStatement() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the optionalStatement non-terminal symbol. 
+	 */
+	public void optionalStatement() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the statementList non-terminal symbol. 
+	 */
+	public void statementList() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the statement non-terminal symbol. 
+	 */
+	public void statement() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the variable non-terminal symbol. 
+	 */
+	public void variable() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the procedureStatement non-terminal symbol. 
+	 */
+	public void procedureStatement() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the expressionList non-terminal symbol. 
+	 */
+	public void expressionList() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the expression non-terminal symbol. 
+	 */
+	public void expression() {
+		
+	}
+	
+	/**
+	 * Executes the rule for the simpleExpression non-terminal symbol.
+	 */
+	public void simpleExpression() {
 		term();
 		expPrime();
 	}
 	
 	/** 
-	 * Exceutes the rule for the expPrime non-terminal symbol.
+	 * Exceutes the rule for the simplePart non-terminal symbol.
 	 */
-	public void expPrime() {
+	public void simplePart() {
 		if(nextIs(TokenType.PLUS) || nextIs(TokenType.MINUS)) {
 			addop();
 			term();
@@ -77,22 +209,6 @@ public class Recognizer {
 		}
 		else {
 			// Lambda option!
-		}
-	}
-	
-	/** 
-	 * Excecutes the rule for the addop non-terminal symbol.
-	 */
-	public void addop() {
-		switch (lookahead.getType()) {
-			case PLUS:
-				match(TokenType.PLUS);
-				break;
-			case MINUS:	
-				match(TokenType.MINUS);
-				break;
-			default:
-				error("Addop!");				
 		}
 	}
 	
@@ -105,9 +221,9 @@ public class Recognizer {
 	}
 	
 	/** 
-	 * Exeecutes the rule for the termPrime non-terminal symbol.
+	 * Exeecutes the rule for the termPart non-terminal symbol.
 	 */
-	public void termPrime() {
+	public void termPart() {
 		if (isMulop(lookahead)) {
 			mulop();
 			factor();
@@ -115,22 +231,6 @@ public class Recognizer {
 		}
 		else {
 			// Lambda option!
-		}
-	}
-	
-	/**
-	 * Excecutes the rule for the mulop non-terminal symbol. 
-	 */
-	public void mulop() {
-		switch (lookahead.getType()) {
-			case TIMES:
-				match(TokenType.TIMES);
-				break;
-			case DIVIDEDBY:
-				match(TokenType.DIVIDEDBY);
-				break;
-			default:
-				error("Mulop");
 		}
 	}
 	
@@ -151,7 +251,47 @@ public class Recognizer {
 				error("Factor");
 		}
 	}
+		
+	/**
+	 * Excecutes the rule for the sign non-terminal symbol. 
+	 */
+	public void sign() {
+		
+	}
 	
+	
+	/** 
+	 * Excecutes the rule for the addop non-terminal symbol.
+	 */
+	public void addop() {
+		switch (lookahead.getType()) {
+			case PLUS:
+				match(TokenType.PLUS);
+				break;
+			case MINUS:	
+				match(TokenType.MINUS);
+				break;
+			default:
+				error("Addop!");				
+		}
+	}
+	
+	
+	/**
+	 * Excecutes the rule for the mulop non-terminal symbol. 
+	 */
+	public void mulop() {
+		switch (lookahead.getType()) {
+			case TIMES:
+				match(TokenType.TIMES);
+				break;
+			case DIVIDEDBY:
+				match(TokenType.DIVIDEDBY);
+				break;
+			default:
+				error("Mulop");
+		}
+	}
 	
 	
 
