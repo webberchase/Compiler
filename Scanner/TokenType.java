@@ -24,6 +24,10 @@ public enum TokenType {
 	END, 
 	VOID, 
 	MAIN,
+	THEN,
+	DO,
+	WRITE,
+	
 	
 	/* SYMBOLS */	
 	SEMICOLON, 		// ;
@@ -34,7 +38,7 @@ public enum TokenType {
 	RSQUARE, 		// ]
 	LCURLY, 		// {
 	RCURLY, 		// }
-	EQUALS, 		// =
+	ASSIGNOP, 		// =
 	PLUS, 			// +
 	MINUS, 			// -
 	TIMES,			// *
@@ -44,6 +48,7 @@ public enum TokenType {
 	LESSEQUAL, 		// <=
 	GREATEQUAL, 	// >=
 	NOTEQUAL, 		// !=
+	EQUAL,			// ==
 	AND, 			// &&
 	OR, 			// ||
 	NOT, 			// !
