@@ -87,7 +87,7 @@ public class ScannerTest {
 
     /* Tests a basic math expression */
     @Test
-    public void testNextTokenHappy1() throws Exception {
+    public void testMathExpression() throws Exception {
         String test = "14+3";
         Scanner s = new Scanner(new StringReader(test));
         
@@ -106,6 +106,66 @@ public class ScannerTest {
         actual = s.nextToken();
         assertNull(actual);        
     }
+	
+	/* Tests whitespace */
+	@Test
+	public void testWhiteSpace() throws Exception {
+		// 10 spaces, 1 tab, 3 more spaces
+		String test = "          \t   ";
+		Scanner s = new Scanner(new StringReader(test));
+		
+		for (int i = 0; i < 15; i++) {
+			Token actual = s.nextToken();
+			assertNull(actual);
+		}
+	}
+	
+	/* Test traditional comment */
+	@Test
+	public void testTraditionalComment1() throws Exception {
+		String test = "/* testing traditional comment! */";
+        Scanner s = new Scanner(new StringReader(test));
+		
+		for (int i = 0; i < 2; i++) {
+			Token actual = s.nextToken();
+			assertNull(actual);
+		}
+	}
+	
+	/* Test traditional comment */
+	@Test
+	public void testTraditionalComment2() throws Exception {
+		String test = "/* testing";
+        Scanner s = new Scanner(new StringReader(test));
+		
+		Token actual = s.nextToken();
+		Token expected = new Token("/", TokenType.DIVIDEDBY);
+        assertEquals(expected, actual);		
+		
+		actual = s.nextToken();
+		expected = new Token("*", TokenType.TIMES);
+        assertEquals(expected, actual);		
+		
+		actual = s.nextToken();
+		expected = new Token("testing", TokenType.ID);
+        assertEquals(expected, actual);	
+
+		/* actual = s.nextToken();
+		expected = new Token("traditional", TokenType.ID);
+        assertEquals(expected, actual);	
+
+		actual = s.nextToken();
+		expected = new Token("comment", TokenType.ID);
+        assertEquals(expected, actual);	
+
+		actual = s.nextToken();
+		expected = new Token("!", TokenType.NOT);
+        assertEquals(expected, actual);	 */
+		
+		actual = s.nextToken();
+        assertNull(actual); 
+	}
+	
 	
     /***** SAD TESTS
      * @throws java.lang.Exception *****/
