@@ -4,10 +4,8 @@ Chase Webber
 
 
 FIXME: 
-Write more happy and sad tests 
-Fix Scientific Notation!!!
-Work on Recognizer!
-
+Write more happy and sad tests for scanner.
+Test recognizer!
 
 SCANNER 
 
@@ -72,14 +70,9 @@ Defined a toString method to print the lexeme and TokenType.
 An enum list of possible Token Types 
 
 Includes: 
-ID, NUMBER, list of Symbols, list of keywords, TRASH 
+ID, NUMBER, list of Symbols, list of keywords, 
 
 Symbols and Keywords are taken from the list given in CSC 450. 
-
-FIXME : 
-	What to do with illegal chars??? 
-	We don't use TRASH anymore... 
-// TRASH is the token assigned to any String that does not fall into any of other categories. 
 
 
 * JUnit Tests * 
@@ -89,9 +82,6 @@ Test nextToken() methods:
 Test Number Functions : 
 	Test each of the 3 types of number to make sure that they're each 
 	returning a NUMBER token type. 
-	
-	FIXME : 
-	Scientific Notation!
 	
 Happy Test 1 : 
 	Tests a simple math expression, 
