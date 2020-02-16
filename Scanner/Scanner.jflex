@@ -29,7 +29,7 @@ id 				= {letter}({letter}|{digit})*
 digit					= [1-9]
 digits					= {digit}+
 optional_fraction		= (\.{digits})?
-optional_exponent		= ((e|E)(-|+)?{digits})?
+optional_exponent		= ([eE][+-]?{digits})?
 number 					= {digits}{optional_fraction}{optional_exponent}
 
 symbol			= ";"|","|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|

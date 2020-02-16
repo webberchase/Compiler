@@ -14,7 +14,7 @@ package scanner;
  * @author Chase Webber
  */
 
-class Scanner {
+public class Scanner {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -39,11 +39,11 @@ class Scanner {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\1\1\20\1\21\1\21\1\21\22\0\1\1\1\15\4\0"+
-    "\1\16\1\0\1\7\1\7\1\12\1\7\1\6\1\7\1\4\1\13"+
-    "\1\6\11\3\1\6\1\7\1\14\1\11\1\14\2\6\4\2\1\5"+
-    "\25\2\1\7\1\6\1\7\3\6\4\2\1\5\25\2\1\7\1\17"+
-    "\1\10\7\0\1\21\u1fa2\0\1\21\1\21\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\11\0\1\1\1\16\1\17\1\17\1\17\22\0\1\1\1\13\4\0"+
+    "\1\14\1\0\1\7\1\7\1\11\1\6\1\7\1\6\1\4\1\12"+
+    "\1\0\11\3\1\0\1\7\1\13\1\10\1\13\2\0\4\2\1\5"+
+    "\25\2\1\7\1\0\1\7\3\0\4\2\1\5\25\2\1\7\1\15"+
+    "\1\7\7\0\1\17\u1fa2\0\1\17\1\17\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -57,8 +57,7 @@ class Scanner {
 
   private static final String ZZ_ACTION_PACKED_0 =
     "\1\1\1\2\1\3\1\4\1\5\1\4\3\6\2\2"+
-    "\1\7\5\0\1\5\1\0\1\1\1\0\1\10\1\5"+
-    "\1\11";
+    "\1\7\5\0\2\5\1\0\1\1\1\0\1\10\1\11";
 
   private static int [] zzUnpackAction() {
     int [] result = new int[24];
@@ -86,9 +85,9 @@ class Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\22\0\44\0\66\0\110\0\132\0\22\0\154"+
-    "\0\176\0\220\0\242\0\264\0\306\0\330\0\352\0\374"+
-    "\0\u010e\0\u0120\0\u0132\0\352\0\u0144\0\22\0\u0132\0\374";
+    "\0\0\0\20\0\40\0\60\0\100\0\120\0\20\0\140"+
+    "\0\160\0\200\0\220\0\240\0\260\0\300\0\320\0\340"+
+    "\0\360\0\u0100\0\u0110\0\u0110\0\320\0\u0120\0\20\0\340";
 
   private static int [] zzUnpackRowMap() {
     int [] result = new int[24];
@@ -114,19 +113,19 @@ class Scanner {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\2\1\6\1\2\4\7"+
-    "\1\10\2\11\1\12\1\13\1\3\24\0\1\3\16\0"+
-    "\1\3\3\0\1\4\1\14\1\0\1\4\17\0\1\5"+
-    "\1\15\1\16\16\0\1\4\1\14\1\17\1\4\2\17"+
-    "\1\0\4\17\2\0\1\17\14\0\1\20\1\21\17\0"+
-    "\1\7\26\0\1\7\22\0\1\7\4\0\2\14\1\0"+
-    "\1\14\17\0\1\22\20\0\6\23\1\0\4\23\2\0"+
-    "\1\23\5\0\1\24\16\0\12\20\1\25\5\20\2\0"+
-    "\20\21\1\26\4\0\1\22\1\0\1\16\17\0\1\27"+
-    "\16\0\12\20\1\25\1\30\4\20\2\0";
+    "\1\2\1\3\1\4\1\5\1\2\1\6\2\7\1\10"+
+    "\1\7\1\11\1\10\1\12\1\13\1\3\22\0\1\3"+
+    "\14\0\1\3\3\0\1\4\1\14\1\0\1\4\15\0"+
+    "\1\5\1\15\1\16\14\0\1\4\1\14\1\0\1\4"+
+    "\1\17\21\0\1\7\20\0\1\20\1\21\21\0\1\7"+
+    "\20\0\1\7\4\0\2\14\1\0\1\14\15\0\1\22"+
+    "\17\0\1\23\2\0\1\24\14\0\1\25\14\0\11\20"+
+    "\1\26\4\20\2\0\16\21\1\27\4\0\1\22\1\0"+
+    "\1\16\15\0\1\23\14\0\11\20\1\26\1\30\3\20"+
+    "\2\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[342];
+    int [] result = new int[304];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -164,8 +163,8 @@ class Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\1\1\11\4\1\1\11\5\1\5\0\1\1\1\0"+
-    "\1\1\1\0\1\11\2\1";
+    "\1\1\1\11\4\1\1\11\5\1\5\0\2\1\1\0"+
+    "\1\1\1\0\1\11\1\1";
 
   private static int [] zzUnpackAttribute() {
     int [] result = new int[24];
@@ -249,7 +248,7 @@ class Scanner {
    *
    * @param   in  the java.io.Reader to read input from.
    */
-  Scanner(java.io.Reader in) {
+  public Scanner(java.io.Reader in) {
     this.zzReader = in;
   }
 
@@ -629,6 +628,26 @@ class Scanner {
 							// System.out.println("It's an END token!"); 
 							t = new Token(yytext(), TokenType.END);
 							break; 
+						case "void":
+							// System.out.println("It's a VOID token!"); 
+							t = new Token(yytext(), TokenType.VOID);
+							break; 
+						case "main":
+							// System.out.println("It's a MAIN token!"); 
+							t = new Token(yytext(), TokenType.MAIN);
+							break; 
+						case "then":
+							// System.out.println("It's a THEN token!"); 
+							t = new Token(yytext(), TokenType.THEN);
+							break; 
+						case "do":
+							// System.out.println("It's a DO token!"); 
+							t = new Token(yytext(), TokenType.DO);
+							break; 
+						case "write":
+							// System.out.println("It's a WRITE token!"); 
+							t = new Token(yytext(), TokenType.WRITE);
+							break; 
 						default: 
 							// System.out.println("It's an ID!"); 
 							t = new Token(yytext(), TokenType.ID);
@@ -651,6 +670,10 @@ class Scanner {
 						case ";": 
 							// System.out.println("It's a semicolon!"); 
 							t = new Token(yytext(), TokenType.SEMICOLON);
+							break; 
+						case ",": 
+							// System.out.println("It's a comma!"); 
+							t = new Token(yytext(), TokenType.COMMA);
 							break; 
 						case "(": 
 							// System.out.println("It's a left parenthesis!"); 
@@ -677,8 +700,8 @@ class Scanner {
 							t = new Token(yytext(), TokenType.RCURLY);
 							break; 	
 						case "=": 
-							// System.out.println("It's an equals!"); 
-							t = new Token(yytext(), TokenType.EQUALS);
+							// System.out.println("It's an assignop!"); 
+							t = new Token(yytext(), TokenType.ASSIGNOP);
 							break; 	
 						case "+": 
 							// System.out.println("It's a plus!"); 
@@ -715,6 +738,10 @@ class Scanner {
 						case "!=": 
 							// System.out.println("It's a not equal to!"); 
 							t = new Token(yytext(), TokenType.NOTEQUAL);
+							break; 	
+						case "==": 
+							// System.out.println("It's an equal!"); 
+							t = new Token(yytext(), TokenType.EQUAL);
 							break; 	
 						case "&&": 
 							// System.out.println("It's a logical and!"); 
