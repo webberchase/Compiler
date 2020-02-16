@@ -27,6 +27,7 @@ public enum TokenType {
 	
 	/* SYMBOLS */	
 	SEMICOLON, 		// ;
+	COMMA,			// ,
 	LPAREN, 		// (
 	RPAREN,			// )
 	LSQUARE, 		// [
