@@ -1,5 +1,10 @@
 package scanner;
 
+/* IMPORTANT: 
+ * To test in Netbeans, make sure this class is public. 
+ * Also make sure the constructor is public - line 262 in Scanner.java
+ */
+
 /**
  * Scanner with Tokens
  * Finds the lexemes for numbers, symbols, identifiers, 
@@ -23,8 +28,8 @@ id 				= {letter}({letter}|{digit})*
 
 digit					= [1-9]
 digits					= {digit}+
-optional_fraction		= \.{digits}|""
-optional_exponent		= ([eE][-|+|""]{digits})|""
+optional_fraction		= (\.{digits})?
+optional_exponent		= ([eE][(-|+)?]{digits})?
 number 					= {digits}{optional_fraction}{optional_exponent}
 
 symbol			= ";"|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
@@ -34,8 +39,8 @@ anything		= {letter}|{word}|{id}|{digit}|{digits}|
 				  {optional_fraction}|{optional_exponent}|
 				  {number}|{symbol}
 
-comment 		= "/*"({anything}*|{whitespace}*)"*/"
-oneline			= "//"({anything}*|[ \t]*)"\n"
+comment 		= "/*".*"*/"
+oneline			= "//".*"\n"
 
 %%
 
