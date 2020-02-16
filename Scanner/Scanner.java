@@ -2,6 +2,11 @@
 
 package scanner;
 
+/* IMPORTANT: 
+ * To test in Netbeans, make sure this class is public. 
+ * Also make sure the constructor is public - line 262 in Scanner.java
+ */
+
 /**
  * Scanner with Tokens
  * Finds the lexemes for numbers, symbols, identifiers, 
@@ -34,11 +39,11 @@ class Scanner {
    * Translates characters to character classes
    */
   private static final String ZZ_CMAP_PACKED = 
-    "\11\0\1\16\1\1\1\17\1\17\1\17\22\0\1\16\1\14\4\0"+
-    "\1\15\1\0\1\7\1\7\1\12\1\11\1\0\1\11\1\4\1\13"+
-    "\1\0\11\3\1\0\1\7\1\14\1\10\1\14\2\0\4\2\1\5"+
-    "\25\2\1\7\1\0\1\7\3\0\4\2\1\5\25\2\1\7\1\6"+
-    "\1\7\7\0\1\17\u1fa2\0\1\17\1\17\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
+    "\11\0\1\1\1\20\1\21\1\21\1\21\22\0\1\1\1\15\4\0"+
+    "\1\16\1\0\1\7\1\7\1\12\1\7\1\6\1\7\1\4\1\13"+
+    "\1\6\11\3\1\6\1\7\1\14\1\11\1\14\2\6\4\2\1\5"+
+    "\25\2\1\7\1\6\1\7\3\6\4\2\1\5\25\2\1\7\1\17"+
+    "\1\10\7\0\1\21\u1fa2\0\1\21\1\21\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\uffff\0\udfe6\0";
 
   /** 
    * Translates characters to character classes
@@ -51,12 +56,12 @@ class Scanner {
   private static final int [] ZZ_ACTION = zzUnpackAction();
 
   private static final String ZZ_ACTION_PACKED_0 =
-    "\1\1\1\2\1\3\1\4\1\5\1\4\1\2\3\6"+
-    "\1\2\1\7\5\0\1\5\1\0\1\1\7\0\1\10"+
-    "\6\0\1\5\2\0\1\11\1\0\1\11";
+    "\1\1\1\2\1\3\1\4\1\5\1\4\3\6\2\2"+
+    "\1\7\5\0\1\5\1\0\1\1\1\0\1\10\1\5"+
+    "\1\11";
 
   private static int [] zzUnpackAction() {
-    int [] result = new int[40];
+    int [] result = new int[24];
     int offset = 0;
     offset = zzUnpackAction(ZZ_ACTION_PACKED_0, offset, result);
     return result;
@@ -81,14 +86,12 @@ class Scanner {
   private static final int [] ZZ_ROWMAP = zzUnpackRowMap();
 
   private static final String ZZ_ROWMAP_PACKED_0 =
-    "\0\0\0\20\0\40\0\60\0\100\0\120\0\140\0\20"+
-    "\0\160\0\200\0\220\0\240\0\260\0\300\0\320\0\340"+
-    "\0\360\0\u0100\0\u0110\0\320\0\u0120\0\u0130\0\u0140\0\u0150"+
-    "\0\u0160\0\u0170\0\u0180\0\20\0\u0190\0\u01a0\0\u01b0\0\u01c0"+
-    "\0\u01d0\0\u01e0\0\u0110\0\u01f0\0\u0200\0\u0130\0\u0210\0\20";
+    "\0\0\0\22\0\44\0\66\0\110\0\132\0\22\0\154"+
+    "\0\176\0\220\0\242\0\264\0\306\0\330\0\352\0\374"+
+    "\0\u010e\0\u0120\0\u0132\0\352\0\u0144\0\22\0\u0132\0\374";
 
   private static int [] zzUnpackRowMap() {
-    int [] result = new int[40];
+    int [] result = new int[24];
     int offset = 0;
     offset = zzUnpackRowMap(ZZ_ROWMAP_PACKED_0, offset, result);
     return result;
@@ -111,29 +114,19 @@ class Scanner {
   private static final int [] ZZ_TRANS = zzUnpackTrans();
 
   private static final String ZZ_TRANS_PACKED_0 =
-    "\1\2\1\3\1\4\1\5\1\2\1\6\1\7\4\10"+
-    "\1\11\1\12\1\13\1\3\22\0\1\3\14\0\1\3"+
-    "\3\0\1\4\1\14\1\0\1\4\15\0\1\5\1\15"+
-    "\1\16\14\0\1\4\1\14\1\0\1\4\1\17\2\0"+
-    "\1\17\14\0\1\10\23\0\1\20\1\21\14\0\1\10"+
-    "\24\0\1\10\4\0\2\14\1\0\1\14\15\0\1\22"+
-    "\22\0\1\23\2\0\1\23\11\0\1\24\15\0\1\25"+
-    "\2\26\1\27\1\30\1\31\3\26\1\32\2\26\1\33"+
-    "\1\25\2\0\1\34\2\35\1\36\1\37\1\40\6\35"+
-    "\1\41\1\42\4\0\1\22\1\0\1\16\15\0\1\43"+
-    "\15\0\1\25\10\0\1\44\3\0\1\25\3\0\2\26"+
-    "\1\27\1\30\1\31\3\26\1\32\2\26\1\33\5\0"+
-    "\1\26\16\0\2\26\1\27\1\30\1\45\3\26\1\32"+
-    "\2\26\1\33\10\0\1\26\13\0\2\26\1\27\1\30"+
-    "\1\31\3\26\1\32\1\46\1\26\1\33\17\0\1\26"+
-    "\3\0\1\34\2\35\1\36\1\37\1\40\6\35\1\41"+
-    "\5\0\1\35\15\0\1\34\2\35\1\36\1\37\1\47"+
-    "\6\35\1\41\10\0\1\35\26\0\1\35\3\0\1\34"+
-    "\14\0\1\42\14\0\1\50\7\0\1\26\2\0\1\26"+
-    "\14\0\1\35\2\0\1\35\11\0";
+    "\1\2\1\3\1\4\1\5\1\2\1\6\1\2\4\7"+
+    "\1\10\2\11\1\12\1\13\1\3\24\0\1\3\16\0"+
+    "\1\3\3\0\1\4\1\14\1\0\1\4\17\0\1\5"+
+    "\1\15\1\16\16\0\1\4\1\14\1\17\1\4\2\17"+
+    "\1\0\4\17\2\0\1\17\14\0\1\20\1\21\17\0"+
+    "\1\7\26\0\1\7\22\0\1\7\4\0\2\14\1\0"+
+    "\1\14\17\0\1\22\20\0\6\23\1\0\4\23\2\0"+
+    "\1\23\5\0\1\24\16\0\12\20\1\25\5\20\2\0"+
+    "\20\21\1\26\4\0\1\22\1\0\1\16\17\0\1\27"+
+    "\16\0\12\20\1\25\1\30\4\20\2\0";
 
   private static int [] zzUnpackTrans() {
-    int [] result = new int[544];
+    int [] result = new int[342];
     int offset = 0;
     offset = zzUnpackTrans(ZZ_TRANS_PACKED_0, offset, result);
     return result;
@@ -171,12 +164,11 @@ class Scanner {
   private static final int [] ZZ_ATTRIBUTE = zzUnpackAttribute();
 
   private static final String ZZ_ATTRIBUTE_PACKED_0 =
-    "\1\1\1\11\5\1\1\11\4\1\5\0\1\1\1\0"+
-    "\1\1\7\0\1\11\6\0\1\1\2\0\1\1\1\0"+
-    "\1\11";
+    "\1\1\1\11\4\1\1\11\5\1\5\0\1\1\1\0"+
+    "\1\1\1\0\1\11\2\1";
 
   private static int [] zzUnpackAttribute() {
-    int [] result = new int[40];
+    int [] result = new int[24];
     int offset = 0;
     offset = zzUnpackAttribute(ZZ_ATTRIBUTE_PACKED_0, offset, result);
     return result;
