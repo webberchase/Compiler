@@ -63,7 +63,6 @@ public class Recognizer {
 	 */
 	public void program() {
 		functionDeclarations();
-		match(TokenType.VOID);
 		match(TokenType.MAIN);
 		match(TokenType.LPAREN);
 		match(TokenType.RPAREN);
@@ -205,7 +204,7 @@ public class Recognizer {
 	 * Executes the rule for the optionalStatements non-terminal symbol. 
 	 */
 	public void optionalStatements() {
-		if (!nextIs(TokenType.RCURLY)) {
+		if (isStatement(lookahead)) { 
 			statementList();
 		}
 		else {
@@ -246,7 +245,7 @@ public class Recognizer {
 			case IF:
 				match(TokenType.IF);
 				expression();
-				match(TokenType.THEN);	// "then" ?? 
+				match(TokenType.THEN);
 				statement();
 				match(TokenType.ELSE);
 				statement();
@@ -446,7 +445,7 @@ public class Recognizer {
 				match(TokenType.MINUS);
 				break;
 			default:
-				error("sign");				
+				error("Sign");				
 		}
 	}
 	
@@ -619,6 +618,25 @@ public class Recognizer {
 	}
 	
 	/**
+	 * Determines whether the given token begins a statement. 
+	 * @param token The token to check. 
+	 * @return true if the token begins a statement, else false. 
+	 */
+	private boolean isStatement(Token token) {
+		boolean result = false;
+		if (token.getType() == ID ||
+				token.getType() == LCURLY ||
+				token.getType() == IF ||
+				token.getType() == WHILE ||
+				token.getType() == READ ||
+				token.getType() == WRITE ||
+				token.getType() == RETURN ||) {
+			result = true; 
+		}
+		return result;
+	}
+	
+	/**
 	 * Errors out of the parser. 
 	 * Prints an error message (and then exits the program?). 
 	 * @param message The error message to print. 
@@ -628,6 +646,5 @@ public class Recognizer {
 				this.scanner.getLine() + " column " +
 				this.scanner.getColumn());
 	}
-	
 	
 }
