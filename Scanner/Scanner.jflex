@@ -1,10 +1,5 @@
 package scanner;
 
-/* IMPORTANT: 
- * To test in Netbeans, make sure this class is public. 
- * Also make sure the constructor is public - line 252 in Scanner.java
- */
-
 /**
  * Scanner with Tokens
  * Finds the lexemes for numbers, symbols, identifiers, 
@@ -13,9 +8,21 @@ package scanner;
  */
 %%
 
+%public
 %class Scanner
 %function nextToken
 %type Token
+%line
+%column
+%{
+	public int getLine() {
+		return yyline;
+	}
+
+	public int getColumn() {
+		return yycolumn;
+	}
+%}
 %eofval{
 	return null;
 %eofval}
