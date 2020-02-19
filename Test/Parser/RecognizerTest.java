@@ -114,6 +114,28 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
+    /* Test 1 for termPart function of Recognizer */
+    @Test
+    public void testTermPart1H() throws Exception {
+        String test = "*3";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.termPart();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Test 2 for termPart function of Recognizer */
+    @Test
+    public void testTermPart2H() throws Exception {
+        String test = "*3*!5";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.termPart();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
     
     
     /***** SAD TESTS
@@ -167,7 +189,7 @@ public class RecognizerTest {
     /* Test for mulop function of Recognizer */
     @Test
     public void testMulopS() throws Exception {
-        String test = "m";
+        String test = "+";
         Recognizer rec = new Recognizer(test, false);
         
         try {
@@ -179,7 +201,7 @@ public class RecognizerTest {
         }
     }
     
-/* Test 1 for factor function of Recognizer */
+	/* Test 1 for factor function of Recognizer */
     @Test
     public void testFactor1S() throws Exception {
         String test = "+";
@@ -194,7 +216,7 @@ public class RecognizerTest {
         }
     }
     
-/* Test 2 for factor function of Recognizer */
+	/* Test 2 for factor function of Recognizer */
     @Test
     public void testFactor2S() throws Exception {
         String test = "!";
@@ -202,6 +224,36 @@ public class RecognizerTest {
         
         try {
             rec.factor();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+
+	/* Test 1 for termPart function of Recognizer */
+    @Test
+    public void testTermPart1S() throws Exception {
+        String test = "**5";
+        Recognizer rec = new Recognizer(test, false);
+        
+        try {
+            rec.termPart();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+	/* Test 2 for termPart function of Recognizer */
+    @Test
+    public void testTermPart2S() throws Exception {
+        String test = "*3*+5";
+        Recognizer rec = new Recognizer(test, false);
+        
+        try {
+            rec.termPart();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
