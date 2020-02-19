@@ -80,6 +80,20 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
+    /* Test for mulop function of Recognizer */
+    @Test
+    public void testMulopH() throws Exception {
+        String test = "/\n*";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.mulop();
+        rec.mulop();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    
+    
     
     /***** SAD TESTS
      * @throws java.lang.Exception *****/
@@ -128,6 +142,22 @@ public class RecognizerTest {
             assertEquals(expected, e.getMessage());
         }
     }
+    
+    /* Test for mulop function of Recognizer */
+    @Test
+    public void testMulopS() throws Exception {
+        String test = "m";
+        Recognizer rec = new Recognizer(test, false);
+        
+        try {
+            rec.mulop();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Mulop Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
     
     
 }
