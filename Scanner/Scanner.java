@@ -807,7 +807,7 @@ public class Scanner {
 							break; 
 						case "!": 
 							// System.out.println("It's a not!"); 
-							t = new Token(yytext(), TokenType.LSQUARE);
+							t = new Token(yytext(), TokenType.NOT);
 							break; 	
 						default:
 							t = null;
