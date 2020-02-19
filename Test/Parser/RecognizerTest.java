@@ -68,6 +68,17 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
+    /* Test for addop function of Recognizer */
+    @Test
+    public void testAddopH() throws Exception {
+        String test = "+\n+";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.addop();
+        rec.addop();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
     
     
     /***** SAD TESTS
@@ -103,6 +114,20 @@ public class RecognizerTest {
         }
     }
     
+    /* Test for addop function of Recognizer */
+    @Test
+    public void testAddopS() throws Exception {
+        String test = "*";
+        Recognizer rec = new Recognizer(test, false);
+        
+        try {
+            rec.addop();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Addop Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
     
     
 }
