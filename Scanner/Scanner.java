@@ -612,7 +612,7 @@ public class Scanner {
 
       if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
         zzAtEOF = true;
-          { 	return null;
+          { 	return new Token("END", TokenType.ENDOFFILE);
  }
       }
       else {
