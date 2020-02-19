@@ -24,7 +24,7 @@ package scanner;
 	}
 %}
 %eofval{
-	return null;
+	return new Token("END", TokenType.ENDOFFILE);
 %eofval}
 
 whitespace		= [ \n\t]+
