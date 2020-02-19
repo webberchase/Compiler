@@ -28,7 +28,6 @@ public enum TokenType {
 	DO,
 	WRITE,
 	
-	
 	/* SYMBOLS */	
 	SEMICOLON, 		// ;
 	COMMA,			// ,
@@ -52,4 +51,6 @@ public enum TokenType {
 	AND, 			// &&
 	OR, 			// ||
 	NOT, 			// !
+        
+    ENDOFFILE,
 }
