@@ -92,6 +92,27 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
+    /* Test 1 for factor function of Recognizer */
+    @Test
+    public void testFactor1H() throws Exception {
+        String test = "ident";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.factor();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Test 2 for factor function of Recognizer */
+    @Test
+    public void testFactor2H() throws Exception {
+        String test = "!5";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.factor();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
     
     
     
@@ -158,6 +179,35 @@ public class RecognizerTest {
         }
     }
     
+/* Test 1 for factor function of Recognizer */
+    @Test
+    public void testFactor1S() throws Exception {
+        String test = "+";
+        Recognizer rec = new Recognizer(test, false);
+        
+        try {
+            rec.factor();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+/* Test 2 for factor function of Recognizer */
+    @Test
+    public void testFactor2S() throws Exception {
+        String test = "!";
+        Recognizer rec = new Recognizer(test, false);
+        
+        try {
+            rec.factor();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
     
     
 }
