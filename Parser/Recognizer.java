@@ -27,6 +27,7 @@ public class Recognizer {
 	
 	private Token lookahead;
 	private Scanner scanner;
+	private final Token END = new Token("END", TokenType.ENDOFFILE); 
 	
 	/***** CONSTRUCTOR *****/
 	
@@ -74,7 +75,7 @@ public class Recognizer {
 	 * Executes the rule for the identifierList non-terminal symbol. 
 	 */
 	public void identifierList() {
-		match(TokenType.ID)
+		match(TokenType.ID);
 		if (nextIs(TokenType.COMMA)) {
 			match(TokenType.COMMA);
 			identifierList();
@@ -514,6 +515,14 @@ public class Recognizer {
 
 	/***** HELPER FUNCTIONS *****/
 
+        /**
+         * Retrieves the Lookahead Token.
+         * @return lookahead token. 
+         */
+        public Token getLookahead() {
+            return this.lookahead;
+        }
+        
 	/**
 	 * Matches the expected token. 
 	 * If the current token in the input stream from the scanner 
@@ -528,8 +537,13 @@ public class Recognizer {
 		System.out.println("match( " + expected + ")");
 		if (this.lookahead.getType() == expected) {
 			try {
-				this.lookahead = scanner.nextToken();
-				if (this.lookahead == null) {
+                            this.lookahead = scanner.nextToken();
+                            Token temp = this.lookahead;
+                            while (temp == null) {
+                                this.lookahead = scanner.nextToken();
+                                temp = this.lookahead;
+                            }
+				if (this.lookahead.equals(END)) {
 					this.lookahead = new Token("End of File", null);
 				}
 			} catch (IOException e) {
@@ -597,7 +611,7 @@ public class Recognizer {
 	private boolean isAddop(Token token) {
 		boolean result = false; 
 		if (token.getType() == TokenType.PLUS || 
-				token.getType == TokenType.MINUS) {
+				token.getType() == TokenType.MINUS) {
 			result = true;	
 		}
 		return result;
@@ -611,7 +625,7 @@ public class Recognizer {
 	private boolean isMulop(Token token) {
 		boolean result = false; 
 		if (token.getType() == TokenType.TIMES || 
-				token.getType == TokenType.DIVIDEDBY) {
+				token.getType() == TokenType.DIVIDEDBY) {
 			result = true;	
 		}
 		return result;
@@ -624,13 +638,13 @@ public class Recognizer {
 	 */
 	private boolean isStatement(Token token) {
 		boolean result = false;
-		if (token.getType() == ID ||
-				token.getType() == LCURLY ||
-				token.getType() == IF ||
-				token.getType() == WHILE ||
-				token.getType() == READ ||
-				token.getType() == WRITE ||
-				token.getType() == RETURN ||) {
+		if (token.getType() == TokenType.ID ||
+				token.getType() == TokenType.LCURLY ||
+				token.getType() == TokenType.IF ||
+				token.getType() == TokenType.WHILE ||
+				token.getType() == TokenType.READ ||
+				token.getType() == TokenType.WRITE ||
+				token.getType() == TokenType.RETURN) {
 			result = true; 
 		}
 		return result;
