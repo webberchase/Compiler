@@ -17,9 +17,8 @@ import scanner.TokenType;
 import parser.Recognizer;
 
 /**
- * Tests the non-terminal rules of Recognizer class.
- * CSC 450
- * @author Chase Webber
+ *
+ * @author chase
  */
 public class RecognizerTest {
     
@@ -57,6 +56,19 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
+    /* Test for relop function of Recognizer */
+    @Test
+    public void testRelopH() throws Exception {
+        String test = "<=\n==";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.relop();
+        rec.relop();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    
     
     /***** SAD TESTS
      * @throws java.lang.Exception *****/
@@ -76,4 +88,21 @@ public class RecognizerTest {
         }
     }
 
+    /* Test for relop function of Recognizer */
+    @Test
+    public void testRelopS() throws Exception {
+        String test = "=";
+        Recognizer rec = new Recognizer(test, false);
+        
+        try {
+            rec.relop();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Relop Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    
+    
 }
