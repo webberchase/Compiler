@@ -180,6 +180,30 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
+    /* Test 1 for simpleExpression function of Recognizer */
+    @Test
+    public void testSimpleExpression1H() throws Exception {
+        String test = "-5*5+3";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.simpleExpression();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Test 2 for simpleExpression function of Recognizer */
+    @Test
+    public void testSimpleExpression2H() throws Exception {
+        String test = "-5+5*3";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.simpleExpression();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    
+    
     
     
     /***** SAD TESTS
@@ -365,6 +389,35 @@ public class RecognizerTest {
         }
     }
     
+    /* Test 1 for simpleExpression function of Recognizer */
+    @Test
+    public void testSimpleExpression1S() throws Exception {
+        String test = "+3*/5";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.simpleExpression();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Test 2 for simpleExpression function of Recognizer */
+    @Test
+    public void testSimpleExpression2S() throws Exception {
+        String test = "++3+5";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.simpleExpression();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
     
     
 }
