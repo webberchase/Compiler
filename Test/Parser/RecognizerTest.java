@@ -526,6 +526,62 @@ public class RecognizerTest {
             assertEquals(expected, e.getMessage());
         }
     }
- 
+    
+    /* Happy Test 1 for expressionList function of Recognizer */
+    @Test
+    public void testExpressionList1H() throws Exception {
+        String test = "-5/5+3<=1+1,2";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.expressionList();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 2 for expressionList function of Recognizer */
+    @Test
+    public void testExpressionList2H() throws Exception {
+        String test = "-5/5+3<=1+1,1+1,2";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.expressionList();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for expressionList function of Recognizer */
+    @Test
+    public void testExpressionList1S() throws Exception {
+        String test = "-5/5+3<=1+1;1+1,2";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.expressionList();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "End of File Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Sad Test 2 for expressionList function of Recognizer */
+    @Test
+    public void testExpressionList2S() throws Exception {
+        String test = "-5/5+3<=1+1,1+1,";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.expressionList();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
     
 }
