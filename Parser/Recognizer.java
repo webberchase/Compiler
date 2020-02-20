@@ -515,22 +515,22 @@ public class Recognizer {
 
 	/***** HELPER FUNCTIONS *****/
 
-        /**
-         * Retrieves the Lookahead Token for testing.
-         * @return lookahead token. 
-         */
-        public Token getLookahead() {
-            return this.lookahead;
-        }
-        
-        /**
-         * Retrieves the END Token for testing.
-         * @return END token
-         */
-        public Token getEND() {
-            return this.END;
-        }
-        
+	/**
+	 * Retrieves the Lookahead Token for testing.
+	 * @return lookahead token. 
+	 */
+	public Token getLookahead() {
+		return this.lookahead;
+	}
+	
+	/**
+	 * Retrieves the END Token for testing.
+	 * @return END token
+	 */
+	public Token getEND() {
+		return this.END;
+	}
+	
 	/**
 	 * Matches the expected token. 
 	 * If the current token in the input stream from the scanner 
