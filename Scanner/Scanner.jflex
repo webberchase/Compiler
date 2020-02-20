@@ -3,7 +3,7 @@ package scanner;
 /**
  * Scanner with Tokens
  * Finds the lexemes for numbers, symbols, identifiers, 
- * CSC 450
+ * CSC 451
  * @author Chase Webber
  */
 %%
@@ -22,9 +22,13 @@ package scanner;
 	public int getColumn() {
 		return yycolumn;
 	}
+	
+	public Token getEND() {
+		return new Token("END", TokenType.ENDOFFILE);
+	}
 %}
 %eofval{
-	return new Token("END", TokenType.ENDOFFILE);
+	return getEND();
 %eofval}
 
 whitespace		= [ \n\t]+
