@@ -158,6 +158,27 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
+    /* Test 1 for simplePart function of Recognizer */
+    @Test
+    public void testSimplePart1H() throws Exception {
+        String test = "+ident";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.simplePart();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Test 2 for simplePart function of Recognizer */
+    @Test
+    public void testSimplePart2H() throws Exception {
+        String test = "+3+5*ident";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.simplePart();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
     
     
     
@@ -313,6 +334,37 @@ public class RecognizerTest {
             assertEquals(expected, e.getMessage());
         }
     }
+    
+    /* Test 1 for simplePart function of Recognizer */
+    @Test
+    public void testSimplePart1S() throws Exception {
+        String test = "++5";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.simplePart();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Test 2 for simplePart function of Recognizer */
+    @Test
+    public void testSimplePart2S() throws Exception {
+        String test = "+3*+5";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.simplePart();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
     
     
 }
