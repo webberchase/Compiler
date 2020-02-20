@@ -1,3 +1,9 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 import java.io.StringReader;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -9,9 +15,8 @@ import scanner.Scanner;
 import scanner.Token;
 import scanner.TokenType;
 
-
 /**
- * Tests the Scanner class, particularly nextToken().
+ * Tests the nextToken function of the Scanner class.
  * CSC 450
  * @author Chase Webber
  */
@@ -50,7 +55,7 @@ public class ScannerTest {
         assertEquals(expected, actual);
 
         actual = s.nextToken();
-        assertNull(actual);     
+        assertEquals(actual, s.getEND());     
     }
 
     /* Test floating point */
@@ -64,10 +69,9 @@ public class ScannerTest {
         assertEquals(expected, actual);
 
         actual = s.nextToken();
-        assertNull(actual);        
+        assertEquals(actual, s.getEND());     
     }
 
-	// FIXME
     /* Test scientific notation */
     @Test
     public void testNumber3() throws Exception {
@@ -79,7 +83,7 @@ public class ScannerTest {
         assertEquals(expected, actual);
 
         actual = s.nextToken();
-        assertNull(actual);        
+        assertEquals(actual, s.getEND());     
     }
 
     /***** HAPPY TESTS
@@ -87,7 +91,7 @@ public class ScannerTest {
 
     /* Tests a basic math expression */
     @Test
-    public void testMathExpression() throws Exception {
+    public void testNextTokenHappy1() throws Exception {
         String test = "14+3";
         Scanner s = new Scanner(new StringReader(test));
         
@@ -104,68 +108,71 @@ public class ScannerTest {
         assertEquals(expected, actual);
         
         actual = s.nextToken();
-        assertNull(actual);        
+        assertEquals(actual, s.getEND());     
     }
-	
-	/* Tests whitespace */
-	@Test
-	public void testWhiteSpace() throws Exception {
-		// 10 spaces, 1 tab, 3 more spaces
-		String test = "          \t   ";
-		Scanner s = new Scanner(new StringReader(test));
-		
-		for (int i = 0; i < 15; i++) {
-			Token actual = s.nextToken();
-			assertNull(actual);
-		}
-	}
-	
-	/* Test traditional comment */
-	@Test
-	public void testTraditionalComment1() throws Exception {
-		String test = "/* testing traditional comment! */";
-        Scanner s = new Scanner(new StringReader(test));
-		
-		for (int i = 0; i < 2; i++) {
-			Token actual = s.nextToken();
-			assertNull(actual);
-		}
-	}
-	
-	/* Test traditional comment */
-	@Test
-	public void testTraditionalComment2() throws Exception {
-		String test = "/* testing";
-        Scanner s = new Scanner(new StringReader(test));
-		
-		Token actual = s.nextToken();
-		Token expected = new Token("/", TokenType.DIVIDEDBY);
-        assertEquals(expected, actual);		
-		
-		actual = s.nextToken();
-		expected = new Token("*", TokenType.TIMES);
-        assertEquals(expected, actual);		
-		
-		actual = s.nextToken();
-		expected = new Token("testing", TokenType.ID);
-        assertEquals(expected, actual);	
+    
+    /* Tests whitespace */
+    @Test
+    public void testWhiteSpace() throws Exception {
+            // 10 spaces, 1 tab, 3 more spaces
+            String test = "          \t   ";
+            Scanner s = new Scanner(new StringReader(test));
 
-		/* actual = s.nextToken();
-		expected = new Token("traditional", TokenType.ID);
-        assertEquals(expected, actual);	
+            for (int i = 0; i < 15; i++) {
+                    Token actual = s.nextToken();
+                    assertEquals(actual, s.getEND());     
+            }
+    }
+    
+    // FIXME
+    /* Test traditional comment */
+    @Test
+    public void testTraditionalComment() throws Exception {
+            String test = "/* testing traditional comment! */";
+    Scanner s = new Scanner(new StringReader(test));
 
-		actual = s.nextToken();
-		expected = new Token("comment", TokenType.ID);
-        assertEquals(expected, actual);	
+            for (int i = 0; i < 100; i++) {
+                    Token actual = s.nextToken();
+                    assertEquals(actual, s.getEND());     
+            }
+    }
+    
+    // FIXME
+    /* Test traditional comment */
+    @Test
+    public void testTraditionalComment2() throws Exception {
+            String test = "/* testing";
+    Scanner s = new Scanner(new StringReader(test));
 
-		actual = s.nextToken();
-		expected = new Token("!", TokenType.NOT);
-        assertEquals(expected, actual);	 */
-		
-		actual = s.nextToken();
-        assertNull(actual); 
-	}
-	
+            Token actual = s.nextToken();
+            Token expected = new Token("/", TokenType.DIVIDEDBY);
+    assertEquals(expected, actual);		
+
+            actual = s.nextToken();
+            expected = new Token("*", TokenType.TIMES);
+    assertEquals(expected, actual);		
+
+            actual = s.nextToken();
+            expected = new Token("testing", TokenType.ID);
+    assertEquals(expected, actual);	
+
+            /* actual = s.nextToken();
+            expected = new Token("traditional", TokenType.ID);
+    assertEquals(expected, actual);	
+
+            actual = s.nextToken();
+            expected = new Token("comment", TokenType.ID);
+    assertEquals(expected, actual);	
+
+            actual = s.nextToken();
+            expected = new Token("!", TokenType.NOT);
+    assertEquals(expected, actual);	 */
+
+            actual = s.nextToken();
+        assertEquals(actual, s.getEND());     
+    }
+
+
 	
     /***** SAD TESTS
      * @throws java.lang.Exception *****/
