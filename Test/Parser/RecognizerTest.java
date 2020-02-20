@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package parser;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,8 +16,9 @@ import scanner.TokenType;
 import parser.Recognizer;
 
 /**
- *
- * @author chase
+ * Tests the non-terminal functions of the Recognizer class.
+ * CSC 451
+ * @author Chase Webber
  */
 public class RecognizerTest {
     
@@ -41,10 +41,8 @@ public class RecognizerTest {
     public void tearDown() {
     }
     
-    /***** HAPPY TESTS
-     * @throws java.lang.Exception *****/
-
-    /* Test for sign function of Recognizer */
+    
+    /* Happy Test for sign function of Recognizer */
     @Test
     public void testSignH() throws Exception {
         String test = "+\n-";
@@ -52,164 +50,12 @@ public class RecognizerTest {
         
         rec.sign();
         rec.sign();
+        rec.isEnd();
         
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Test for relop function of Recognizer */
-    @Test
-    public void testRelopH() throws Exception {
-        String test = "<=\n==";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.relop();
-        rec.relop();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test for addop function of Recognizer */
-    @Test
-    public void testAddopH() throws Exception {
-        String test = "+\n+";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.addop();
-        rec.addop();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test for mulop function of Recognizer */
-    @Test
-    public void testMulopH() throws Exception {
-        String test = "/\n*";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.mulop();
-        rec.mulop();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 1 for factor function of Recognizer */
-    @Test
-    public void testFactor1H() throws Exception {
-        String test = "ident";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.factor();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 2 for factor function of Recognizer */
-    @Test
-    public void testFactor2H() throws Exception {
-        String test = "!5";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.factor();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 1 for termPart function of Recognizer */
-    @Test
-    public void testTermPart1H() throws Exception {
-        String test = "*3";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.termPart();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 2 for termPart function of Recognizer */
-    @Test
-    public void testTermPart2H() throws Exception {
-        String test = "*3*!5";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.termPart();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 1 for term function of Recognizer */
-    @Test
-    public void testTerm1H() throws Exception {
-        String test = "ident*3*!5";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.term();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 2 for term function of Recognizer */
-    @Test
-    public void testTerm2H() throws Exception {
-        String test = "ident";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.term();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 1 for simplePart function of Recognizer */
-    @Test
-    public void testSimplePart1H() throws Exception {
-        String test = "+ident";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.simplePart();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 2 for simplePart function of Recognizer */
-    @Test
-    public void testSimplePart2H() throws Exception {
-        String test = "+3+5*ident";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.simplePart();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 1 for simpleExpression function of Recognizer */
-    @Test
-    public void testSimpleExpression1H() throws Exception {
-        String test = "-5*5+3";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.simpleExpression();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    /* Test 2 for simpleExpression function of Recognizer */
-    @Test
-    public void testSimpleExpression2H() throws Exception {
-        String test = "-5+5*3";
-        Recognizer rec = new Recognizer(test, false);
-        
-        rec.simpleExpression();
-        
-        assertEquals(rec.getLookahead(), rec.getEND());
-    }
-    
-    
-    
-    
-    
-    /***** SAD TESTS
-     * @throws java.lang.Exception *****/
-
-    /* Test for sign function of Recognizer */
+    /* Sad Test for sign function of Recognizer */
     @Test
     public void testSignS() throws Exception {
         String test = "/";
@@ -217,6 +63,7 @@ public class RecognizerTest {
         
         try {
             rec.sign();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Sign Error!";
@@ -224,7 +71,20 @@ public class RecognizerTest {
         }
     }
 
-    /* Test for relop function of Recognizer */
+    /* Happy Test for relop function of Recognizer */
+    @Test
+    public void testRelopH() throws Exception {
+        String test = "<=\n==";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.relop();
+        rec.relop();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test for relop function of Recognizer */
     @Test
     public void testRelopS() throws Exception {
         String test = "=";
@@ -232,14 +92,28 @@ public class RecognizerTest {
         
         try {
             rec.relop();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Relop Error!";
             assertEquals(expected, e.getMessage());
         }
     }
-    
-    /* Test for addop function of Recognizer */
+ 
+    /* Happy Test for addop function of Recognizer */
+    @Test
+    public void testAddopH() throws Exception {
+        String test = "+\n+";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.addop();
+        rec.addop();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+   
+    /* Sad Test for addop function of Recognizer */
     @Test
     public void testAddopS() throws Exception {
         String test = "*";
@@ -247,14 +121,28 @@ public class RecognizerTest {
         
         try {
             rec.addop();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Addop Error!";
             assertEquals(expected, e.getMessage());
         }
     }
+   
+    /* Happy Test for mulop function of Recognizer */
+    @Test
+    public void testMulopH() throws Exception {
+        String test = "/\n*";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.mulop();
+        rec.mulop();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
     
-    /* Test for mulop function of Recognizer */
+    /* Sad Test for mulop function of Recognizer */
     @Test
     public void testMulopS() throws Exception {
         String test = "+";
@@ -262,6 +150,7 @@ public class RecognizerTest {
 
         try {
             rec.mulop();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Mulop Error!";
@@ -269,7 +158,31 @@ public class RecognizerTest {
         }
     }
 
-    /* Test 1 for factor function of Recognizer */
+    /* Happy Test 1 for factor function of Recognizer */
+    @Test
+    public void testFactor1H() throws Exception {
+        String test = "ident";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.factor();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 2 for factor function of Recognizer */
+    @Test
+    public void testFactor2H() throws Exception {
+        String test = "!5";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.factor();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for factor function of Recognizer */
     @Test
     public void testFactor1S() throws Exception {
         String test = "+";
@@ -277,6 +190,7 @@ public class RecognizerTest {
 
         try {
             rec.factor();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
@@ -284,7 +198,7 @@ public class RecognizerTest {
         }
     }
 
-    /* Test 2 for factor function of Recognizer */
+    /* Sad Test 2 for factor function of Recognizer */
     @Test
     public void testFactor2S() throws Exception {
         String test = "!";
@@ -292,14 +206,39 @@ public class RecognizerTest {
 
         try {
             rec.factor();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
             assertEquals(expected, e.getMessage());
         }
     }
+ 
+    /* Happy Test 1 for termPart function of Recognizer */
+    @Test
+    public void testTermPart1H() throws Exception {
+        String test = "*3";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.termPart();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 2 for termPart function of Recognizer */
+    @Test
+    public void testTermPart2H() throws Exception {
+        String test = "*3*!5";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.termPart();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
 
-    /* Test 1 for termPart function of Recognizer */
+    /* Sad Test 1 for termPart function of Recognizer */
     @Test
     public void testTermPart1S() throws Exception {
         String test = "**5";
@@ -307,6 +246,7 @@ public class RecognizerTest {
 
         try {
             rec.termPart();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
@@ -314,7 +254,7 @@ public class RecognizerTest {
         }
     }
     
-    /* Test 2 for termPart function of Recognizer */
+    /* Sad Test 2 for termPart function of Recognizer */
     @Test
     public void testTermPart2S() throws Exception {
         String test = "*3*+5";
@@ -322,6 +262,7 @@ public class RecognizerTest {
 
         try {
             rec.termPart();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
@@ -329,7 +270,31 @@ public class RecognizerTest {
         }
     }
     
-    /* Test 1 for term function of Recognizer */
+    /* Happy Test 1 for term function of Recognizer */
+    @Test
+    public void testTerm1H() throws Exception {
+        String test = "ident*3*!5";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.term();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 2 for term function of Recognizer */
+    @Test
+    public void testTerm2H() throws Exception {
+        String test = "ident";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.term();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for term function of Recognizer */
     @Test
     public void testTerm1S() throws Exception {
         String test = "*3";
@@ -337,6 +302,7 @@ public class RecognizerTest {
 
         try {
             rec.term();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
@@ -344,7 +310,7 @@ public class RecognizerTest {
         }
     }
     
-    /* Test 2 for term function of Recognizer */
+    /* Sad Test 2 for term function of Recognizer */
     @Test
     public void testTerm2S() throws Exception {
         String test = "3*/";
@@ -352,6 +318,7 @@ public class RecognizerTest {
 
         try {
             rec.term();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
@@ -359,7 +326,31 @@ public class RecognizerTest {
         }
     }
     
-    /* Test 1 for simplePart function of Recognizer */
+    /* Happy Test 1 for simplePart function of Recognizer */
+    @Test
+    public void testSimplePart1H() throws Exception {
+        String test = "+ident";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.simplePart();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 2 for simplePart function of Recognizer */
+    @Test
+    public void testSimplePart2H() throws Exception {
+        String test = "+3+5*ident";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.simplePart();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for simplePart function of Recognizer */
     @Test
     public void testSimplePart1S() throws Exception {
         String test = "++5";
@@ -367,6 +358,7 @@ public class RecognizerTest {
 
         try {
             rec.simplePart();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
@@ -374,7 +366,7 @@ public class RecognizerTest {
         }
     }
     
-    /* Test 2 for simplePart function of Recognizer */
+    /* Sad Test 2 for simplePart function of Recognizer */
     @Test
     public void testSimplePart2S() throws Exception {
         String test = "+3*+5";
@@ -382,6 +374,7 @@ public class RecognizerTest {
 
         try {
             rec.simplePart();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
@@ -389,7 +382,47 @@ public class RecognizerTest {
         }
     }
     
-    /* Test 1 for simpleExpression function of Recognizer */
+    /* Sad Test 3 for simplePart function of Recognizer */
+    @Test
+    public void testSimplePart3S() throws Exception {
+        String test = "<";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.simplePart();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "End of File Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+        
+    /* Happy Test 1 for simpleExpression function of Recognizer */
+    @Test
+    public void testSimpleExpression1H() throws Exception {
+        String test = "-5*5+3";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.simpleExpression();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 2 for simpleExpression function of Recognizer */
+    @Test
+    public void testSimpleExpression2H() throws Exception {
+        String test = "-5+5*3";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.simpleExpression();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for simpleExpression function of Recognizer */
     @Test
     public void testSimpleExpression1S() throws Exception {
         String test = "+3*/5";
@@ -397,6 +430,7 @@ public class RecognizerTest {
 
         try {
             rec.simpleExpression();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
@@ -404,7 +438,7 @@ public class RecognizerTest {
         }
     }
     
-    /* Test 2 for simpleExpression function of Recognizer */
+    /* Sad Test 2 for simpleExpression function of Recognizer */
     @Test
     public void testSimpleExpression2S() throws Exception {
         String test = "++3+5";
@@ -412,6 +446,7 @@ public class RecognizerTest {
 
         try {
             rec.simpleExpression();
+            rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Factor Error!";
@@ -419,5 +454,78 @@ public class RecognizerTest {
         }
     }
     
+    /* Sad Test 3 for simpleExpression function of Recognizer */
+    @Test
+    public void testSimpleExpression3S() throws Exception {
+        String test = "-5/5+3<";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.simpleExpression();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "End of File Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    
+    /* Happy Test 1 for expression function of Recognizer */
+    @Test
+    public void testExpression1H() throws Exception {
+        String test = "-5/5+3";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.expression();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 2 for expression function of Recognizer */
+    @Test
+    public void testExpression2H() throws Exception {
+        String test = "-5/5+3<=1+1";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.expression();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for expression function of Recognizer */
+    @Test
+    public void testExpression1S() throws Exception {
+        String test = "<=-5/5+3";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.expression();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Sad Test 2 for expression function of Recognizer */
+    @Test
+    public void testExpression2S() throws Exception {
+        String test = "-5<=-5/5+3<";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.expression();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "End of File Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+ 
     
 }
