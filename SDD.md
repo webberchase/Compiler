@@ -78,13 +78,13 @@
 - **isType(token)** checks if lookahead is a type token. Used in if statements for methods with lambda options. 
 	- _VOID, INT, FLOAT_
 - **isRelop(token)** checks if lookahead is a relop token. Used in if statements for methods with lambda options. 
-	- LESSTHAN, GREATERTHAN, LESSEQUAL, GREATEQUAL, NOTEQUAL, EQUAL_ 
+	- _LESSTHAN, GREATERTHAN, LESSEQUAL, GREATEQUAL, NOTEQUAL, EQUAL_ 
 - **isAddop(token)** checks if lookahead is an addop token. Used in if statements for methods with lambda options. This method is also used as synonymous for isSign() because + and - are the same symbols for addition and positive, subtraction and negative... 
 	- _PLUS, MINUS_
 - **isMulop(token)** checks if lookahead is a mulop token. Used in if statements for methods with lambda options. 
 	- _TIMES, DIVIDEDBY_
 - **isStatement(token)** checks if lookahead is a token which indicates that statement() will be called. Used only in optionalStatements().
-	-_ID, LCURLY, IF, WHILE, READ, WRITE, RETURN_
+	- _ID, LCURLY, IF, WHILE, READ, WRITE, RETURN_
 - **error(message)** prints the error message using System.out.println, including the message given by the function which called error(). Also throws an exception with the provided error message. 
  
 
