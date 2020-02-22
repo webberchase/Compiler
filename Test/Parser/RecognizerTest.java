@@ -611,6 +611,34 @@ public class RecognizerTest {
         }
     }
     
+    /* Happy Test 1 for variable function of Recognizer */
+    @Test
+    public void testVariable1H() throws Exception {
+        String test = "ident[-5/5+3<=1+1]";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.variable();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for variable function of Recognizer */
+    @Test
+    public void testVariable1S() throws Exception {
+        String test = "ident[-5/5+3<=1+1,1+1,2]";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.variable();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Match of RSQUARE found COMMA instead Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
     
     
     
