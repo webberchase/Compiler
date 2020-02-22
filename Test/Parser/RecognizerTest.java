@@ -41,10 +41,13 @@ public class RecognizerTest {
     public void tearDown() {
     }
     
+	
+	/***** sign()
+     * @throws java.lang.Exception *****/
     
-    /* Happy Test for sign function of Recognizer */
+    /* Happy Test for sign function */
     @Test
-    public void testSignH() throws Exception {
+    public void signHappy() throws Exception {
         String test = "+\n-";
         Recognizer rec = new Recognizer(test, false);
         
@@ -55,9 +58,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test for sign function of Recognizer */
+    /* Sad Test for sign function */
     @Test
-    public void testSignS() throws Exception {
+    public void signSad() throws Exception {
         String test = "/";
         Recognizer rec = new Recognizer(test, false);
         
@@ -71,9 +74,13 @@ public class RecognizerTest {
         }
     }
 
-    /* Happy Test for relop function of Recognizer */
+
+	/***** relop()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test for relop function */
     @Test
-    public void testRelopH() throws Exception {
+    public void relopHappy() throws Exception {
         String test = "<=\n==";
         Recognizer rec = new Recognizer(test, false);
         
@@ -84,9 +91,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test for relop function of Recognizer */
+    /* Sad Test for relop function */
     @Test
-    public void testRelopS() throws Exception {
+    public void relopSad() throws Exception {
         String test = "=";
         Recognizer rec = new Recognizer(test, false);
         
@@ -100,9 +107,13 @@ public class RecognizerTest {
         }
     }
  
-    /* Happy Test for addop function of Recognizer */
+ 
+ 	/***** addop()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test for addop function */
     @Test
-    public void testAddopH() throws Exception {
+    public void addopHappy() throws Exception {
         String test = "+\n+";
         Recognizer rec = new Recognizer(test, false);
         
@@ -113,9 +124,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
    
-    /* Sad Test for addop function of Recognizer */
+    /* Sad Test for addop function */
     @Test
-    public void testAddopS() throws Exception {
+    public void addopSad() throws Exception {
         String test = "*";
         Recognizer rec = new Recognizer(test, false);
         
@@ -129,9 +140,13 @@ public class RecognizerTest {
         }
     }
    
-    /* Happy Test for mulop function of Recognizer */
+   
+	/***** mulop()
+     * @throws java.lang.Exception *****/
+   
+    /* Happy Test for mulop function */
     @Test
-    public void testMulopH() throws Exception {
+    public void mulopHappy() throws Exception {
         String test = "/\n*";
         Recognizer rec = new Recognizer(test, false);
         
@@ -142,9 +157,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test for mulop function of Recognizer */
+    /* Sad Test for mulop function */
     @Test
-    public void testMulopS() throws Exception {
+    public void mulopSad() throws Exception {
         String test = "+";
         Recognizer rec = new Recognizer(test, false);
 
@@ -158,9 +173,13 @@ public class RecognizerTest {
         }
     }
 
-    /* Happy Test 1 for factor function of Recognizer */
+
+	/***** factor()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for factor function */
     @Test
-    public void testFactor1H() throws Exception {
+    public void factorHappy1() throws Exception {
         String test = "ident";
         Recognizer rec = new Recognizer(test, false);
         
@@ -170,9 +189,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 2 for factor function of Recognizer */
+    /* Happy Test 2 for factor function */
     @Test
-    public void testFactor2H() throws Exception {
+    public void factorHappy2() throws Exception {
         String test = "!5";
         Recognizer rec = new Recognizer(test, false);
         
@@ -182,9 +201,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for factor function of Recognizer */
+    /* Sad Test 1 for factor function */
     @Test
-    public void testFactor1S() throws Exception {
+    public void factorSad1() throws Exception {
         String test = "+";
         Recognizer rec = new Recognizer(test, false);
 
@@ -198,9 +217,9 @@ public class RecognizerTest {
         }
     }
 
-    /* Sad Test 2 for factor function of Recognizer */
+    /* Sad Test 2 for factor function */
     @Test
-    public void testFactor2S() throws Exception {
+    public void factorSad2() throws Exception {
         String test = "!";
         Recognizer rec = new Recognizer(test, false);
 
@@ -214,9 +233,13 @@ public class RecognizerTest {
         }
     }
  
-    /* Happy Test 1 for termPart function of Recognizer */
+ 
+ 	/***** termPart()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for termPart function */
     @Test
-    public void testTermPart1H() throws Exception {
+    public void termPartHappy1() throws Exception {
         String test = "*3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -226,9 +249,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 2 for termPart function of Recognizer */
+    /* Happy Test 2 for termPart function */
     @Test
-    public void testTermPart2H() throws Exception {
+    public void termPartHappy2() throws Exception {
         String test = "*3*!5";
         Recognizer rec = new Recognizer(test, false);
         
@@ -238,9 +261,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
 
-    /* Sad Test 1 for termPart function of Recognizer */
+    /* Sad Test 1 for termPart function */
     @Test
-    public void testTermPart1S() throws Exception {
+    public void termPartSad1() throws Exception {
         String test = "**5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -254,9 +277,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 2 for termPart function of Recognizer */
+    /* Sad Test 2 for termPart function */
     @Test
-    public void testTermPart2S() throws Exception {
+    public void termPartSad2() throws Exception {
         String test = "*3*+5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -270,9 +293,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for term function of Recognizer */
+	
+	/***** term()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for term function */
     @Test
-    public void testTerm1H() throws Exception {
+    public void termHappy1() throws Exception {
         String test = "ident*3*!5";
         Recognizer rec = new Recognizer(test, false);
         
@@ -282,9 +309,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 2 for term function of Recognizer */
+    /* Happy Test 2 for term function */
     @Test
-    public void testTerm2H() throws Exception {
+    public void termHappy2() throws Exception {
         String test = "ident";
         Recognizer rec = new Recognizer(test, false);
         
@@ -294,9 +321,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for term function of Recognizer */
+    /* Sad Test 1 for term function */
     @Test
-    public void testTerm1S() throws Exception {
+    public void termSad1() throws Exception {
         String test = "*3";
         Recognizer rec = new Recognizer(test, false);
 
@@ -310,9 +337,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 2 for term function of Recognizer */
+    /* Sad Test 2 for term function */
     @Test
-    public void testTerm2S() throws Exception {
+    public void termSad2() throws Exception {
         String test = "3*/";
         Recognizer rec = new Recognizer(test, false);
 
@@ -326,9 +353,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for simplePart function of Recognizer */
+	
+	/***** simplePart()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for simplePart function */
     @Test
-    public void testSimplePart1H() throws Exception {
+    public void simplePartHappy1() throws Exception {
         String test = "+ident";
         Recognizer rec = new Recognizer(test, false);
         
@@ -338,9 +369,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 2 for simplePart function of Recognizer */
+    /* Happy Test 2 for simplePart function */
     @Test
-    public void testSimplePart2H() throws Exception {
+    public void simplePartHappy2() throws Exception {
         String test = "+3+5*ident";
         Recognizer rec = new Recognizer(test, false);
         
@@ -350,9 +381,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for simplePart function of Recognizer */
+    /* Sad Test 1 for simplePart function */
     @Test
-    public void testSimplePart1S() throws Exception {
+    public void simplePartSad1() throws Exception {
         String test = "++5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -366,9 +397,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 2 for simplePart function of Recognizer */
+    /* Sad Test 2 for simplePart function */
     @Test
-    public void testSimplePart2S() throws Exception {
+    public void simplePartSad2() throws Exception {
         String test = "+3*+5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -382,9 +413,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 3 for simplePart function of Recognizer */
+    /* Sad Test 3 for simplePart function */
     @Test
-    public void testSimplePart3S() throws Exception {
+    public void simplePartSad3() throws Exception {
         String test = "<";
         Recognizer rec = new Recognizer(test, false);
 
@@ -397,10 +428,14 @@ public class RecognizerTest {
             assertEquals(expected, e.getMessage());
         }
     }
-        
-    /* Happy Test 1 for simpleExpression function of Recognizer */
+	
+	
+	/***** simpleExpression()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for simpleExpression function */
     @Test
-    public void testSimpleExpression1H() throws Exception {
+    public void simpleExpressionHappy1() throws Exception {
         String test = "-5*5+3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -410,9 +445,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 2 for simpleExpression function of Recognizer */
+    /* Happy Test 2 for simpleExpression function */
     @Test
-    public void testSimpleExpression2H() throws Exception {
+    public void simpleExpressionHappy2() throws Exception {
         String test = "-5+5*3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -422,9 +457,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for simpleExpression function of Recognizer */
+    /* Sad Test 1 for simpleExpression function */
     @Test
-    public void testSimpleExpression1S() throws Exception {
+    public void simpleExpressionSad1() throws Exception {
         String test = "+3*/5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -438,9 +473,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 2 for simpleExpression function of Recognizer */
+    /* Sad Test 2 for simpleExpression function */
     @Test
-    public void testSimpleExpression2S() throws Exception {
+    public void simpleExpressionSad2() throws Exception {
         String test = "++3+5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -454,9 +489,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 3 for simpleExpression function of Recognizer */
+    /* Sad Test 3 for simpleExpression function */
     @Test
-    public void testSimpleExpression3S() throws Exception {
+    public void simpleExpressionSad3() throws Exception {
         String test = "-5/5+3<";
         Recognizer rec = new Recognizer(test, false);
 
@@ -470,10 +505,13 @@ public class RecognizerTest {
         }
     }
     
-    
-    /* Happy Test 1 for expression function of Recognizer */
+	
+	/***** expression()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for expression function */
     @Test
-    public void testExpression1H() throws Exception {
+    public void expressionHappy1() throws Exception {
         String test = "-5/5+3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -483,9 +521,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 2 for expression function of Recognizer */
+    /* Happy Test 2 for expression function */
     @Test
-    public void testExpression2H() throws Exception {
+    public void expressionHappy2() throws Exception {
         String test = "-5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -495,9 +533,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for expression function of Recognizer */
+    /* Sad Test 1 for expression function */
     @Test
-    public void testExpression1S() throws Exception {
+    public void expressionSad1() throws Exception {
         String test = "<=-5/5+3";
         Recognizer rec = new Recognizer(test, false);
 
@@ -511,9 +549,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 2 for expression function of Recognizer */
+    /* Sad Test 2 for expression function */
     @Test
-    public void testExpression2S() throws Exception {
+    public void expressionSad2() throws Exception {
         String test = "-5<=-5/5+3<";
         Recognizer rec = new Recognizer(test, false);
 
@@ -527,9 +565,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for expressionList function of Recognizer */
+	
+	/***** expressionList()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for expressionList function */
     @Test
-    public void testExpressionList1H() throws Exception {
+    public void expressionListHappy1() throws Exception {
         String test = "-5/5+3<=1+1,2";
         Recognizer rec = new Recognizer(test, false);
         
@@ -539,9 +581,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 2 for expressionList function of Recognizer */
+    /* Happy Test 2 for expressionList function */
     @Test
-    public void testExpressionList2H() throws Exception {
+    public void expressionListHappy2() throws Exception {
         String test = "-5/5+3<=1+1,1+1,2";
         Recognizer rec = new Recognizer(test, false);
         
@@ -551,9 +593,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for expressionList function of Recognizer */
+    /* Sad Test 1 for expressionList function */
     @Test
-    public void testExpressionList1S() throws Exception {
+    public void expressionListSad1() throws Exception {
         String test = "-5/5+3<=1+1;1+1,2";
         Recognizer rec = new Recognizer(test, false);
 
@@ -567,9 +609,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 2 for expressionList function of Recognizer */
+    /* Sad Test 2 for expressionList function */
     @Test
-    public void testExpressionList2S() throws Exception {
+    public void expressionListSad2() throws Exception {
         String test = "-5/5+3<=1+1,1+1,";
         Recognizer rec = new Recognizer(test, false);
 
@@ -583,9 +625,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for procedureStatement function of Recognizer */
+	
+	/***** procedureStatement()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for procedureStatement function */
     @Test
-    public void testProcedureStatement1H() throws Exception {
+    public void procedureStatementHappy1() throws Exception {
         String test = "ident(-5/5+3<=1+1,1+1,2)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -595,9 +641,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for procedureStatement function of Recognizer */
+    /* Sad Test 1 for procedureStatement function */
     @Test
-    public void testProcedureStatement1S() throws Exception {
+    public void procedureStatementSad1() throws Exception {
         String test = "((-5/5+3<=1+1,1+1,2))";
         Recognizer rec = new Recognizer(test, false);
 
@@ -611,9 +657,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for variable function of Recognizer */
+	
+	/***** variable()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for variable function */
     @Test
-    public void testVariable1H() throws Exception {
+    public void variableHappy1() throws Exception {
         String test = "ident[-5/5+3<=1+1]";
         Recognizer rec = new Recognizer(test, false);
         
@@ -623,9 +673,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for variable function of Recognizer */
+    /* Sad Test 1 for variable function */
     @Test
-    public void testVariable1S() throws Exception {
+    public void variableSad1() throws Exception {
         String test = "ident[-5/5+3<=1+1,1+1,2]";
         Recognizer rec = new Recognizer(test, false);
 
@@ -639,9 +689,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for statement function of Recognizer */
+	
+	/***** statement()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for statement function */
     @Test
-    public void testStatement1H() throws Exception {
+    public void statementHappy1() throws Exception {
         String test = "ident[-5/5+3<=1+1]=-5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -651,9 +705,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 2 for statement function of Recognizer */
+    /* Happy Test 2 for statement function */
     @Test
-    public void testStatement2H() throws Exception {
+    public void statementHappy2() throws Exception {
         String test = "if -5/5+3<=1+1 then ident[-5/5+3<=1+1]=-5/5+3<=1+1 "
                 + "else ident[-5/5+3<=1+1]=-5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
@@ -664,9 +718,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 3 for statement function of Recognizer */
+    /* Happy Test 3 for statement function */
     @Test
-    public void testStatement3H() throws Exception {
+    public void statementHappy3() throws Exception {
         String test = "while -5/5+3<=1+1 do ident[-5/5+3<=1+1]=-5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -676,9 +730,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 4 for statement function of Recognizer */
+    /* Happy Test 4 for statement function */
     @Test
-    public void testStatement4H() throws Exception {
+    public void statementHappy4() throws Exception {
         String test = "read (id)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -688,9 +742,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
 
-    /* Happy Test 5 for statement function of Recognizer */
+    /* Happy Test 5 for statement function */
     @Test
-    public void testStatement5H() throws Exception {
+    public void statementHappy5() throws Exception {
         String test = "write(-5/5+3<=1+1)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -700,9 +754,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
 	
-	/* Happy Test 6 for statement function of Recognizer */
+	/* Happy Test 6 for statement function */
     @Test
-    public void testStatement6H() throws Exception {
+    public void statementHappy6() throws Exception {
         String test = "return -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -712,9 +766,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
 
-    /* Sad Test 1 for statement function of Recognizer */
+    /* Sad Test 1 for statement function */
     @Test
-    public void testStatement1S() throws Exception {
+    public void statementSad1() throws Exception {
         String test = "ident[-5/5+3<=1+1]=";
         Recognizer rec = new Recognizer(test, false);
 
@@ -728,9 +782,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 2 for statement function of Recognizer */
+    /* Sad Test 2 for statement function */
     @Test
-    public void testStatement2S() throws Exception {
+    public void statementSad2() throws Exception {
         String test = "if -5/5+3<=1+1 then else";
         Recognizer rec = new Recognizer(test, false);
 
@@ -744,9 +798,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 3 for statement function of Recognizer */
+    /* Sad Test 3 for statement function */
     @Test
-    public void testStatement3S() throws Exception {
+    public void statementSad3() throws Exception {
         String test = "while -5/5+3<=1+1 do -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
 
@@ -760,9 +814,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 4 for statement function of Recognizer */
+    /* Sad Test 4 for statement function */
     @Test
-    public void testStatement4S() throws Exception {
+    public void statementSad4() throws Exception {
         String test = "read (5)";
         Recognizer rec = new Recognizer(test, false);
 
@@ -776,9 +830,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 5 for statement function of Recognizer */
+    /* Sad Test 5 for statement function */
     @Test
-    public void testStatement5S() throws Exception {
+    public void statementSad5() throws Exception {
         String test = "write(ident[-5/5+3<=1+1]=-5/5+3<=1+1)";
         Recognizer rec = new Recognizer(test, false);
 
@@ -792,9 +846,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 6 for statement function of Recognizer */
+    /* Sad Test 6 for statement function */
     @Test
-    public void testStatement6S() throws Exception {
+    public void statementSad6() throws Exception {
         String test = "return";
         Recognizer rec = new Recognizer(test, false);
 
@@ -808,9 +862,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for statementList function of Recognizer */
+	
+	/***** statementList()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for statementList function */
     @Test
-    public void testStatementList1H() throws Exception {
+    public void statementListHappy1() throws Exception {
         String test = "return -5/5+3<=1+1; return -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -820,9 +878,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
 
-    /* Sad Test 1 for statementList function of Recognizer */
+    /* Sad Test 1 for statementList function */
     @Test
-    public void testStatementList1S() throws Exception {
+    public void statementListSad1() throws Exception {
         String test = "return -5/5+3<=1+1;";
         Recognizer rec = new Recognizer(test, false);
 
@@ -836,9 +894,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for optionalStatements function of Recognizer */
+	
+	/***** optionalStatements()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for optionalStatements function */
     @Test
-    public void testOptionalStatements1H() throws Exception {
+    public void optionalStatementsHappy1() throws Exception {
         String test = "return -5/5+3<=1+1; return -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -848,9 +910,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
 
-    /* Sad Test 1 for optionalStatements function of Recognizer */
+    /* Sad Test 1 for optionalStatements function */
     @Test
-    public void testOptionalStatements1S() throws Exception {
+    public void optionalStatementsSad1() throws Exception {
         String test = "void";
         Recognizer rec = new Recognizer(test, false);
 
@@ -864,9 +926,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for identifierList function of Recognizer */
+	
+	/***** identifierList()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for identifierList function */
     @Test
-    public void testIdentifierList1H() throws Exception {
+    public void identifierListHappy1() throws Exception {
         String test = "ident, ident1, ident2";
         Recognizer rec = new Recognizer(test, false);
         
@@ -876,9 +942,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
 
-    /* Sad Test 1 for identifierList function of Recognizer */
+    /* Sad Test 1 for identifierList function */
     @Test
-    public void testIdentifierList1S() throws Exception {
+    public void identifierListSad1() throws Exception {
         String test = "ident,";
         Recognizer rec = new Recognizer(test, false);
 
@@ -892,9 +958,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for declarations function of Recognizer */
+	
+	/***** declarations()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for declarations function */
     @Test
-    public void testDeclarations1H() throws Exception {
+    public void declarationsHappy1() throws Exception {
         String test = "int ident, ident1, ident2; int ident, ident1, ident2;";
         Recognizer rec = new Recognizer(test, false);
         
@@ -904,9 +974,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
 
-    /* Sad Test 1 for declarations function of Recognizer */
+    /* Sad Test 1 for declarations function */
     @Test
-    public void testDeclarations1S() throws Exception {
+    public void declarationsSad1() throws Exception {
         String test = "ident, ident1, ident2;";
         Recognizer rec = new Recognizer(test, false);
 
@@ -920,9 +990,13 @@ public class RecognizerTest {
         }
     }
 	
-	/* Happy Test 1 for compoundStatement function of Recognizer */
+	
+	/***** compoundStatement()
+     * @throws java.lang.Exception *****/
+
+	/* Happy Test 1 for compoundStatement function */
     @Test
-    public void testCompoundStatement1H() throws Exception {
+    public void compoundStatementHappy1() throws Exception {
         String test = "{int ident, ident1, ident2; return -5/5+3<=1+1; "
                 + "return -5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
@@ -933,9 +1007,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 2 for compoundStatement function of Recognizer */
+    /* Happy Test 2 for compoundStatement function */
     @Test
-    public void testCompoundStatement2H() throws Exception {
+    public void compoundStatementHappy2() throws Exception {
         String test = "{return -5/5+3<=1+1; return -5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
         
@@ -945,9 +1019,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Happy Test 3 for compoundStatement function of Recognizer */
+    /* Happy Test 3 for compoundStatement function */
     @Test
-    public void testCompoundStatement3H() throws Exception {
+    public void compoundStatementHappy3() throws Exception {
         String test = "{}";
         Recognizer rec = new Recognizer(test, false);
         
@@ -957,9 +1031,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
 
-    /* Sad Test 1 for compoundStatement function of Recognizer */
+    /* Sad Test 1 for compoundStatement function */
     @Test
-    public void testCompoundStatement1S() throws Exception {
+    public void compoundStatementSad1() throws Exception {
         String test = "{-5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
 
@@ -973,9 +1047,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 2 for compoundStatement function of Recognizer */
+    /* Sad Test 2 for compoundStatement function */
     @Test
-    public void testCompoundStatement2S() throws Exception {
+    public void compoundStatementSad2() throws Exception {
         String test = "{ident[-5/5+3<=1+1]}";
         Recognizer rec = new Recognizer(test, false);
 
@@ -989,9 +1063,9 @@ public class RecognizerTest {
         }
     }
     
-    /* Sad Test 3 for compoundStatement function of Recognizer */
+    /* Sad Test 3 for compoundStatement function */
     @Test
-    public void testCompoundStatement3S() throws Exception {
+    public void compoundStatementSad3() throws Exception {
         String test = "{return -5/5+3<=1+1;";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1005,9 +1079,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for parameterList function of Recognizer */
+	
+	/***** parameterList()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for parameterList function */
     @Test
-    public void testParameterList1H() throws Exception {
+    public void parameterListHappy1() throws Exception {
         String test = "void ident, int ident2, float ident3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1017,9 +1095,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for parameterList function of Recognizer */
+    /* Sad Test 1 for parameterList function */
     @Test
-    public void testParameterList1S() throws Exception {
+    public void parameterListSad1() throws Exception {
         String test = "void ident, int ident2, float ident3,";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1033,9 +1111,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for parameters function of Recognizer */
+	
+	/***** parameters()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for parameters function */
     @Test
-    public void testParameters1H() throws Exception {
+    public void parametersHappy1() throws Exception {
         String test = "(void ident, int ident2, float ident3)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1045,9 +1127,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for parameters function of Recognizer */
+    /* Sad Test 1 for parameters function */
     @Test
-    public void testParameters1S() throws Exception {
+    public void parametersSad1() throws Exception {
         String test = "()";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1061,9 +1143,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for functionDefinition function of Recognizer */
+	
+	/***** functionDefinition()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for functionDefinition function */
     @Test
-    public void testfunctionDefinition1H() throws Exception {
+    public void functionDefinitionHappy1() throws Exception {
         String test = "void fun(void ident, int ident2, float ident3) "
                 + "{int ident, ident1, ident2; return -5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
@@ -1074,9 +1160,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for functionDefinition function of Recognizer */
+    /* Sad Test 1 for functionDefinition function */
     @Test
-    public void testFunctionDefinition1S() throws Exception {
+    public void functionDefinitionSad1() throws Exception {
         String test = "fun(void ident, int ident2, float ident3) "
                 + "{int ident, ident1, ident2; return -5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
@@ -1091,9 +1177,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for functionDefinitions function of Recognizer */
+	
+	/***** functionDefinitions()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for functionDefinitions function */
     @Test
-    public void testfunctionDefinitions1H() throws Exception {
+    public void functionDefinitionsHappy1() throws Exception {
         String test = "void fun(void ident, int ident2, float ident3) "
                 + "{int ident, ident1, ident2; return -5/5+3<=1+1} "
                 + "void fun(void ident, int ident2, float ident3) "
@@ -1106,9 +1196,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for functionDefinitions function of Recognizer */
+    /* Sad Test 1 for functionDefinitions function */
     @Test
-    public void testFunctionDefinitions1S() throws Exception {
+    public void functionDefinitionsSad1() throws Exception {
         String test = "void fun1(){} void fun2() {}";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1122,9 +1212,13 @@ public class RecognizerTest {
         }
     }
     
-    /* Happy Test 1 for functionDeclaration function of Recognizer */
+	
+	/***** functionDeclaration()
+     * @throws java.lang.Exception *****/
+
+    /* Happy Test 1 for functionDeclaration function */
     @Test
-    public void testfunctionDeclaration1H() throws Exception {
+    public void functionDeclarationHappy1() throws Exception {
         String test = "void fun(void ident, int ident2, float ident3)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1134,9 +1228,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for functionDeclaration function of Recognizer */
+    /* Sad Test 1 for functionDeclaration function */
     @Test
-    public void testFunctionDeclaration1S() throws Exception {
+    public void functionDeclarationSad1() throws Exception {
         String test = "void fun1()";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1150,9 +1244,13 @@ public class RecognizerTest {
         }
     }
     
-	/* Happy Test 1 for functionDeclarations function of Recognizer */
+	
+	/***** functionDeclarations()
+     * @throws java.lang.Exception *****/
+
+	/* Happy Test 1 for functionDeclarations function */
     @Test
-    public void testfunctionDeclarations1H() throws Exception {
+    public void functionDeclarationsHappy1() throws Exception {
         String test = "void fun(void ident, int ident2, float ident3); "
                 + "void fun(void ident, int ident2, float ident3);";
         Recognizer rec = new Recognizer(test, false);
@@ -1163,9 +1261,9 @@ public class RecognizerTest {
         assertEquals(rec.getLookahead(), rec.getEND());
     }
     
-    /* Sad Test 1 for functionDeclarations function of Recognizer */
+    /* Sad Test 1 for functionDeclarations function */
     @Test
-    public void testFunctionDeclarations1S() throws Exception {
+    public void functionDeclarationsSad1() throws Exception {
         String test = "fun(void ident, int ident2, float ident3)";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1178,11 +1276,6 @@ public class RecognizerTest {
             assertEquals(expected, e.getMessage());
         }
     }
-    
-    
-    
-    
-    
     
     
 }
