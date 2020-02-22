@@ -8,14 +8,14 @@ Chase Webber
 ## Compiler Directory: 
 
 ### Scanner/
-Contains all scanner files
+Contains all scanner files \n
 - **Scanner.jflex:** jflex file which includes lexical rules to build a scanner class using jflex.jar 
 - **Scanner.java:** class created by jflex
 - **Token.java:** class to create token objects when scanning
 - **TokenType:** enumerated list of possible Token Types
 
 ### Parser/
-Contains the Recognizer
+Contains the Recognizer \n
 - **Recognizer.java:** determines if a given string conforms to the specified grammar 
 
 ### Test/
@@ -42,7 +42,7 @@ _Recommend getting the .zip file..._
 * After extracting, go into the `jflex-1.7.0/lib/` directory and find the .jar file. 
 * Include this .jar file in the project folder in order to compile. 
 * On the command line, type 
-`java -jar jflex-full-1.7.0.jar Scanner.jflex`
+```java -jar jflex-full-1.7.0.jar Scanner.jflex```
 * This should create the appropriate Scanner.java class
 
 #### Compiling Java: 
