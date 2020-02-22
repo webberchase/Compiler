@@ -15,3 +15,12 @@ return -5/5+3<=1+1; return -5/5+3<=1+1
 
 // identifier list
 ident, ident1, ident2
+
+// Declarations
+int ident, ident1, ident2; int ident, ident1, ident2;
+
+// parameter list
+void ident, int ident2, float ident3
+
+// compound statement
+{int ident, ident1, ident2; return -5/5+3<=1+1; return -5/5+3<=1+1}
