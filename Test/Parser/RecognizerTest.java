@@ -1005,6 +1005,33 @@ public class RecognizerTest {
         }
     }
     
+    /* Happy Test 1 for parameterList function of Recognizer */
+    @Test
+    public void testParameterList1H() throws Exception {
+        String test = "void ident, int ident2, float ident3";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.parameterList();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for parameterList function of Recognizer */
+    @Test
+    public void testParameterList1S() throws Exception {
+        String test = "void ident, int ident2, float ident3,";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.parameterList();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Type Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
     
     
     
