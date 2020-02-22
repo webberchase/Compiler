@@ -1033,6 +1033,34 @@ public class RecognizerTest {
         }
     }
     
+    /* Happy Test 1 for parameters function of Recognizer */
+    @Test
+    public void testParameters1H() throws Exception {
+        String test = "(void ident, int ident2, float ident3)";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.parameters();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for parameters function of Recognizer */
+    @Test
+    public void testParameters1S() throws Exception {
+        String test = "()";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.parameters();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Type Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
     
     
     
