@@ -919,6 +919,92 @@ public class RecognizerTest {
             assertEquals(expected, e.getMessage());
         }
     }
+	
+	/* Happy Test 1 for compoundStatement function of Recognizer */
+    @Test
+    public void testCompoundStatement1H() throws Exception {
+        String test = "{int ident, ident1, ident2; return -5/5+3<=1+1; "
+                + "return -5/5+3<=1+1}";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.compoundStatement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 2 for compoundStatement function of Recognizer */
+    @Test
+    public void testCompoundStatement2H() throws Exception {
+        String test = "{return -5/5+3<=1+1; return -5/5+3<=1+1}";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.compoundStatement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 3 for compoundStatement function of Recognizer */
+    @Test
+    public void testCompoundStatement3H() throws Exception {
+        String test = "{}";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.compoundStatement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+
+    /* Sad Test 1 for compoundStatement function of Recognizer */
+    @Test
+    public void testCompoundStatement1S() throws Exception {
+        String test = "{-5/5+3<=1+1}";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.compoundStatement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Match of RCURLY found MINUS instead Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Sad Test 2 for compoundStatement function of Recognizer */
+    @Test
+    public void testCompoundStatement2S() throws Exception {
+        String test = "{ident[-5/5+3<=1+1]}";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.compoundStatement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Match of ASSIGNOP found RCURLY instead Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Sad Test 3 for compoundStatement function of Recognizer */
+    @Test
+    public void testCompoundStatement3S() throws Exception {
+        String test = "{return -5/5+3<=1+1;";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.compoundStatement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Statement Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
     
     
     
