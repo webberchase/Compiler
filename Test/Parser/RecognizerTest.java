@@ -836,9 +836,9 @@ public class RecognizerTest {
         }
     }
     
-	/* Happy Test 1 for optionalStatements function of Recognizer */
+    /* Happy Test 1 for optionalStatements function of Recognizer */
     @Test
-    public void testStatement6H() throws Exception {
+    public void testOptionalStatements1H() throws Exception {
         String test = "return -5/5+3<=1+1; return -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -850,19 +850,49 @@ public class RecognizerTest {
 
     /* Sad Test 1 for optionalStatements function of Recognizer */
     @Test
-    public void testStatement6S() throws Exception {
+    public void testOptionalStatements1S() throws Exception {
         String test = "void";
         Recognizer rec = new Recognizer(test, false);
 
         try {
-            rec.statementList();
+            rec.optionalStatements();
             rec.isEnd();
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
-            String expected = "Statement Error!";
+            String expected = "End of File Error!";
             assertEquals(expected, e.getMessage());
         }
     }
+    
+    /* Happy Test 1 for identifierList function of Recognizer */
+    @Test
+    public void testIdentifierList1H() throws Exception {
+        String test = "ident, ident1, ident2";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.identifierList();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+
+    /* Sad Test 1 for identifierList function of Recognizer */
+    @Test
+    public void testIdentifierList1S() throws Exception {
+        String test = "ident,";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.identifierList();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Match of ID found ENDOFFILE instead Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    
     
     
     
