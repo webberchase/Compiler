@@ -1,6 +1,4 @@
-COMPILER
-CSC 451
-Chase Webber
+@author Chase Webber
 
 #### This is a Compiler for CSC 451 at Augsburg. 
 
@@ -43,7 +41,9 @@ _Recommend getting the .zip file..._
 * After extracting, go into the `jflex-1.7.0/lib/` directory and find the .jar file. 
 * Include this .jar file in the project folder in order to compile. 
 * On the command line, type 
-```java -jar jflex-full-1.7.0.jar Scanner.jflex```
+```
+java -jar jflex-full-1.7.0.jar Scanner.jflex
+```
 * This should create the appropriate Scanner.java class
 
 #### Compiling Java: 
