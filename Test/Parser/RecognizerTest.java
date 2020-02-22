@@ -639,6 +639,175 @@ public class RecognizerTest {
         }
     }
     
+    /* Happy Test 1 for statement function of Recognizer */
+    @Test
+    public void testStatement1H() throws Exception {
+        String test = "ident[-5/5+3<=1+1]=-5/5+3<=1+1";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.statement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 2 for statement function of Recognizer */
+    @Test
+    public void testStatement2H() throws Exception {
+        String test = "if -5/5+3<=1+1 then ident[-5/5+3<=1+1]=-5/5+3<=1+1 "
+                + "else ident[-5/5+3<=1+1]=-5/5+3<=1+1";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.statement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 3 for statement function of Recognizer */
+    @Test
+    public void testStatement3H() throws Exception {
+        String test = "while -5/5+3<=1+1 do ident[-5/5+3<=1+1]=-5/5+3<=1+1";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.statement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Happy Test 4 for statement function of Recognizer */
+    @Test
+    public void testStatement4H() throws Exception {
+        String test = "read (id)";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.statement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+
+    /* Happy Test 5 for statement function of Recognizer */
+    @Test
+    public void testStatement5H() throws Exception {
+        String test = "write(-5/5+3<=1+1)";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.statement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+	
+	/* Happy Test 6 for statement function of Recognizer */
+    @Test
+    public void testStatement6H() throws Exception {
+        String test = "return -5/5+3<=1+1";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.statement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+
+    /* Sad Test 1 for statement function of Recognizer */
+    @Test
+    public void testStatement1S() throws Exception {
+        String test = "ident[-5/5+3<=1+1]=";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.statement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Sad Test 2 for statement function of Recognizer */
+    @Test
+    public void testStatement2S() throws Exception {
+        String test = "if -5/5+3<=1+1 then else";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.statement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Statement Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Sad Test 3 for statement function of Recognizer */
+    @Test
+    public void testStatement3S() throws Exception {
+        String test = "while -5/5+3<=1+1 do -5/5+3<=1+1";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.statement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Statement Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Sad Test 4 for statement function of Recognizer */
+    @Test
+    public void testStatement4S() throws Exception {
+        String test = "read (5)";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.statement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Match of ID found NUMBER instead Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Sad Test 5 for statement function of Recognizer */
+    @Test
+    public void testStatement5S() throws Exception {
+        String test = "write(ident[-5/5+3<=1+1]=-5/5+3<=1+1)";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.statement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Match of RPAREN found ASSIGNOP instead Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Sad Test 6 for statement function of Recognizer */
+    @Test
+    public void testStatement6S() throws Exception {
+        String test = "return";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.statement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Factor Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
     
     
     
