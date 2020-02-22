@@ -583,5 +583,38 @@ public class RecognizerTest {
         }
     }
     
+    /* Happy Test 1 for procedureStatement function of Recognizer */
+    @Test
+    public void testProcedureStatement1H() throws Exception {
+        String test = "ident(-5/5+3<=1+1,1+1,2)";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.procedureStatement();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for procedureStatement function of Recognizer */
+    @Test
+    public void testProcedureStatement1S() throws Exception {
+        String test = "((-5/5+3<=1+1,1+1,2))";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.procedureStatement();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Match of ID found LPAREN instead Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    
+    
+    
+    
+    
     
 }
