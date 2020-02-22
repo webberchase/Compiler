@@ -1061,6 +1061,35 @@ public class RecognizerTest {
         }
     }
     
+    /* Happy Test 1 for functionDefinition function of Recognizer */
+    @Test
+    public void testfunctionDefinition1H() throws Exception {
+        String test = "void fun(void ident, int ident2, float ident3) "
+                + "{int ident, ident1, ident2; return -5/5+3<=1+1}";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.functionDefinition();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for functionDefinition function of Recognizer */
+    @Test
+    public void testFunctionDefinition1S() throws Exception {
+        String test = "fun(void ident, int ident2, float ident3) "
+                + "{int ident, ident1, ident2; return -5/5+3<=1+1}";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.functionDefinition();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Type Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
     
     
     
