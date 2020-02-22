@@ -810,7 +810,7 @@ public class RecognizerTest {
     
     /* Happy Test 1 for statementList function of Recognizer */
     @Test
-    public void testStatement6H() throws Exception {
+    public void testStatementList1H() throws Exception {
         String test = "return -5/5+3<=1+1; return -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -822,7 +822,7 @@ public class RecognizerTest {
 
     /* Sad Test 1 for statementList function of Recognizer */
     @Test
-    public void testStatement6S() throws Exception {
+    public void testStatementList1S() throws Exception {
         String test = "return -5/5+3<=1+1;";
         Recognizer rec = new Recognizer(test, false);
 
@@ -888,6 +888,34 @@ public class RecognizerTest {
             fail("Yikes! The Sad Test didn't fail!!");
         } catch (Exception e) {
             String expected = "Match of ID found ENDOFFILE instead Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Happy Test 1 for declarations function of Recognizer */
+    @Test
+    public void testDeclarations1H() throws Exception {
+        String test = "int ident, ident1, ident2; int ident, ident1, ident2;";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.declarations();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+
+    /* Sad Test 1 for declarations function of Recognizer */
+    @Test
+    public void testDeclarations1S() throws Exception {
+        String test = "ident, ident1, ident2;";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.declarations();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "End of File Error!";
             assertEquals(expected, e.getMessage());
         }
     }
