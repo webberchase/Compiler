@@ -1091,6 +1091,94 @@ public class RecognizerTest {
         }
     }
     
+    /* Happy Test 1 for functionDefinitions function of Recognizer */
+    @Test
+    public void testfunctionDefinitions1H() throws Exception {
+        String test = "void fun(void ident, int ident2, float ident3) "
+                + "{int ident, ident1, ident2; return -5/5+3<=1+1} "
+                + "void fun(void ident, int ident2, float ident3) "
+                + "{int ident, ident1, ident2; return -5/5+3<=1+1}";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.functionDefinitions();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for functionDefinitions function of Recognizer */
+    @Test
+    public void testFunctionDefinitions1S() throws Exception {
+        String test = "void fun1(){} void fun2() {}";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.functionDefinitions();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Type Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+    /* Happy Test 1 for functionDeclaration function of Recognizer */
+    @Test
+    public void testfunctionDeclaration1H() throws Exception {
+        String test = "void fun(void ident, int ident2, float ident3)";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.functionDeclaration();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for functionDeclaration function of Recognizer */
+    @Test
+    public void testFunctionDeclaration1S() throws Exception {
+        String test = "void fun1()";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.functionDeclaration();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Type Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+	/* Happy Test 1 for functionDeclarations function of Recognizer */
+    @Test
+    public void testfunctionDeclarations1H() throws Exception {
+        String test = "void fun(void ident, int ident2, float ident3); "
+                + "void fun(void ident, int ident2, float ident3);";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.functionDeclarations();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+    
+    /* Sad Test 1 for functionDeclarations function of Recognizer */
+    @Test
+    public void testFunctionDeclarations1S() throws Exception {
+        String test = "fun(void ident, int ident2, float ident3)";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.functionDeclarations();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "End of File Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
     
     
     
