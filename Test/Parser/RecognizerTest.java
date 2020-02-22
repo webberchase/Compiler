@@ -808,6 +808,61 @@ public class RecognizerTest {
         }
     }
     
+    /* Happy Test 1 for statementList function of Recognizer */
+    @Test
+    public void testStatement6H() throws Exception {
+        String test = "return -5/5+3<=1+1; return -5/5+3<=1+1";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.statementList();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+
+    /* Sad Test 1 for statementList function of Recognizer */
+    @Test
+    public void testStatement6S() throws Exception {
+        String test = "return -5/5+3<=1+1;";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.statementList();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Statement Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
+    
+	/* Happy Test 1 for optionalStatements function of Recognizer */
+    @Test
+    public void testStatement6H() throws Exception {
+        String test = "return -5/5+3<=1+1; return -5/5+3<=1+1";
+        Recognizer rec = new Recognizer(test, false);
+        
+        rec.optionalStatements();
+        rec.isEnd();
+        
+        assertEquals(rec.getLookahead(), rec.getEND());
+    }
+
+    /* Sad Test 1 for optionalStatements function of Recognizer */
+    @Test
+    public void testStatement6S() throws Exception {
+        String test = "void";
+        Recognizer rec = new Recognizer(test, false);
+
+        try {
+            rec.statementList();
+            rec.isEnd();
+            fail("Yikes! The Sad Test didn't fail!!");
+        } catch (Exception e) {
+            String expected = "Statement Error!";
+            assertEquals(expected, e.getMessage());
+        }
+    }
     
     
     
