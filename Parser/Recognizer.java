@@ -428,12 +428,12 @@ public class Recognizer {
 					case LSQUARE:
 						match(TokenType.LSQUARE);
 						expression();
-						match(TokenType.LSQUARE);
+						match(TokenType.RSQUARE);
 						break;
 					case LPAREN:
 						match(TokenType.LPAREN);
 						expressionList();
-						match(TokenType.LPAREN);
+						match(TokenType.RPAREN);
 						break;
 					default:
 						// Lambda option!
