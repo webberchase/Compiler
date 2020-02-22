@@ -584,7 +584,7 @@ public class Recognizer {
 		}
 		else {
 			error("Match of " + expected + " found " + 
-					this.lookahead.getType() + "instead.");
+					this.lookahead.getType() + " instead");
 		}
 	}
 
