@@ -8,14 +8,14 @@ Chase Webber
 ## Compiler Directory: 
 
 ### Scanner/
-Contains all scanner files \n
+- Contains all scanner files
 - **Scanner.jflex:** jflex file which includes lexical rules to build a scanner class using jflex.jar 
 - **Scanner.java:** class created by jflex
 - **Token.java:** class to create token objects when scanning
 - **TokenType:** enumerated list of possible Token Types
 
 ### Parser/
-Contains the Recognizer \n
+- Contains the Recognizer
 - **Recognizer.java:** determines if a given string conforms to the specified grammar 
 
 ### Test/
@@ -35,6 +35,7 @@ Explains the project design and functionality
 #### Grammar.pdf
 "Almost C Grammar" defining production rules and lexical conventions
 
+## Tools:
 
 #### JFlex: 
 * Download JFlex from https://www.jflex.de/download.html
