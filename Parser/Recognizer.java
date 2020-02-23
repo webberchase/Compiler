@@ -692,7 +692,7 @@ public class Recognizer {
 	/**
 	 * Errors out of the parser.Prints an error message (and then exits the program?).  
 	 * @param message The error message to print.
-         * @throws java.lang.Exception 
+	 * @throws java.lang.Exception 
 	 */
 	public void error(String message) throws Exception {
 		System.out.println("Error " + message + " at line " +
