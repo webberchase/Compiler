@@ -108,4 +108,4 @@
 - Some methods are tested more than once to check various cases. 
 - These are generally in the opposite order from how they are organized in Recognizer.java : the methods at the beginning of the Class are found at the end of the Test. 
 - Tests were created from most basic to most complicated : those methods which called few if any other functions to methods which call or can call many other functions.
-- There are 80 total tests, all Happy and Sad tests are grouped by the function they are testing.  
+- All Happy and Sad tests are grouped by the function they are testing.  
