@@ -2,6 +2,13 @@
 ###### CSC 451
 @author Chase Webber
 
+# FIXME
+- Comments are not handled correctly by scanner
+	- Fix this in jflex file
+	- Develop tests for this in TestScanner
+	- Add comments to ProgramHappy1.txt and ProgramSad1.txt
+- Recognizer's file reader is not working properly in constructor method
+- The grammar itself may have some flaws, make sure we're using the most recently updated PDF. 
 
 ## SCANNER 
 
@@ -109,3 +116,4 @@
 - These are generally in the opposite order from how they are organized in Recognizer.java : the methods at the beginning of the Class are found at the end of the Test. 
 - Tests were created from most basic to most complicated : those methods which called few if any other functions to methods which call or can call many other functions.
 - All Happy and Sad tests are grouped by the function they are testing.  
+- ***FIXME:*** Recognizer's file reader is not working properly... Fix this and re-format program tests. 
