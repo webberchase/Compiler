@@ -29,6 +29,7 @@ public class Recognizer {
 	private Scanner scanner;
 	private final Token END = new Token("END", TokenType.ENDOFFILE); 
 	
+	
 	/***** CONSTRUCTOR *****/
 	
 	/**
@@ -41,7 +42,7 @@ public class Recognizer {
 		if (isFilename) {
 			FileInputStream fis = null;
 			try {
-				fis = new FileInputStream("expressions/simplest.pas");
+				fis = new FileInputStream(text);
 			} catch (FileNotFoundException e) {
 				error("No file!");
 			}
@@ -57,6 +58,7 @@ public class Recognizer {
 			error("Scan error!");
 		}
 	}
+
 
 	/***** METHODS *****/
 	
@@ -243,7 +245,7 @@ public class Recognizer {
 	}
 	
 	/**
-	 * Executes the rule for the statement non-terminal symbol.NOTE: procedureStatement is ommitted for now.
+	 * Executes the rule for the statement non-terminal symbol.
 	 * NOTE: procedureStatement is ommitted for now.
 	 * @throws java.lang.Exception
 	 */
@@ -521,7 +523,6 @@ public class Recognizer {
 		}
 	}
 	
-	
 	/**
 	 * Executes the rule for the mulop non-terminal symbol. 
 	 * @throws java.lang.Exception
@@ -540,7 +541,6 @@ public class Recognizer {
 	}
 	
 	
-
 	/***** HELPER FUNCTIONS *****/
 
 	/**
@@ -572,12 +572,12 @@ public class Recognizer {
 		System.out.println("match( " + expected + ")");
 		if (this.lookahead.getType() == expected) {
 			try {
-                            this.lookahead = scanner.nextToken();
-                            Token temp = this.lookahead;
-                            while (temp == null) {
-                                this.lookahead = scanner.nextToken();
-                                temp = this.lookahead;
-                            }
+				this.lookahead = scanner.nextToken();
+				Token temp = this.lookahead;
+				while (temp == null) {
+					this.lookahead = scanner.nextToken();
+					temp = this.lookahead;
+				}
 			} catch (IOException e) {
 				error("Scanner exception");
 			}
@@ -695,10 +695,13 @@ public class Recognizer {
 	 * @throws java.lang.Exception 
 	 */
 	public void error(String message) throws Exception {
-		System.out.println("Error " + message + " at line " +
-				this.scanner.getLine() + " column " +
-				this.scanner.getColumn());
-                throw new java.io.IOException(message + " Error!");
+		System.out.println("Error " + message); 
+		if (!this.scanner.equals(null)) {
+			System.out.println(" at line " +
+					this.scanner.getLine() + " column " +
+					this.scanner.getColumn());
+		}
+		throw new java.io.IOException(message + " Error!");
 	}
 	
 }
