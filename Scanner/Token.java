@@ -1,3 +1,5 @@
+package scanner;
+
 /**
  * Token Class for use with Scanner.jflex
  * CSC 451
@@ -14,7 +16,7 @@
 	 */
 	public Token(String lexeme, TokenType type) {
 		this.setLexeme(lexeme); 
-		this.setTT(type);
+		this.setType(type);
 	}
 	
 	/** 
@@ -29,9 +31,18 @@
 	 * Setter method - defines this token's Token Type. 
 	 * @param tt The Token Type
 	 */
-	public void setTT(TokenType tt) {
+	public void setType(TokenType tt) {
 		this.type = tt;
 	}
+	
+	/** 
+	 * Getter method - returns this token's Token Type. 
+	 * @return The Token Type
+	 */
+	public TokenType getType() {
+		return this.type;
+	}
+	
 	
 	@Override 
 	public boolean equals(Object o) {

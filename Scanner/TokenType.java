@@ -1,3 +1,5 @@
+package scanner;
+
 /**
  * TokenTpe enum - these are the possible Token Types! 
  * CSC 451
@@ -20,28 +22,35 @@ public enum TokenType {
 	FUNC, 
 	PROGRAM, 
 	END, 
+	VOID, 
+	MAIN,
+	THEN,
+	DO,
+	WRITE,
 	
 	/* SYMBOLS */	
 	SEMICOLON, 		// ;
+	COMMA,			// ,
 	LPAREN, 		// (
 	RPAREN,			// )
 	LSQUARE, 		// [
 	RSQUARE, 		// ]
 	LCURLY, 		// {
 	RCURLY, 		// }
-	EQUALS, 		// =
+	ASSIGNOP, 		// =
 	PLUS, 			// +
 	MINUS, 			// -
 	TIMES,			// *
-	DIVIDEBY,		// /
+	DIVIDEDBY,		// /
 	LESSTHAN, 		// <
 	GREATERTHAN, 	// >
 	LESSEQUAL, 		// <=
 	GREATEQUAL, 	// >=
 	NOTEQUAL, 		// !=
+	EQUAL,			// ==
 	AND, 			// &&
 	OR, 			// ||
 	NOT, 			// !
-	
-	TRASH, 			// unknown symbol
+        
+    ENDOFFILE,
 }

@@ -1,0 +1,51 @@
+Lexigraphical rules for a small C-like language
+
+Just like Java, numbers consist of a string of digits alternately
+followed by a period and more digits. Numbers may also have a
+trailing power of 10 indicated by an 'E' or 'e' followed by a
++ or - or neither followed by more digits.
+
+Similar to Java, identifiers consist of a string of letters or
+digits, but must begin with a letter
+
+Also just like Java, comments may be either // to the end of the
+line, or anything between /*  and */.
+
+KEYWORDS
+________
+char
+int
+float
+
+if
+else
+while
+print
+read
+return
+func
+program
+end
+
+SYMBOLS
+_______
+;
+(
+)
+[
+]
+{
+}
+=
++
+-
+*
+/
+<
+>
+<=
+>=
+!=
+&&
+||
+!
