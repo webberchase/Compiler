@@ -1,0 +1,26 @@
+// Variable
+ident[-5/5+3<=1+1] 
+
+// Expression
+-5/5+3<=1+1
+
+// Procedure statement
+ident(-5/5+3<=1+1,1+1,2)
+
+// Statement
+ident[-5/5+3<=1+1]=-5/5+3<=1+1
+
+// Statement list
+return -5/5+3<=1+1; return -5/5+3<=1+1
+
+// identifier list
+ident, ident1, ident2
+
+// Declarations
+int ident, ident1, ident2; int ident, ident1, ident2;
+
+// parameter list
+void ident, int ident2, float ident3
+
+// compound statement
+{int ident, ident1, ident2; return -5/5+3<=1+1; return -5/5+3<=1+1}
