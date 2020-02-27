@@ -262,5 +262,5 @@ oneline 		= "//" .* \n
 
 .				{
 					//System.out.println("Found an illegal character: " + yytext());
-					throw new java.io.IOException("Illegal Character!");
+					throw new RuntimeException("Illegal Character!");
 				}
