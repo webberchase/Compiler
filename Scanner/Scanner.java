@@ -623,7 +623,7 @@ public class Scanner {
         switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
           case 1: 
             { //System.out.println("Found an illegal character: " + yytext());
-					throw new java.io.IOException("Illegal Character!");
+					throw new RuntimeException("Illegal Character!");
             } 
             // fall through
           case 9: break;
