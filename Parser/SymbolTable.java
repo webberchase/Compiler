@@ -1,10 +1,15 @@
 package parser;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
 
 
 /**
- * 
+ * Creates a Symbol Table for keeping track of IDs.
+ * Used by the Recognizer
+ * CSC 451 Compilers
  * @author Chase Webber
  */
 public class SymbolTable {
@@ -139,6 +144,35 @@ public class SymbolTable {
         INT,
         FLOAT,
     }
+    
+    
+    public String toString() {
+        String result = "";
+        int rowCount = 0;
+        
+        Set set = st.entrySet();
+        Iterator iterator = set.iterator();
+
+        while(iterator.hasNext()) {
+           Map.Entry entry = (Map.Entry)iterator.next();
+           String key = entry.getKey().toString();
+           STRow row = (STRow)entry.getValue();
+           
+           if (!key.equals(row.ID)) {
+               error("IDs don't match (in toString)");
+           }
+           
+           result += " - ROW " + rowCount + " -\n";
+           result += "ID: " + row.ID + ", ";
+           result += "kind: " + row.kind + ", ";
+           result += "type: " + row.type + ".\n";
+           
+           rowCount++;
+        }
+        
+        return result;
+    }
+
     
     /**
 	 * Errors out of the symbol Table.Prints an error message 
