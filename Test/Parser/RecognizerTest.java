@@ -42,12 +42,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** sign()
-     * @throws java.lang.Exception *****/
+	/***** sign() *****/
     
     /* Happy Test for sign function */
     @Test
-    public void signHappy() throws Exception {
+    public void signHappy() {
         String test = "+\n-";
         Recognizer rec = new Recognizer(test, false);
         
@@ -60,7 +59,7 @@ public class RecognizerTest {
     
     /* Sad Test for sign function */
     @Test
-    public void signSad() throws Exception {
+    public void signSad() {
         String test = "/";
         Recognizer rec = new Recognizer(test, false);
         
@@ -75,12 +74,11 @@ public class RecognizerTest {
     }
 
 
-	/***** relop()
-     * @throws java.lang.Exception *****/
+	/***** relop() *****/
 
     /* Happy Test for relop function */
     @Test
-    public void relopHappy() throws Exception {
+    public void relopHappy() {
         String test = "<=\n==";
         Recognizer rec = new Recognizer(test, false);
         
@@ -93,7 +91,7 @@ public class RecognizerTest {
     
     /* Sad Test for relop function */
     @Test
-    public void relopSad() throws Exception {
+    public void relopSad() {
         String test = "=";
         Recognizer rec = new Recognizer(test, false);
         
@@ -108,12 +106,11 @@ public class RecognizerTest {
     }
  
  
- 	/***** addop()
-     * @throws java.lang.Exception *****/
+ 	/***** addop() *****/
 
     /* Happy Test for addop function */
     @Test
-    public void addopHappy() throws Exception {
+    public void addopHappy() {
         String test = "+\n+";
         Recognizer rec = new Recognizer(test, false);
         
@@ -126,7 +123,7 @@ public class RecognizerTest {
    
     /* Sad Test for addop function */
     @Test
-    public void addopSad() throws Exception {
+    public void addopSad() {
         String test = "*";
         Recognizer rec = new Recognizer(test, false);
         
@@ -141,12 +138,11 @@ public class RecognizerTest {
     }
    
    
-	/***** mulop()
-     * @throws java.lang.Exception *****/
+	/***** mulop() *****/
    
     /* Happy Test for mulop function */
     @Test
-    public void mulopHappy() throws Exception {
+    public void mulopHappy() {
         String test = "/\n*";
         Recognizer rec = new Recognizer(test, false);
         
@@ -159,7 +155,7 @@ public class RecognizerTest {
     
     /* Sad Test for mulop function */
     @Test
-    public void mulopSad() throws Exception {
+    public void mulopSad() {
         String test = "+";
         Recognizer rec = new Recognizer(test, false);
 
@@ -174,12 +170,11 @@ public class RecognizerTest {
     }
 
 
-	/***** factor()
-     * @throws java.lang.Exception *****/
+	/***** factor() *****/
 
     /* Happy Test 1 for factor function */
     @Test
-    public void factorHappy1() throws Exception {
+    public void factorHappy1() {
         String test = "ident";
         Recognizer rec = new Recognizer(test, false);
         
@@ -191,7 +186,7 @@ public class RecognizerTest {
     
     /* Happy Test 2 for factor function */
     @Test
-    public void factorHappy2() throws Exception {
+    public void factorHappy2() {
         String test = "!5";
         Recognizer rec = new Recognizer(test, false);
         
@@ -203,7 +198,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for factor function */
     @Test
-    public void factorSad1() throws Exception {
+    public void factorSad1() {
         String test = "+";
         Recognizer rec = new Recognizer(test, false);
 
@@ -219,7 +214,7 @@ public class RecognizerTest {
 
     /* Sad Test 2 for factor function */
     @Test
-    public void factorSad2() throws Exception {
+    public void factorSad2() {
         String test = "!";
         Recognizer rec = new Recognizer(test, false);
 
@@ -234,12 +229,11 @@ public class RecognizerTest {
     }
  
  
- 	/***** termPart()
-     * @throws java.lang.Exception *****/
+ 	/***** termPart() *****/
 
     /* Happy Test 1 for termPart function */
     @Test
-    public void termPartHappy1() throws Exception {
+    public void termPartHappy1() {
         String test = "*3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -251,7 +245,7 @@ public class RecognizerTest {
     
     /* Happy Test 2 for termPart function */
     @Test
-    public void termPartHappy2() throws Exception {
+    public void termPartHappy2() {
         String test = "*3*!5";
         Recognizer rec = new Recognizer(test, false);
         
@@ -263,7 +257,7 @@ public class RecognizerTest {
 
     /* Sad Test 1 for termPart function */
     @Test
-    public void termPartSad1() throws Exception {
+    public void termPartSad1() {
         String test = "**5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -279,7 +273,7 @@ public class RecognizerTest {
     
     /* Sad Test 2 for termPart function */
     @Test
-    public void termPartSad2() throws Exception {
+    public void termPartSad2() {
         String test = "*3*+5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -294,12 +288,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** term()
-     * @throws java.lang.Exception *****/
+	/***** term() *****/
 
     /* Happy Test 1 for term function */
     @Test
-    public void termHappy1() throws Exception {
+    public void termHappy1() {
         String test = "ident*3*!5";
         Recognizer rec = new Recognizer(test, false);
         
@@ -311,7 +304,7 @@ public class RecognizerTest {
     
     /* Happy Test 2 for term function */
     @Test
-    public void termHappy2() throws Exception {
+    public void termHappy2() {
         String test = "ident";
         Recognizer rec = new Recognizer(test, false);
         
@@ -323,7 +316,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for term function */
     @Test
-    public void termSad1() throws Exception {
+    public void termSad1() {
         String test = "*3";
         Recognizer rec = new Recognizer(test, false);
 
@@ -339,7 +332,7 @@ public class RecognizerTest {
     
     /* Sad Test 2 for term function */
     @Test
-    public void termSad2() throws Exception {
+    public void termSad2() {
         String test = "3*/";
         Recognizer rec = new Recognizer(test, false);
 
@@ -354,12 +347,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** simplePart()
-     * @throws java.lang.Exception *****/
+	/***** simplePart() *****/
 
     /* Happy Test 1 for simplePart function */
     @Test
-    public void simplePartHappy1() throws Exception {
+    public void simplePartHappy1() {
         String test = "+ident";
         Recognizer rec = new Recognizer(test, false);
         
@@ -371,7 +363,7 @@ public class RecognizerTest {
     
     /* Happy Test 2 for simplePart function */
     @Test
-    public void simplePartHappy2() throws Exception {
+    public void simplePartHappy2() {
         String test = "+3+5*ident";
         Recognizer rec = new Recognizer(test, false);
         
@@ -383,7 +375,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for simplePart function */
     @Test
-    public void simplePartSad1() throws Exception {
+    public void simplePartSad1() {
         String test = "++5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -399,7 +391,7 @@ public class RecognizerTest {
     
     /* Sad Test 2 for simplePart function */
     @Test
-    public void simplePartSad2() throws Exception {
+    public void simplePartSad2() {
         String test = "+3*+5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -415,7 +407,7 @@ public class RecognizerTest {
     
     /* Sad Test 3 for simplePart function */
     @Test
-    public void simplePartSad3() throws Exception {
+    public void simplePartSad3() {
         String test = "<";
         Recognizer rec = new Recognizer(test, false);
 
@@ -430,12 +422,11 @@ public class RecognizerTest {
     }
 	
 	
-	/***** simpleExpression()
-     * @throws java.lang.Exception *****/
+	/***** simpleExpression() *****/
 
     /* Happy Test 1 for simpleExpression function */
     @Test
-    public void simpleExpressionHappy1() throws Exception {
+    public void simpleExpressionHappy1() {
         String test = "-5*5+3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -447,7 +438,7 @@ public class RecognizerTest {
     
     /* Happy Test 2 for simpleExpression function */
     @Test
-    public void simpleExpressionHappy2() throws Exception {
+    public void simpleExpressionHappy2() {
         String test = "-5+5*3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -459,7 +450,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for simpleExpression function */
     @Test
-    public void simpleExpressionSad1() throws Exception {
+    public void simpleExpressionSad1() {
         String test = "+3*/5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -475,7 +466,7 @@ public class RecognizerTest {
     
     /* Sad Test 2 for simpleExpression function */
     @Test
-    public void simpleExpressionSad2() throws Exception {
+    public void simpleExpressionSad2() {
         String test = "++3+5";
         Recognizer rec = new Recognizer(test, false);
 
@@ -491,7 +482,7 @@ public class RecognizerTest {
     
     /* Sad Test 3 for simpleExpression function */
     @Test
-    public void simpleExpressionSad3() throws Exception {
+    public void simpleExpressionSad3() {
         String test = "-5/5+3<";
         Recognizer rec = new Recognizer(test, false);
 
@@ -506,12 +497,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** expression()
-     * @throws java.lang.Exception *****/
+	/***** expression() *****/
 
     /* Happy Test 1 for expression function */
     @Test
-    public void expressionHappy1() throws Exception {
+    public void expressionHappy1() {
         String test = "-5/5+3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -523,7 +513,7 @@ public class RecognizerTest {
     
     /* Happy Test 2 for expression function */
     @Test
-    public void expressionHappy2() throws Exception {
+    public void expressionHappy2() {
         String test = "-5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -535,7 +525,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for expression function */
     @Test
-    public void expressionSad1() throws Exception {
+    public void expressionSad1() {
         String test = "<=-5/5+3";
         Recognizer rec = new Recognizer(test, false);
 
@@ -551,7 +541,7 @@ public class RecognizerTest {
     
     /* Sad Test 2 for expression function */
     @Test
-    public void expressionSad2() throws Exception {
+    public void expressionSad2() {
         String test = "-5<=-5/5+3<";
         Recognizer rec = new Recognizer(test, false);
 
@@ -566,12 +556,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** expressionList()
-     * @throws java.lang.Exception *****/
+	/***** expressionList() *****/
 
     /* Happy Test 1 for expressionList function */
     @Test
-    public void expressionListHappy1() throws Exception {
+    public void expressionListHappy1() {
         String test = "-5/5+3<=1+1,2";
         Recognizer rec = new Recognizer(test, false);
         
@@ -583,7 +572,7 @@ public class RecognizerTest {
     
     /* Happy Test 2 for expressionList function */
     @Test
-    public void expressionListHappy2() throws Exception {
+    public void expressionListHappy2() {
         String test = "-5/5+3<=1+1,1+1,2";
         Recognizer rec = new Recognizer(test, false);
         
@@ -595,7 +584,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for expressionList function */
     @Test
-    public void expressionListSad1() throws Exception {
+    public void expressionListSad1() {
         String test = "-5/5+3<=1+1;1+1,2";
         Recognizer rec = new Recognizer(test, false);
 
@@ -611,7 +600,7 @@ public class RecognizerTest {
     
     /* Sad Test 2 for expressionList function */
     @Test
-    public void expressionListSad2() throws Exception {
+    public void expressionListSad2() {
         String test = "-5/5+3<=1+1,1+1,";
         Recognizer rec = new Recognizer(test, false);
 
@@ -626,12 +615,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** procedureStatement()
-     * @throws java.lang.Exception *****/
+	/***** procedureStatement() *****/
 
     /* Happy Test 1 for procedureStatement function */
     @Test
-    public void procedureStatementHappy1() throws Exception {
+    public void procedureStatementHappy1() {
         String test = "ident(-5/5+3<=1+1,1+1,2)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -643,7 +631,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for procedureStatement function */
     @Test
-    public void procedureStatementSad1() throws Exception {
+    public void procedureStatementSad1() {
         String test = "((-5/5+3<=1+1,1+1,2))";
         Recognizer rec = new Recognizer(test, false);
 
@@ -658,12 +646,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** variable()
-     * @throws java.lang.Exception *****/
+	/***** variable() *****/
 
     /* Happy Test 1 for variable function */
     @Test
-    public void variableHappy1() throws Exception {
+    public void variableHappy1() {
         String test = "ident[-5/5+3<=1+1]";
         Recognizer rec = new Recognizer(test, false);
         
@@ -675,7 +662,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for variable function */
     @Test
-    public void variableSad1() throws Exception {
+    public void variableSad1() {
         String test = "ident[-5/5+3<=1+1,1+1,2]";
         Recognizer rec = new Recognizer(test, false);
 
@@ -690,12 +677,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** statement()
-     * @throws java.lang.Exception *****/
+	/***** statement() *****/
 
     /* Happy Test 1 for statement function */
     @Test
-    public void statementHappy1() throws Exception {
+    public void statementHappy1() {
         String test = "ident[-5/5+3<=1+1]=-5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -707,7 +693,7 @@ public class RecognizerTest {
     
     /* Happy Test 2 for statement function */
     @Test
-    public void statementHappy2() throws Exception {
+    public void statementHappy2() {
         String test = "if -5/5+3<=1+1 then ident[-5/5+3<=1+1]=-5/5+3<=1+1 "
                 + "else ident[-5/5+3<=1+1]=-5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
@@ -720,7 +706,7 @@ public class RecognizerTest {
     
     /* Happy Test 3 for statement function */
     @Test
-    public void statementHappy3() throws Exception {
+    public void statementHappy3() {
         String test = "while -5/5+3<=1+1 do ident[-5/5+3<=1+1]=-5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -732,7 +718,7 @@ public class RecognizerTest {
     
     /* Happy Test 4 for statement function */
     @Test
-    public void statementHappy4() throws Exception {
+    public void statementHappy4() {
         String test = "read (id)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -744,7 +730,7 @@ public class RecognizerTest {
 
     /* Happy Test 5 for statement function */
     @Test
-    public void statementHappy5() throws Exception {
+    public void statementHappy5() {
         String test = "write(-5/5+3<=1+1)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -756,7 +742,7 @@ public class RecognizerTest {
 	
 	/* Happy Test 6 for statement function */
     @Test
-    public void statementHappy6() throws Exception {
+    public void statementHappy6() {
         String test = "return -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -768,7 +754,7 @@ public class RecognizerTest {
 
     /* Sad Test 1 for statement function */
     @Test
-    public void statementSad1() throws Exception {
+    public void statementSad1() {
         String test = "ident[-5/5+3<=1+1]=";
         Recognizer rec = new Recognizer(test, false);
 
@@ -784,7 +770,7 @@ public class RecognizerTest {
     
     /* Sad Test 2 for statement function */
     @Test
-    public void statementSad2() throws Exception {
+    public void statementSad2() {
         String test = "if -5/5+3<=1+1 then else";
         Recognizer rec = new Recognizer(test, false);
 
@@ -800,7 +786,7 @@ public class RecognizerTest {
     
     /* Sad Test 3 for statement function */
     @Test
-    public void statementSad3() throws Exception {
+    public void statementSad3() {
         String test = "while -5/5+3<=1+1 do -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
 
@@ -816,7 +802,7 @@ public class RecognizerTest {
     
     /* Sad Test 4 for statement function */
     @Test
-    public void statementSad4() throws Exception {
+    public void statementSad4() {
         String test = "read (5)";
         Recognizer rec = new Recognizer(test, false);
 
@@ -832,7 +818,7 @@ public class RecognizerTest {
     
     /* Sad Test 5 for statement function */
     @Test
-    public void statementSad5() throws Exception {
+    public void statementSad5() {
         String test = "write(ident[-5/5+3<=1+1]=-5/5+3<=1+1)";
         Recognizer rec = new Recognizer(test, false);
 
@@ -848,7 +834,7 @@ public class RecognizerTest {
     
     /* Sad Test 6 for statement function */
     @Test
-    public void statementSad6() throws Exception {
+    public void statementSad6() {
         String test = "return";
         Recognizer rec = new Recognizer(test, false);
 
@@ -863,12 +849,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** statementList()
-     * @throws java.lang.Exception *****/
+	/***** statementList() *****/
 
     /* Happy Test 1 for statementList function */
     @Test
-    public void statementListHappy1() throws Exception {
+    public void statementListHappy1() {
         String test = "return -5/5+3<=1+1; return -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -880,7 +865,7 @@ public class RecognizerTest {
 
 /* Happy Test 2 for statementList function */
     @Test
-    public void statementListHappy2() throws Exception {
+    public void statementListHappy2() {
         String test = 
 				"john = -5/5+3 <= 1+1;\n" +
 				"id[1+1] = 5/5+3<=2;\n" +
@@ -907,7 +892,7 @@ public class RecognizerTest {
 
     /* Sad Test 1 for statementList function */
     @Test
-    public void statementListSad1() throws Exception {
+    public void statementListSad1() {
         String test = "return -5/5+3<=1+1;";
         Recognizer rec = new Recognizer(test, false);
 
@@ -923,7 +908,7 @@ public class RecognizerTest {
     
 	/* Sad Test 2 for statementList function */
     @Test
-    public void statementListSad2() throws Exception {
+    public void statementListSad2() {
         String test = 
 				"john = -5/5+3 <= 1+1;\n" +
 				"id[1+1] = 5/5+3<=2;\n" +
@@ -951,12 +936,11 @@ public class RecognizerTest {
         }
     }
 	
-	/***** optionalStatements()
-     * @throws java.lang.Exception *****/
+	/***** optionalStatements() *****/
 
     /* Happy Test 1 for optionalStatements function */
     @Test
-    public void optionalStatementsHappy1() throws Exception {
+    public void optionalStatementsHappy1() {
         String test = "return -5/5+3<=1+1; return -5/5+3<=1+1";
         Recognizer rec = new Recognizer(test, false);
         
@@ -968,7 +952,7 @@ public class RecognizerTest {
 
     /* Sad Test 1 for optionalStatements function */
     @Test
-    public void optionalStatementsSad1() throws Exception {
+    public void optionalStatementsSad1() {
         String test = "void";
         Recognizer rec = new Recognizer(test, false);
 
@@ -983,12 +967,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** identifierList()
-     * @throws java.lang.Exception *****/
+	/***** identifierList() *****/
 
     /* Happy Test 1 for identifierList function */
     @Test
-    public void identifierListHappy1() throws Exception {
+    public void identifierListHappy1() {
         String test = "ident, ident1, ident2";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1000,7 +983,7 @@ public class RecognizerTest {
 
     /* Sad Test 1 for identifierList function */
     @Test
-    public void identifierListSad1() throws Exception {
+    public void identifierListSad1() {
         String test = "ident,";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1015,12 +998,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** declarations()
-     * @throws java.lang.Exception *****/
+	/***** declarations() *****/
 
     /* Happy Test 1 for declarations function */
     @Test
-    public void declarationsHappy1() throws Exception {
+    public void declarationsHappy1() {
         String test = "int ident, ident1, ident2; int ident, ident1, ident2;";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1032,7 +1014,7 @@ public class RecognizerTest {
 
     /* Sad Test 1 for declarations function */
     @Test
-    public void declarationsSad1() throws Exception {
+    public void declarationsSad1() {
         String test = "ident, ident1, ident2;";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1047,12 +1029,11 @@ public class RecognizerTest {
     }
 	
 	
-	/***** compoundStatement()
-     * @throws java.lang.Exception *****/
+	/***** compoundStatement() *****/
 
 	/* Happy Test 1 for compoundStatement function */
     @Test
-    public void compoundStatementHappy1() throws Exception {
+    public void compoundStatementHappy1() {
         String test = "{int ident, ident1, ident2; return -5/5+3<=1+1; "
                 + "return -5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
@@ -1065,7 +1046,7 @@ public class RecognizerTest {
     
     /* Happy Test 2 for compoundStatement function */
     @Test
-    public void compoundStatementHappy2() throws Exception {
+    public void compoundStatementHappy2() {
         String test = "{return -5/5+3<=1+1; return -5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1077,7 +1058,7 @@ public class RecognizerTest {
     
     /* Happy Test 3 for compoundStatement function */
     @Test
-    public void compoundStatementHappy3() throws Exception {
+    public void compoundStatementHappy3() {
         String test = "{}";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1089,7 +1070,7 @@ public class RecognizerTest {
 
     /* Sad Test 1 for compoundStatement function */
     @Test
-    public void compoundStatementSad1() throws Exception {
+    public void compoundStatementSad1() {
         String test = "{-5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1105,7 +1086,7 @@ public class RecognizerTest {
     
     /* Sad Test 2 for compoundStatement function */
     @Test
-    public void compoundStatementSad2() throws Exception {
+    public void compoundStatementSad2() {
         String test = "{ident[-5/5+3<=1+1]}";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1121,7 +1102,7 @@ public class RecognizerTest {
     
     /* Sad Test 3 for compoundStatement function */
     @Test
-    public void compoundStatementSad3() throws Exception {
+    public void compoundStatementSad3() {
         String test = "{return -5/5+3<=1+1;";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1136,12 +1117,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** parameterList()
-     * @throws java.lang.Exception *****/
+	/***** parameterList() *****/
 
     /* Happy Test 1 for parameterList function */
     @Test
-    public void parameterListHappy1() throws Exception {
+    public void parameterListHappy1() {
         String test = "void ident, int ident2, float ident3";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1153,7 +1133,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for parameterList function */
     @Test
-    public void parameterListSad1() throws Exception {
+    public void parameterListSad1() {
         String test = "void ident, int ident2, float ident3,";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1168,12 +1148,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** parameters()
-     * @throws java.lang.Exception *****/
+	/***** parameters() *****/
 
     /* Happy Test 1 for parameters function */
     @Test
-    public void parametersHappy1() throws Exception {
+    public void parametersHappy1() {
         String test = "(void ident, int ident2, float ident3)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1185,7 +1164,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for parameters function */
     @Test
-    public void parametersSad1() throws Exception {
+    public void parametersSad1() {
         String test = "()";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1200,12 +1179,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** functionDefinition()
-     * @throws java.lang.Exception *****/
+	/***** functionDefinition() *****/
 
     /* Happy Test 1 for functionDefinition function */
     @Test
-    public void functionDefinitionHappy1() throws Exception {
+    public void functionDefinitionHappy1() {
         String test = "void fun(void ident, int ident2, float ident3) "
                 + "{int ident, ident1, ident2; return -5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
@@ -1218,7 +1196,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for functionDefinition function */
     @Test
-    public void functionDefinitionSad1() throws Exception {
+    public void functionDefinitionSad1() {
         String test = "fun(void ident, int ident2, float ident3) "
                 + "{int ident, ident1, ident2; return -5/5+3<=1+1}";
         Recognizer rec = new Recognizer(test, false);
@@ -1234,12 +1212,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** functionDefinitions()
-     * @throws java.lang.Exception *****/
+	/***** functionDefinitions() *****/
 
     /* Happy Test 1 for functionDefinitions function */
     @Test
-    public void functionDefinitionsHappy1() throws Exception {
+    public void functionDefinitionsHappy1() {
         String test = "void fun(void ident, int ident2, float ident3) "
                 + "{int ident, ident1, ident2; return -5/5+3<=1+1} "
                 + "void fun(void ident, int ident2, float ident3) "
@@ -1254,7 +1231,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for functionDefinitions function */
     @Test
-    public void functionDefinitionsSad1() throws Exception {
+    public void functionDefinitionsSad1() {
         String test = "void fun1(){} void fun2() {}";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1269,12 +1246,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** functionDeclaration()
-     * @throws java.lang.Exception *****/
+	/***** functionDeclaration() *****/
 
     /* Happy Test 1 for functionDeclaration function */
     @Test
-    public void functionDeclarationHappy1() throws Exception {
+    public void functionDeclarationHappy1() {
         String test = "void fun(void ident, int ident2, float ident3)";
         Recognizer rec = new Recognizer(test, false);
         
@@ -1286,7 +1262,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for functionDeclaration function */
     @Test
-    public void functionDeclarationSad1() throws Exception {
+    public void functionDeclarationSad1() {
         String test = "void fun1()";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1301,12 +1277,11 @@ public class RecognizerTest {
     }
     
 	
-	/***** functionDeclarations()
-     * @throws java.lang.Exception *****/
+	/***** functionDeclarations() *****/
 
 	/* Happy Test 1 for functionDeclarations function */
     @Test
-    public void functionDeclarationsHappy1() throws Exception {
+    public void functionDeclarationsHappy1() {
         String test = "void fun(void ident, int ident2, float ident3); "
                 + "void fun(void ident, int ident2, float ident3);";
         Recognizer rec = new Recognizer(test, false);
@@ -1319,7 +1294,7 @@ public class RecognizerTest {
     
     /* Sad Test 1 for functionDeclarations function */
     @Test
-    public void functionDeclarationsSad1() throws Exception {
+    public void functionDeclarationsSad1() {
         String test = "fun(void ident, int ident2, float ident3)";
         Recognizer rec = new Recognizer(test, false);
 
@@ -1334,119 +1309,13 @@ public class RecognizerTest {
     }
     
     
-    /***** program()
-	 * NOTE: Recognizer's file reader doesn't function yet... 
-	 * @throws java.lang.Exception *****/
+    /***** program() *****/
 	
     /* Happy Test 1 for program function */
     @Test
-    public void programHappy1() throws Exception {
-        String test = "void john (void ident, int ident2, float ident3);\n" +
-"int rachael (void ident); \n" +
-"float bruce (int ident2, float ident3);\n" +
-"\n" +
-"main() {\n" +
-"\n" +
-"	int id1, id2, id3; \n" +
-"	float id4;\n" +
-"	\n" +
-"	john = -5/5+3 <= 1+1;\n" +
-"	id[1+1] = 5/5+3<=2;\n" +
-"	\n" +
-"	{\n" +
-"		int id1, id2, id3; \n" +
-"		float id4;\n" +
-"		\n" +
-"		john = -5/5+3 <= 1+1;\n" +
-"		id[1+1] = 5/5+3<=2;\n" +
-"				\n" +
-"		if -5/5+3 <= 1+1 \n" +
-"			then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"			else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"			\n" +
-"		while -5/5+3 <= 1+1 do \n" +
-"			ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"			\n" +
-"		read(id);\n" +
-"		write(-5/5+3 <= 1+1);\n" +
-"		\n" +
-"		return -5/5+3 <= 1+1\n" +
-"	};	\n" +
-"	\n" +
-"	if -5/5+3 <= 1+1 \n" +
-"		then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"		else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"		\n" +
-"	while -5/5+3 <= 1+1 do \n" +
-"		ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"		\n" +
-"	read(id);\n" +
-"	write(-5/5+3 <= 1+1);\n" +
-"	\n" +
-"	return -5/5+3 <= 1+1\n" +
-"}\n" +
-"\n" +
-"void john (void ident, int ident2, float ident3) {\n" +
-"	int id1, id2, id3; \n" +
-"	float id4;\n" +
-"	\n" +
-"	john = -5/5+3 <= 1+1;\n" +
-"	id[1+1] = 5/5+3<=2;\n" +
-"		\n" +
-"	if -5/5+3 <= 1+1 \n" +
-"		then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"		else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"		\n" +
-"	while -5/5+3 <= 1+1 do \n" +
-"		ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"		\n" +
-"	read(id);\n" +
-"	write(-5/5+3 <= 1+1);\n" +
-"	\n" +
-"	return -5/5+3 <= 1+1\n" +
-"}	\n" +
-"	\n" +
-"int rachael (void ident) {\n" +
-"	int id1, id2, id3; \n" +
-"	float id4;\n" +
-"	\n" +
-"	john = -5/5+3 <= 1+1;\n" +
-"	id[1+1] = 5/5+3<=2;\n" +
-"		\n" +
-"	if -5/5+3 <= 1+1 \n" +
-"		then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"		else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"		\n" +
-"	while -5/5+3 <= 1+1 do \n" +
-"		ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"		\n" +
-"	read(id);\n" +
-"	write(-5/5+3 <= 1+1);\n" +
-"	\n" +
-"	return -5/5+3 <= 1+1\n" +
-"}	\n" +
-"	\n" +
-"float bruce (int ident2, float ident3) {\n" +
-"	int id1, id2, id3; \n" +
-"	float id4;\n" +
-"	\n" +
-"	john = -5/5+3 <= 1+1;\n" +
-"	id[1+1] = 5/5+3<=2;\n" +
-"		\n" +
-"	if -5/5+3 <= 1+1 \n" +
-"		then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"		else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"		\n" +
-"	while -5/5+3 <= 1+1 do \n" +
-"		ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"		\n" +
-"	read(id);\n" +
-"	write(-5/5+3 <= 1+1);\n" +
-"	\n" +
-"	return -5/5+3 <= 1+1\n" +
-"}	\n" +
-"";
-        Recognizer rec = new Recognizer(test, false);
+    public void programHappy1() {
+        String test = "CCode/ProgramHappy1.txt";
+        Recognizer rec = new Recognizer(test, true);
         
         rec.program();
         rec.isEnd();
@@ -1456,113 +1325,9 @@ public class RecognizerTest {
 	
     /* Sad Test 1 for program function */
     @Test
-    public void programSad1() throws Exception {
-        String test = "void john (void ident, int ident2, float ident3);\n" +
-"int rachael (void ident); \n" +
-"float bruce (int ident2, float ident3);\n" +
-"\n" +
-"main() {\n" +
-"\n" +
-"	int id1, id2, id3; \n" +
-"	float id4;\n" +
-"	\n" +
-"	john = -5/5+3 <= 1+1;\n" +
-"	id[1+1] = 5/5+3<=2;\n" +
-"	\n" +
-"	{\n" +
-"		int id1, id2, id3; \n" +
-"		float id4;\n" +
-"		\n" +
-"		john = -5/5+3 <= 1+1;\n" +
-"		id[1+1] = 5/5+3<=2;\n" +
-"				\n" +
-"		if -5/5+3 <= 1+1 \n" +
-"			then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"			else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"			\n" +
-"		while -5/5+3 <= 1+1 do \n" +
-"			ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"			\n" +
-"		read(id);\n" +
-"		write(-5/5+3 <= 1+1);\n" +
-"		\n" +
-"		return -5/5+3 <= 1+1\n" +
-"	};	\n" +
-"	\n" +
-"	if -5/5+3 <= 1+1 \n" +
-"		then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"		else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"		\n" +
-"	while -5/5+3 <= 1+1 do \n" +
-"		ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"		\n" +
-"	read(id);\n" +
-"	write(-5/5+3 <= 1+1);\n" +
-"	\n" +
-"	return -5/5+3 <= 1+1\n" +
-"}\n" +
-"\n" +
-"void john (void ident, int ident2, float ident3) {\n" +
-"	int id1, id2, id3; \n" +
-"	float id4;\n" +
-"	\n" +
-"	john = -5/5+3 <= 1+1;\n" +
-"	id[1+1] = 5/5+3<=2;\n" +
-"		\n" +
-"	if -5/5+3 <= 1+1 \n" +
-"		then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"		else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"		\n" +
-"	while -5/5+3 <= 1+1 do \n" +
-"		ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"		\n" +
-"	read(id);\n" +
-"	write(-5/5+3 <= 1+1);\n" +
-"	\n" +
-"	return -5/5+3 <= 1+1\n" +
-"}	\n" +
-"	\n" +
-"int rachael (void ident) {\n" +
-"	int id1, id2, id3; \n" +
-"	float id4;\n" +
-"	\n" +
-"	john = -5/5+3 <= 1+1;\n" +
-"	id[1+1] = 5/5+3<=2;\n" +
-"		\n" +
-"	if -5/5+3 <= 1+1 \n" +
-"		then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"		else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"		\n" +
-"	while -5/5+3 <= 1+1 do \n" +
-"		ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"		\n" +
-"	read(id);\n" +
-"	write(-5/5+3 <= 1+1);\n" +
-"	\n" +
-"	return -5/5+3 <= 1+1\n" +
-"}	\n" +
-"	\n" +
-"float bruce (int ident2, float ident3) {\n" +
-"	int id1, id2, id3; \n" +
-"	float id4;\n" +
-"	\n" +
-"	john = -5/5+3 <= 1+1;\n" +
-"	id[1+1] = 5/5+3<=2;\n" +
-"		\n" +
-"	if -5/5+3 <= 1+1 \n" +
-"		then ident[-5/5+3<=1+1] = -5/5+3<=1+1\n" +
-"		else ident[-5/5+3<=1+1] = -5/5+3<=1+1;\n" +
-"		\n" +
-"	while -5/5+3 <= 1+1 do \n" +
-"		ident[-5/5+3<=1+1]=-5/5+3<=1+1;\n" +
-"		\n" +
-"	read(id);\n" +
-"	write(-5/5+3 <= 1+1)\n" +
-"	\n" +
-"	return -5/5+3 <= 1+1\n" +
-"}	\n" +
-"";
-        Recognizer rec = new Recognizer(test, false);
+    public void programSad1() {
+        String test = "CCode/ProgramSad1.txt";
+        Recognizer rec = new Recognizer(test, true);
 
         try {
             rec.program();
@@ -1574,6 +1339,5 @@ public class RecognizerTest {
         }
     }
 
-    
 
 }
