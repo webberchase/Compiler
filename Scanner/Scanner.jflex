@@ -31,7 +31,7 @@ package scanner;
 	return getEND();
 %eofval}
 
-whitespace		= [ \n\t]+
+whitespace		= [ \r\n\t]+
 
 letter			= [A-Za-z]
 word			= {letter}+
