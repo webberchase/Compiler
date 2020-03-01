@@ -48,16 +48,12 @@ public class SymbolTable {
      * @return True if this is a function name, otherwise false
      */
     public boolean isFunName(String ID) {
-        // Case: This ID is not in the table!
-        if (!st.containsKey(ID)) {
-            return false;
+        if (st.containsKey(ID)) {
+            if (st.get(ID).kind == Kind.FUN_NAME) {
+				return true;
+			}
         }
-        else if (st.get(ID).kind == Kind.FUN_NAME) {
-            return true;
-        }
-        else {
-            return false;
-        }
+		return false;
     }
     
 	
@@ -85,16 +81,12 @@ public class SymbolTable {
      * @return True if this is a variable name, otherwise false
      */
     public boolean isVarName(String ID) {
-        // Case: This ID is not in the table!
-        if (!st.containsKey(ID)) {
-            return false;
+        if (st.containsKey(ID)) {
+            if (st.get(ID).kind == Kind.VAR_NAME) {
+				return true;
+			}
         }
-        else if (st.get(ID).kind == Kind.VAR_NAME) {
-            return true;
-        }
-        else {
-            return false;
-        }
+		return false;
     }
 
     /**
