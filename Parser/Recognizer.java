@@ -1,4 +1,4 @@
-package parser;
+package Parser;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import scanner.Scanner;
-import scanner.Token;
-import scanner.TokenType;
+import Scanner.Scanner;
+import Scanner.Token;
+import Scanner.TokenType;
 
 /**
  * This Recognizer determines whether an input string
