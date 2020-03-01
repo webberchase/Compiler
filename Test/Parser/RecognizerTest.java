@@ -66,9 +66,9 @@ public class RecognizerTest {
         try {
             rec.sign();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Sign Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Sign Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -98,9 +98,9 @@ public class RecognizerTest {
         try {
             rec.relop();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Relop Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Relop Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -130,9 +130,9 @@ public class RecognizerTest {
         try {
             rec.addop();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Addop Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Addop Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -162,9 +162,9 @@ public class RecognizerTest {
         try {
             rec.mulop();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Mulop Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Mulop Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -205,9 +205,9 @@ public class RecognizerTest {
         try {
             rec.factor();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -221,9 +221,9 @@ public class RecognizerTest {
         try {
             rec.factor();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -264,9 +264,9 @@ public class RecognizerTest {
         try {
             rec.termPart();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -280,9 +280,9 @@ public class RecognizerTest {
         try {
             rec.termPart();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -323,9 +323,9 @@ public class RecognizerTest {
         try {
             rec.term();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -339,9 +339,9 @@ public class RecognizerTest {
         try {
             rec.term();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -382,9 +382,9 @@ public class RecognizerTest {
         try {
             rec.simplePart();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -398,9 +398,9 @@ public class RecognizerTest {
         try {
             rec.simplePart();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -414,9 +414,9 @@ public class RecognizerTest {
         try {
             rec.simplePart();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "End of File Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "End of File Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -457,9 +457,9 @@ public class RecognizerTest {
         try {
             rec.simpleExpression();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -473,9 +473,9 @@ public class RecognizerTest {
         try {
             rec.simpleExpression();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -489,9 +489,9 @@ public class RecognizerTest {
         try {
             rec.simpleExpression();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "End of File Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "End of File Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -532,9 +532,9 @@ public class RecognizerTest {
         try {
             rec.expression();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -548,9 +548,9 @@ public class RecognizerTest {
         try {
             rec.expression();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "End of File Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "End of File Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -591,9 +591,9 @@ public class RecognizerTest {
         try {
             rec.expressionList();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "End of File Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "End of File Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -607,9 +607,9 @@ public class RecognizerTest {
         try {
             rec.expressionList();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -638,9 +638,9 @@ public class RecognizerTest {
         try {
             rec.procedureStatement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Match of ID found LPAREN instead Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Match of ID found LPAREN instead Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -669,9 +669,9 @@ public class RecognizerTest {
         try {
             rec.variable();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Match of RSQUARE found COMMA instead Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Match of RSQUARE found COMMA instead Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -761,9 +761,9 @@ public class RecognizerTest {
         try {
             rec.statement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -777,9 +777,9 @@ public class RecognizerTest {
         try {
             rec.statement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Statement Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Statement Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -793,9 +793,9 @@ public class RecognizerTest {
         try {
             rec.statement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Statement Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Statement Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -809,9 +809,9 @@ public class RecognizerTest {
         try {
             rec.statement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Match of ID found NUMBER instead Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Match of ID found NUMBER instead Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -825,9 +825,9 @@ public class RecognizerTest {
         try {
             rec.statement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Match of RPAREN found ASSIGNOP instead Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Match of RPAREN found ASSIGNOP instead Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -841,9 +841,9 @@ public class RecognizerTest {
         try {
             rec.statement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Factor Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Factor Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -899,9 +899,9 @@ public class RecognizerTest {
         try {
             rec.statementList();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Statement Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Statement Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -929,9 +929,9 @@ public class RecognizerTest {
         try {
             rec.statementList();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Statement Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Statement Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -959,9 +959,9 @@ public class RecognizerTest {
         try {
             rec.optionalStatements();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "End of File Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "End of File Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -990,9 +990,9 @@ public class RecognizerTest {
         try {
             rec.identifierList();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Match of ID found ENDOFFILE instead Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Match of ID found ENDOFFILE instead Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1021,9 +1021,9 @@ public class RecognizerTest {
         try {
             rec.declarations();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "End of File Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "End of File Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1077,9 +1077,9 @@ public class RecognizerTest {
         try {
             rec.compoundStatement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Match of RCURLY found MINUS instead Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Match of RCURLY found MINUS instead Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1093,9 +1093,9 @@ public class RecognizerTest {
         try {
             rec.compoundStatement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Match of ASSIGNOP found RCURLY instead Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Match of ASSIGNOP found RCURLY instead Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1109,9 +1109,9 @@ public class RecognizerTest {
         try {
             rec.compoundStatement();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Statement Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Statement Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1140,9 +1140,9 @@ public class RecognizerTest {
         try {
             rec.parameterList();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Type Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Type Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1171,9 +1171,9 @@ public class RecognizerTest {
         try {
             rec.parameters();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Type Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Type Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1204,9 +1204,9 @@ public class RecognizerTest {
         try {
             rec.functionDefinition();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Type Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Type Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1238,9 +1238,9 @@ public class RecognizerTest {
         try {
             rec.functionDefinitions();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Type Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Type Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1269,9 +1269,9 @@ public class RecognizerTest {
         try {
             rec.functionDeclaration();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Type Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Type Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1301,9 +1301,9 @@ public class RecognizerTest {
         try {
             rec.functionDeclarations();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "End of File Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "End of File Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
@@ -1332,9 +1332,9 @@ public class RecognizerTest {
         try {
             rec.program();
             rec.isEnd();
-            fail("Yikes! The Sad Test didn't fail!!");
-        } catch (Exception e) {
-            String expected = "Match of RCURLY found RETURN instead Error!";
+            fail("The Sad Test didn't fail!!");
+        } catch ( RuntimeException e) {
+            String expected = "Match of RCURLY found RETURN instead Error in Recognizer!";
             assertEquals(expected, e.getMessage());
         }
     }
