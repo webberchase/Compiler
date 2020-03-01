@@ -1,4 +1,4 @@
-package parser;
+package Parser;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -50,10 +50,10 @@ public class SymbolTable {
     public boolean isFunName(String ID) {
         if (st.containsKey(ID)) {
             if (st.get(ID).kind == Kind.FUN_NAME) {
-				return true;
-			}
+                return true;
+            }
         }
-		return false;
+        return false;
     }
     
 	
@@ -83,10 +83,10 @@ public class SymbolTable {
     public boolean isVarName(String ID) {
         if (st.containsKey(ID)) {
             if (st.get(ID).kind == Kind.VAR_NAME) {
-				return true;
-			}
+                return true;
+            }
         }
-		return false;
+        return false;
     }
 
     /**
