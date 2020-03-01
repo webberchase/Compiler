@@ -229,7 +229,7 @@ public class Recognizer {
 	}
 	
 	/**
-	 * Executes the rule for the statement non-terminal symbol.NOTE: procedureStatement is omitted for now.
+	 * Executes the rule for the statement non-terminal symbol.
 	 * NOTE: procedureStatement is omitted for now.
 	 */
 	public void statement() {
@@ -543,12 +543,12 @@ public class Recognizer {
 		System.out.println("match( " + expected + ")");
 		if (this.lookahead.getType() == expected) {
 			try {
-                            this.lookahead = scanner.nextToken();
-                            Token temp = this.lookahead;
-                            while (temp == null) {
-                                this.lookahead = scanner.nextToken();
-                                temp = this.lookahead;
-                            }
+				this.lookahead = scanner.nextToken();
+				Token temp = this.lookahead;
+				while (temp == null) {
+					this.lookahead = scanner.nextToken();
+					temp = this.lookahead;
+				}
 			} catch (IOException e) {
 				error("Scanner exception");
 			}
@@ -576,7 +576,7 @@ public class Recognizer {
 	 * @return true if Token Type matches lookahead.type, else false.
 	 */
 	private boolean nextIs(TokenType type) {
-            return lookahead.getType() == type;
+		return lookahead.getType() == type;
 	}
 	
 	/**
@@ -660,17 +660,17 @@ public class Recognizer {
 	}
 	
 	/**
-	 * Errors out of the parser.Prints an error message (and then exits the program?).  
+	 * Errors out of the parser.Prints an error message.  
 	 * @param message The error message to print. 
 	 */
 	public void error(String message) {
-		System.out.println("Error " + message); 
-                if (!this.scanner.equals(null)) {
-                    System.out.println(" at line " +
-				this.scanner.getLine() + " column " +
-				this.scanner.getColumn());
-                }
-                throw new RuntimeException(message + " Error!");
+		System.out.println("Recognizer Error " + message); 
+		if (!this.scanner.equals(null)) {
+			System.out.println(" at line " +
+					this.scanner.getLine() + " column " +
+					this.scanner.getColumn());
+		}
+		throw new RuntimeException(message + " Error in Recognizer!");
 	}
 	
 }
