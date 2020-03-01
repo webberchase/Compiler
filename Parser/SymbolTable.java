@@ -39,7 +39,6 @@ public class SymbolTable {
         }
         STRow newRow = new STRow(ID, Kind.FUN_NAME);
         st.put(ID, newRow);
-
     }
     
     /**
@@ -60,6 +59,7 @@ public class SymbolTable {
         }
     }
     
+	
     /***** VarName Methods *****/
     
     /**
@@ -96,8 +96,6 @@ public class SymbolTable {
         }
     }
 
-    
-    
     /**
      * Internal Structure: 
      * This is one row of the table!
@@ -122,8 +120,6 @@ public class SymbolTable {
             this.type = newType;
         }
 
-        
-        
     }
     
     /**
@@ -145,7 +141,11 @@ public class SymbolTable {
         FLOAT,
     }
     
-    
+    /**
+     * Prints out the Symbol Table, row by row.
+     * @return String representation of the Symbol Table
+     */
+    @Override
     public String toString() {
         String result = "";
         int rowCount = 0;
@@ -173,14 +173,13 @@ public class SymbolTable {
         return result;
     }
 
-    
     /**
 	 * Errors out of the symbol Table.Prints an error message 
-         * @param message The error message to print. 
+	 * @param message The error message to print. 
 	 */
 	public void error(String message) {
 		System.out.println("Symbol Table Error " + message); 
-                throw new RuntimeException(message + " Error in Symbol Table!");
+		throw new RuntimeException(message + " Error in Symbol Table!");
 	}
     
 }
