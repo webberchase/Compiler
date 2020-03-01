@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+package Scanner;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,9 +11,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import scanner.Scanner;
-import scanner.Token;
-import scanner.TokenType;
 
 /**
  * Tests the nextToken function of the Scanner class.
@@ -45,6 +38,7 @@ public class ScannerTest {
     public void tearDown() {
     }
         
+    
     /***** TEST TYPES
      * @throws java.lang.Exception *****/
 
@@ -90,69 +84,83 @@ public class ScannerTest {
         assertEquals(actual, s.getEND());     
     }
 
+    
+    /***** TEST COMMENTS & WHITESPACE
+     * @throws java.lang.Exception *****/
+    
     /* Tests whitespace */
-    /*@Test
+    @Test
     public void whiteSpace() throws Exception {
-		// 10 spaces, 1 tab, 3 more spaces
-		String test = "          \t   ";
-		Scanner s = new Scanner(new StringReader(test));
-
-		for (int i = 0; i < 14; i++) {
-			Token actual = s.nextToken();
-			assertEquals(actual, s.getEND());     
-		}
-    }*/
-    
-    // FIXME
-    /* Test traditional comment */
-    /*@Test
-    public void traditionalComment1() throws Exception {
-	String test = "";
-    Scanner s = new Scanner(new StringReader(test));
-
-		for (int i = 0; i < 100; i++) {
-			Token actual = s.nextToken();
-			assertEquals(actual, s.getEND());     
-		}
-    }*/
-    
-    // FIXME
-    /* Test traditional comment */
-    /*@Test
-    public void traditionalComment2() throws IOException {
-		String test = "/* testing";
-		Scanner s = new Scanner(new StringReader(test));
-
-		Token actual = s.nextToken();
-		Token expected = new Token("/", TokenType.DIVIDEDBY);
-		assertEquals(expected, actual);		
-
-		actual = s.nextToken();
-		expected = new Token("*", TokenType.TIMES);
-		assertEquals(expected, actual);		
-
-		actual = s.nextToken();
-		expected = new Token("testing", TokenType.ID);
-		assertEquals(expected, actual);	
-
-		actual = s.nextToken();
-		expected = new Token("traditional", TokenType.ID);
-		assertEquals(expected, actual);	
-
-		actual = s.nextToken();
-		expected = new Token("comment", TokenType.ID);
-		assertEquals(expected, actual);	
-
-		actual = s.nextToken();
-		expected = new Token("!", TokenType.NOT);
-		assertEquals(expected, actual);	
-
-		actual = s.nextToken();
+        // 10 spaces, 1 tab, 3 more spaces
+        String test = "          \t   ";
+        Scanner s = new Scanner(new StringReader(test));
+        Token actual = null;
+        
+        for (int i = 0; i < 14; i++) {
+            actual = s.nextToken();
+        }
         assertEquals(actual, s.getEND());     
-    }*/
+    }
+    
+    /* Happy Test 1 for single line comments */
+    @Test
+    public void singleLineComment() throws Exception {
+	String test = "// COMMENT \n";
+        Scanner s = new Scanner(new StringReader(test));
+        Token actual = null;
+
+        for (int i = 0; i < 100; i++) {
+                actual = s.nextToken();
+        }
+        assertEquals(actual, s.getEND());     
+    }
+    
+    /* Happy Test 1 for traditional comments */
+    @Test
+    public void traditionalCommentHappy1() throws Exception {
+	String test = "/* COMMENT */";
+        Scanner s = new Scanner(new StringReader(test));
+        Token actual = null;
+
+        for (int i = 0; i < 100; i++) {
+                actual = s.nextToken();
+        }
+        assertEquals(actual, s.getEND());     
+    }
+    
+    /* Happy Test 2 for traditional comments */
+    @Test
+    public void traditionalCommentHappy2() throws Exception {
+	String test = "/* COMMENT LINE 1 \n * LINE 2 */";
+        Scanner s = new Scanner(new StringReader(test));
+        Token actual = null;
+
+        for (int i = 0; i < 100; i++) {
+                actual = s.nextToken();
+        }
+        assertEquals(actual, s.getEND());     
+    }
+    
+    /* Sad Test 1 for traditional comments */
+    @Test
+    public void traditionalCommentSad1() throws Exception {
+	String test = "/* COMMENT ";
+        Scanner s = new Scanner(new StringReader(test));
+        Token actual = null;
+        
+        try {
+            for (int i = 0; i < 100; i++) {
+                    actual = s.nextToken();
+            }
+            fail("The Sad Test didn't fail!!");
+        } catch(RuntimeException e) {
+            String expected = "Unterminated Comment!";
+            assertEquals(expected, e.getMessage());
+        } 
+    }
     
     
-    /***** HAPPY TESTS
+    /***** nextToken() Happy Tests
      * @throws java.lang.Exception *****/
 
     /* Tests a basic math expression */
@@ -181,7 +189,7 @@ public class ScannerTest {
     // 3+3=6\n\n2*2=4
     @Test
     public void fileReading() throws Exception {
-        String test = "CCode/SmallFile.txt";
+        String test = "CCode/SingleLine.txt";
         
         FileInputStream fis = null;
         try {
@@ -202,7 +210,7 @@ public class ScannerTest {
         assertEquals(expected, actual);
         
         actual = s.nextToken();
-        expected = new Token("3", TokenType.NUMBER);
+        expected = new Token("4", TokenType.NUMBER);
         assertEquals(expected, actual);
         
         actual = s.nextToken();
@@ -210,27 +218,26 @@ public class ScannerTest {
         assertEquals(expected, actual);
         
         actual = s.nextToken();
-        expected = new Token("6", TokenType.NUMBER);
+        expected = new Token("7", TokenType.NUMBER);
         assertEquals(expected, actual);
         
         actual = s.nextToken();
         assertEquals(actual, s.getEND());   
     }
     
-    
 	
-    /***** SAD TESTS
+    /***** ILLEGAL CHARACTER
      * @throws java.io.IOException *****/
 	 
     /* Tests what happens when an illegal symbol is found */
     @Test
-    public void nextTokenSad1() throws IOException {
+    public void illegalChar() throws IOException {
         String test = "#";
         Scanner s = new Scanner(new StringReader(test));
 
         try {
             Token actual = s.nextToken(); 
-            fail("Yikes! The Sad Test didn't fail!!");
+            fail("The Sad Test didn't fail!!");
         } catch ( RuntimeException e) {
             String expected = "Illegal Character!";
             assertEquals(expected, e.getMessage());
