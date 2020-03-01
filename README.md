@@ -1,4 +1,4 @@
-@author Chase Webber
+###### Chase Webber
 
 #### This is a Compiler for CSC 451 at Augsburg. 
 
@@ -13,19 +13,27 @@
 - **TokenType:** enumerated list of possible Token Types
 
 ### Parser/
-- Contains the Recognizer
+- Contains the Recognizer and Symbol Table 
 - **Recognizer.java:** determines if a given string conforms to the specified grammar 
+- **SymbolTable.java:** used to keep track of differentiate between variable names
 
 ### Test/
-Junit tests for Scanner and Recognizer
+Junit tests for Scanner, Recognizer, and Symbol Table
 
 ##### Scanner/
 - **ScannerTest.java** includes junit tests for testing the nextToken() function of the scanner
 
 ##### Parser/
-- **TestRecognizer:** includes junit tests for testing the various functions of the recognizer. 
+- **RecognizerTest.java:** includes junit tests for testing the various functions of the Recognizer. 
 _NOTE: these are mostly in reverse order compared to Recognizer.java, test functions are organized from least to most complex._
-- **TestStrings.txt** _contains helpful strings for testing_
+- **SymbolTableTest.java:** includes junit tests for testing the various public functions of the Symbol Table. 
+_NOTE: these are currently organized by Var functions and Fun functions (IDs which are variable names and IDs which are function names).
+
+##### CCode/
+- Contains useful code for testing, primarily example "Almsost C" files.
+- **ProgramHappy1.txt:** used for Happy test of program() in Recognizer class. 
+- **ProgramSad1.txt:** used for Sad test of program() ini Recognizer class. 
+- **TestStrings.txt:** helpful strings which can be copied and pasted into various Recognizer tests. 
 
 #### SDD.txt
 Explains the project design and functionality
