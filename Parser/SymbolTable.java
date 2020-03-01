@@ -14,14 +14,15 @@ import java.util.Set;
  */
 public class SymbolTable {
     
-    private HashMap<String, STRow> st = null;
+    private HashMap<String, SymTabRow> st = null;
 	
     /**
      * Basic Constructor
      */
     public SymbolTable() {
-        st = new HashMap<String, STRow>();
+        st = new HashMap<String, SymTabRow>();
     }
+    
     
     /***** FunName Methods *****/
     
@@ -37,7 +38,7 @@ public class SymbolTable {
                 return;
             }
         }
-        STRow newRow = new STRow(ID, Kind.FUN_NAME);
+        SymTabRow newRow = new SymTabRow(ID, Kind.FUN_NAME);
         st.put(ID, newRow);
     }
     
@@ -74,7 +75,7 @@ public class SymbolTable {
                 return;
             }
         }
-        STRow newRow = new STRow(ID, Kind.VAR_NAME);
+        SymTabRow newRow = new SymTabRow(ID, Kind.VAR_NAME);
         st.put(ID, newRow);
     }
     
@@ -101,20 +102,20 @@ public class SymbolTable {
      * This is one row of the table!
      * Variables are equivalent to fields
      */
-    private class STRow {
+    private class SymTabRow {
         String ID;
         Kind kind;  
         Type type;
         
         /** Constructor with unspecified Type */
-        private STRow(String newID, Kind newKind) {
+        private SymTabRow(String newID, Kind newKind) {
             this.ID = newID;
             this.kind = newKind;
             this.type = null;
         }            
 
         /* Constructor with specified Type */
-        private STRow(String newID, Kind newKind, Type newType) {
+        private SymTabRow(String newID, Kind newKind, Type newType) {
             this.ID = newID;
             this.kind = newKind;
             this.type = newType;
@@ -156,7 +157,7 @@ public class SymbolTable {
         while(iterator.hasNext()) {
            Map.Entry entry = (Map.Entry)iterator.next();
            String key = entry.getKey().toString();
-           STRow row = (STRow)entry.getValue();
+           SymTabRow row = (SymTabRow)entry.getValue();
            
            if (!key.equals(row.ID)) {
                error("IDs don't match (in toString)");
