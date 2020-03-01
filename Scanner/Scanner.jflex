@@ -46,8 +46,9 @@ number 					= {digits}{optional_fraction}{optional_exponent}
 symbol			= ";"|","|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 				  "/"|"<"|">"|"<="|">="|"!="|"=="|"&&"|"||"|"!"
 				  
-traditional 	= "/*" [^*] ~"*/" | "/*" "*"+ "/"
-oneline 		= "//" .* \n
+traditional 	= [/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]
+unterminated	= [/][*]
+oneline 		= "//".*
 
 %%
 
@@ -64,6 +65,10 @@ oneline 		= "//" .* \n
 						return null;
 					}
 
+{unterminated}		{
+						//System.out.println("Unterminated Comment!");
+						throw new RuntimeException("Unterminated Comment!");
+					}
 {oneline}			{  
 						/* Ignore Oneline Comments */ 
 						return null;
