@@ -1,4 +1,4 @@
-package parser;
+package Parser;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -221,6 +221,7 @@ public class SymbolTableTest {
         
         assertEquals(expected, actual);
     }
+    
     
     
     
