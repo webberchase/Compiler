@@ -3,10 +3,7 @@
 ###### author Chase Webber
 
 # FIXME
-- Comments are not handled correctly by scanner
-	- Fix this in jflex file
-	- Develop tests for this in TestScanner
-	- Add comments to ProgramHappy1.txt and ProgramSad1.txt
+- Add comments to ProgramHappy1.txt and ProgramSad1.txt
 - The grammar itself may have some flaws, make sure we're using the most recently updated PDF. 
 
 ## SCANNER 
@@ -22,8 +19,6 @@
 	- The scanner considers any of these a NUMBER token. 
 - **Symbols** are defined from the list of symbols
 - **Comments** can contain anything between "/*" and "*/" or anything between "//" and "\n"
-- ***FIXME*** _Comments don't function right. Update jflex rules._
-
 	
 #### Lexical Rules
 
@@ -120,7 +115,6 @@
 
 #### Helper Functions
 - **toString()** Prints out each row of the table including ID, kind, and type. 
-
 - **error(message)** Calls System.out.println() to display the error message. Also throws a RunTimeException for a Symbol Table error displaying the specified message. 
 
 
@@ -137,7 +131,7 @@
 - **Sad Test 1**
 	- Tests an invalid symbol... should fail and throw the desired exception
 - **Test comments and whitespace**
-	- Tests whitespace and both comment types... should ignore comments. ***FIXME***
+	- Tests whitespace and both comment types... should ignore comments. 
 
 #### RecognizerTest
 - Tests each of the Production Methods defined by Recognizer at least once each. 
