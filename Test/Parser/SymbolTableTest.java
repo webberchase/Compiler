@@ -74,20 +74,59 @@ public class SymbolTableTest {
         }
     }
 
+
+    /***** isFunName() *****/
+    
     /**
-     * Test of isFunName method, of class SymbolTable.
+     * Happy Test 1 of isFunName method.
      */
     @Test
-    public void testIsFunName() {
-        System.out.println("isFunName");
-        String ID = "";
-        SymbolTable instance = new SymbolTable();
-        boolean expResult = false;
-        boolean result = instance.isFunName(ID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void isFunNameHappy1() {
+        String test = "myFun";
+        SymbolTable st = new SymbolTable();
+        
+        st.addVarName(test);
+        st.addFunName(test);
+        
+        boolean expected = true;
+        boolean actual = st.isFunName(test);
+                
+        assertEquals(expected, actual);   
     }
+    
+    /**
+     * Happy Test 2 of isFunName method. 
+     */
+    @Test
+    public void isFunNameHappy2() {
+        String test = "myFun";
+        String fake = "fake";
+        SymbolTable st = new SymbolTable();
+        
+        st.addFunName(fake);
+        
+        boolean expected = false;
+        boolean actual = st.isFunName(test);
+        
+        assertEquals(expected, actual);
+    }
+    
+    /**
+     * Happy Test 3 of isFunName method. 
+     */
+    @Test
+    public void isFunNameHappy3() {
+        String test = "myFun";
+        SymbolTable st = new SymbolTable();
+        
+        st.addVarName(test);
+        
+        boolean expected = false;
+        boolean actual = st.isFunName(test);
+        
+        assertEquals(expected, actual);
+    }
+    
 
     /***** addVarName() *****/
     
