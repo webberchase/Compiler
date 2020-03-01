@@ -74,7 +74,7 @@ public class SymbolTableTest {
         }
     }
 
-
+    
     /***** isFunName() *****/
     
     /**
@@ -169,32 +169,59 @@ public class SymbolTableTest {
 
     }
 
+    
+    /***** isVarName() *****/
+    
     /**
-     * Test of isVarName method, of class SymbolTable.
+     * Happy Test 1 of isVarName method.
      */
     @Test
-    public void testIsVarName() {
-        System.out.println("isVarName");
-        String ID = "";
-        SymbolTable instance = new SymbolTable();
-        boolean expResult = false;
-        boolean result = instance.isVarName(ID);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void isVarNameHappy1() {
+        String test = "myVar";
+        SymbolTable st = new SymbolTable();
+        
+        st.addFunName(test);
+        st.addVarName(test);
+        
+        boolean expected = true;
+        boolean actual = st.isVarName(test);
+                
+        assertEquals(expected, actual);   
     }
-
+    
     /**
-     * Test of error method, of class SymbolTable.
+     * Happy Test 2 of isVarName method. 
      */
     @Test
-    public void testError() {
-        System.out.println("error");
-        String message = "";
-        SymbolTable instance = new SymbolTable();
-        instance.error(message);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void isVarNameHappy2() {
+        String test = "myVar";
+        String fake = "fake";
+        SymbolTable st = new SymbolTable();
+        
+        st.addVarName(fake);
+        
+        boolean expected = false;
+        boolean actual = st.isVarName(test);
+        
+        assertEquals(expected, actual);
     }
+    
+    /**
+     * Happy Test 3 of isVarName method. 
+     */
+    @Test
+    public void isVarNameHappy3() {
+        String test = "myVar";
+        SymbolTable st = new SymbolTable();
+        
+        st.addFunName(test);
+        
+        boolean expected = false;
+        boolean actual = st.isVarName(test);
+        
+        assertEquals(expected, actual);
+    }
+    
+    
     
 }
