@@ -1,4 +1,4 @@
-package scanner;
+package Scanner;
 
 /**
  * Scanner with Tokens
