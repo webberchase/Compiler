@@ -1,4 +1,4 @@
-package scanner;
+package Scanner;
 
 /**
  * Scanner with Tokens
@@ -31,7 +31,7 @@ package scanner;
 	return getEND();
 %eofval}
 
-whitespace		= [ \n\t]+
+whitespace		= [ \r\n\t]+
 
 letter			= [A-Za-z]
 word			= {letter}+
@@ -46,8 +46,9 @@ number 					= {digits}{optional_fraction}{optional_exponent}
 symbol			= ";"|","|"("|")"|"["|"]"|"{"|"}"|"="|"+"|"-"|"*"|
 				  "/"|"<"|">"|"<="|">="|"!="|"=="|"&&"|"||"|"!"
 				  
-traditional 	= "/*" [^*] ~"*/" | "/*" "*"+ "/"
-oneline 		= "//" .* \n
+traditional 	= [/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]
+unterminated	= [/][*]
+oneline 		= "//".*
 
 %%
 
@@ -64,6 +65,10 @@ oneline 		= "//" .* \n
 						return null;
 					}
 
+{unterminated}		{
+						//System.out.println("Unterminated Comment!");
+						throw new RuntimeException("Unterminated Comment!");
+					}
 {oneline}			{  
 						/* Ignore Oneline Comments */ 
 						return null;
@@ -262,5 +267,5 @@ oneline 		= "//" .* \n
 
 .				{
 					//System.out.println("Found an illegal character: " + yytext());
-					throw new java.io.IOException("Illegal Character!");
+					throw new RuntimeException("Illegal Character!");
 				}

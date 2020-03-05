@@ -1,4 +1,4 @@
-package parser;
+package Parser;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -7,9 +7,9 @@ import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import scanner.Scanner;
-import scanner.Token;
-import scanner.TokenType;
+import Scanner.Scanner;
+import Scanner.Token;
+import Scanner.TokenType;
 
 /**
  * This Recognizer determines whether an input string
@@ -29,16 +29,14 @@ public class Recognizer {
 	private Scanner scanner;
 	private final Token END = new Token("END", TokenType.ENDOFFILE); 
 	
-	
 	/***** CONSTRUCTOR *****/
 	
 	/**
 	 * Input string is either the text itself or it is a file name.
 	 * @param text The text running through the Recognizer.
 	 * @param isFilename Determines if this is the text or a file name.
-	 * @throws java.lang.Exception
 	 */
-	public Recognizer(String text, boolean isFilename) throws Exception {
+	public Recognizer(String text, boolean isFilename) {
 		if (isFilename) {
 			FileInputStream fis = null;
 			try {
@@ -59,14 +57,12 @@ public class Recognizer {
 		}
 	}
 
-
 	/***** METHODS *****/
 	
 	/**
 	 * Executes the rule for the program non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void program() throws Exception {
+	public void program() {
 		functionDeclarations();
 		match(TokenType.MAIN);
 		match(TokenType.LPAREN);
@@ -77,9 +73,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the identifierList non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void identifierList() throws Exception {
+	public void identifierList() {
 		match(TokenType.ID);
 		if (nextIs(TokenType.COMMA)) {
 			match(TokenType.COMMA);
@@ -93,9 +88,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the declarations non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void declarations() throws Exception {
+	public void declarations() {
 		if (isType(lookahead)) {
 			type();
 			identifierList();
@@ -109,9 +103,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the type non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void type() throws Exception {
+	public void type() {
 		switch (lookahead.getType()) {
 			case VOID:
 				match(TokenType.VOID);
@@ -129,9 +122,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the functionDeclarations non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void functionDeclarations() throws Exception {
+	public void functionDeclarations() {
 		if (isType(lookahead)) {
 			functionDeclaration();
 			match(TokenType.SEMICOLON);
@@ -144,9 +136,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the functionDeclaration non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void functionDeclaration() throws Exception {
+	public void functionDeclaration() {
 		type();
 		match(TokenType.ID);
 		parameters();
@@ -154,9 +145,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the functionDefinitions non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void functionDefinitions() throws Exception {
+	public void functionDefinitions() {
 		if (isType(lookahead)) {
 			functionDefinition();
 			functionDefinitions();
@@ -168,9 +158,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the functionDefinition non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void functionDefinition() throws Exception {
+	public void functionDefinition() {
 		type();
 		match(TokenType.ID);
 		parameters();
@@ -179,9 +168,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the parameters non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void parameters() throws Exception {
+	public void parameters() {
 		match(TokenType.LPAREN);
 		parameterList();
 		match(TokenType.RPAREN);
@@ -189,9 +177,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the parameterList non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void parameterList() throws Exception {
+	public void parameterList() {
 		type();
 		match(TokenType.ID);
 		if (nextIs(TokenType.COMMA)) {
@@ -206,9 +193,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the compoundStatement non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void compoundStatement() throws Exception {
+	public void compoundStatement() {
 		match(TokenType.LCURLY);
 		declarations();
 		optionalStatements();
@@ -217,9 +203,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the optionalStatements non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void optionalStatements() throws Exception {
+	public void optionalStatements() {
 		if (isStatement(lookahead)) { 
 			statementList();
 		}
@@ -230,9 +215,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the statementList non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void statementList() throws Exception {
+	public void statementList() {
 		statement();
 		if (nextIs(TokenType.SEMICOLON)) {
 			match(TokenType.SEMICOLON);
@@ -246,10 +230,9 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the statement non-terminal symbol.
-	 * NOTE: procedureStatement is ommitted for now.
-	 * @throws java.lang.Exception
+	 * NOTE: procedureStatement is omitted for now.
 	 */
-	public void statement() throws Exception {
+	public void statement() {
 		switch (lookahead.getType()) {
 			case ID:
 				variable();
@@ -297,9 +280,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the variable non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void variable() throws Exception {
+	public void variable() {
 		match(TokenType.ID);
 		if (nextIs(TokenType.LSQUARE)) {
 			match(TokenType.LSQUARE);
@@ -314,9 +296,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the procedureStatement non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void procedureStatement() throws Exception {
+	public void procedureStatement() {
 		match(TokenType.ID);
 		if (nextIs(TokenType.LPAREN)) {
 			match(TokenType.LPAREN);
@@ -331,9 +312,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the expressionList non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void expressionList() throws Exception {
+	public void expressionList() {
 		expression();
 		if (nextIs(TokenType.COMMA)) {
 			match(TokenType.COMMA);
@@ -347,9 +327,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the expression non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void expression() throws Exception {
+	public void expression() {
 		simpleExpression();
 		if (isRelop(lookahead)) {
 			relop();
@@ -363,9 +342,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the simpleExpression non-terminal symbol.
-	 * @throws java.lang.Exception
 	 */
-	public void simpleExpression() throws Exception {
+	public void simpleExpression() {
 		// isAddop() here can be considered isSign()
 		// we're checking for PLUS or MINUS... 
 		if (isAddop(lookahead)) {
@@ -381,9 +359,8 @@ public class Recognizer {
 	
 	/** 
 	 * Executes the rule for the simplePart non-terminal symbol.
-	 * @throws java.lang.Exception
 	 */
-	public void simplePart() throws Exception {
+	public void simplePart() {
 		if(isAddop(lookahead)) {
 			addop();
 			term();
@@ -396,18 +373,16 @@ public class Recognizer {
 	
 	/** 
 	 * Executes the rule for the term non-terminal symbol.
-	 * @throws java.lang.Exception
 	 */
-	public void term() throws Exception {
+	public void term() {
 		factor();
 		termPart();
 	}
 	
 	/** 
 	 * Executes the rule for the termPart non-terminal symbol.
-	 * @throws java.lang.Exception
 	 */
-	public void termPart() throws Exception {
+	public void termPart() {
 		if (isMulop(lookahead)) {
 			mulop();
 			factor();
@@ -420,9 +395,8 @@ public class Recognizer {
 	
 	/** 
 	 * Executes the rule for the factor non-terminal symbol.
-	 * @throws java.lang.Exception
 	 */
-	public void factor() throws Exception {
+	public void factor() {
 		switch (lookahead.getType()) {
 			case ID:
 				match(TokenType.ID);
@@ -462,9 +436,8 @@ public class Recognizer {
 		
 	/**
 	 * Executes the rule for the sign non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void sign() throws Exception {
+	public void sign() {
 		switch (lookahead.getType()) {
 			case PLUS:
 				match(TokenType.PLUS);
@@ -479,9 +452,8 @@ public class Recognizer {
 	
 	/**
 	 * Executes the rule for the relop non-terminal symbol.
-	 * @throws java.lang.Exception
 	 */
-	public void relop() throws Exception {
+	public void relop() {
 		switch (lookahead.getType()) {
 			case LESSTHAN:
 				match(TokenType.LESSTHAN);
@@ -508,9 +480,8 @@ public class Recognizer {
 	
 	/** 
 	 * Executes the rule for the addop non-terminal symbol.
-	 * @throws java.lang.Exception
 	 */
-	public void addop() throws Exception {
+	public void addop() {
 		switch (lookahead.getType()) {
 			case PLUS:
 				match(TokenType.PLUS);
@@ -523,11 +494,11 @@ public class Recognizer {
 		}
 	}
 	
+	
 	/**
 	 * Executes the rule for the mulop non-terminal symbol. 
-	 * @throws java.lang.Exception
 	 */
-	public void mulop() throws Exception {
+	public void mulop() {
 		switch (lookahead.getType()) {
 			case TIMES:
 				match(TokenType.TIMES);
@@ -541,6 +512,7 @@ public class Recognizer {
 	}
 	
 	
+
 	/***** HELPER FUNCTIONS *****/
 
 	/**
@@ -566,9 +538,8 @@ public class Recognizer {
 	 * consumed and the scanner will move on to the next token
 	 * in the input. 
 	 * @param expected The expected token type. 
-	 * @throws java.lang.Exception 
 	 */
-	public void match(TokenType expected) throws Exception {
+	public void match(TokenType expected) {
 		System.out.println("match( " + expected + ")");
 		if (this.lookahead.getType() == expected) {
 			try {
@@ -592,9 +563,8 @@ public class Recognizer {
 	 * Determines if the recognizer has reached the end of the String.
 	 * Should be called after the recognizer should be done - if the 
 	 * recognizer hasn't matched all the tokens, throw an error.
-	 * @throws java.lang.Exception
 	 */
-	public void isEnd() throws Exception {
+	public void isEnd() {
 		if (!nextIs(TokenType.ENDOFFILE)) {
 			error("End of File");
 		}
@@ -606,7 +576,7 @@ public class Recognizer {
 	 * @return true if Token Type matches lookahead.type, else false.
 	 */
 	private boolean nextIs(TokenType type) {
-            return lookahead.getType() == type;
+		return lookahead.getType() == type;
 	}
 	
 	/**
@@ -690,18 +660,17 @@ public class Recognizer {
 	}
 	
 	/**
-	 * Errors out of the parser.Prints an error message (and then exits the program?).  
-	 * @param message The error message to print.
-	 * @throws java.lang.Exception 
+	 * Errors out of the parser.Prints an error message.  
+	 * @param message The error message to print. 
 	 */
-	public void error(String message) throws Exception {
-		System.out.println("Error " + message); 
+	public void error(String message) {
+		System.out.println("Recognizer Error " + message); 
 		if (!this.scanner.equals(null)) {
 			System.out.println(" at line " +
 					this.scanner.getLine() + " column " +
 					this.scanner.getColumn());
 		}
-		throw new java.io.IOException(message + " Error!");
+		throw new RuntimeException(message + " Error in Recognizer!");
 	}
 	
 }
